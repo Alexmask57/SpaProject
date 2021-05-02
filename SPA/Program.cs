@@ -16,14 +16,10 @@ namespace SPA
         [STAThread]
         static void Main()
         {
-            List<Personne> liste = PersonneDAO.GetAllPersonne();
-            bool res =  PersonneDAO.AddPersonne(new Personne { Nom = "Lallement", Prenom = "Théo", Adresse = "22 j'ai pas entendu ", Code_postal = 57440, Ville = "Angevillers", Email = "teluob.theo@gmail.com" });
-            liste = PersonneDAO.GetAllPersonne();
-
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ApplicationSPA());
+            Application.Run(new ApplicationSPAConnexion());
         }
 
         static void initConnection()

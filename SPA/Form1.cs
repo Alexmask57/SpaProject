@@ -1,4 +1,5 @@
-﻿using SPA.Models.DAO;
+﻿using SPA.Models;
+using SPA.Models.DAO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +12,9 @@ using System.Windows.Forms;
 
 namespace SPA
 {
-    public partial class ApplicationSPA : Form
+    public partial class ApplicationSPAConnexion : Form
     {
-        public ApplicationSPA()
+        public ApplicationSPAConnexion()
         {
             InitializeComponent();
         }
@@ -29,10 +30,14 @@ namespace SPA
             string valuePassword = textBoxPassword.Text.Trim();
             if (!string.IsNullOrEmpty(valueLogin) && !string.IsNullOrEmpty(valuePassword))
             {
-                if (verifConnexion(valueLogin, valuePassword))
+                int res = verifConnexion(valueLogin, valuePassword);
+                if (res != -1)
                 {
+                    Personne utilisateur = Personne.GetPersonneById(res);
                     labelConnexionError.Visible = false;
-                    this.Close();
+                    Accueil accueil = new Accueil(utilisateur);
+                    accueil.Show();
+                    this.Hide();
                 }
                 else
                 {
@@ -41,11 +46,10 @@ namespace SPA
             }
         }
 
-        private bool verifConnexion(string login, string password)
+        private int verifConnexion(string login, string password)
         {
-            if (SessionDAO.ExistSession(login, password))
-                return true;
-            return false;
+            return Session.ExistSession(login, password);
+            
         }
     }
 }

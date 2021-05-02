@@ -13,5 +13,10 @@ namespace SPA.Models
         public int Code_postal { get; set; }
         public string Ville { get; set; }
         public string Email { get; set; }
+
+        public static Personne GetPersonneById(int id)
+        {
+            return PersonneDAO.GetPersonne(id);
+        }
     }
 }

@@ -56,6 +56,44 @@ namespace SPA.Models
             }
         }
 
+        public static bool ExistPersonne(Personne personne)
+        {
+            string nom = personne.Nom;
+            string prenom = personne.Prenom;
+
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"SELECT * FROM Personne WHERE Nom = @Nom AND Prenom = @Prenom";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Nom", nom);
+                    cmd.Parameters.AddWithValue("@Prenom", prenom);
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                //display error message
+                Console.WriteLine("Exception: " + ex.Message);
+                return false;
+            }
+        }
         public static List<Personne> GetAllPersonne()
         {
             List<Personne> list = new List<Personne>();

@@ -53,15 +53,21 @@ namespace SPA.Models.DAO
             }
         }
 
-        public static bool ExistSession(string login, string password)
+        /// <summary>
+        /// Verifie si la session existe
+        /// </summary>
+        /// <param name="login">Login</param>
+        /// <param name="password">Password</param>
+        /// <returns>Retourne l'id de l'utilisateur</returns>
+        public static int ExistSession(string login, string password)
         {
-            bool res = false;
+            int res = -1;
             try
             {
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"SELECT * FROM Session WHERE Login = @Login AND Password = @Password";
+                    string query = @"SELECT Id FROM Session WHERE Login = @Login AND Password = @Password";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@Login", login);
@@ -75,7 +81,8 @@ namespace SPA.Models.DAO
                     //check if there are records
                     if (dr.HasRows)
                     {
-                        res = true;
+                        if (dr.Read())
+                            res = dr.GetInt32(0);
                     }
                     dr.Close();
                 }
@@ -85,7 +92,7 @@ namespace SPA.Models.DAO
             {
                 //display error message
                 Console.WriteLine("Exception: " + ex.Message);
-                return false;
+                return -1;
             }
         }
 

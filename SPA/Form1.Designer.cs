@@ -1,7 +1,7 @@
 ﻿
 namespace SPA
 {
-    partial class ApplicationSPA
+    partial class ApplicationSPAConnexion
     {
         /// <summary>
         ///  Required designer variable.
@@ -138,14 +138,14 @@ namespace SPA
             this.labelConnexion.TabIndex = 0;
             this.labelConnexion.Text = "Connectez-vous";
             // 
-            // ApplicationSPA
+            // ApplicationSPAConnexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1108, 609);
             this.Controls.Add(this.panelConnexion);
             this.Controls.Add(this.panelTop);
-            this.Name = "ApplicationSPA";
+            this.Name = "ApplicationSPAConnexion";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panelTop.ResumeLayout(false);
