@@ -11,7 +11,6 @@ C:\Users\admin\source\repos\SPA\SPA\bin\Debug\netcoreapp3.1\runtimes\win-x86\nat
 C:\Users\admin\source\repos\SPA\SPA\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\admin\source\repos\SPA\SPA\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.csprojAssemblyReference.cache
-C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.Form1.resources
 C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.csproj.GenerateResource.cache
 C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.AssemblyInfoInputs.cache
 C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.AssemblyInfo.cs
@@ -20,3 +19,4 @@ C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.csproj.CopyCompl
 C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.dll
 C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.pdb
 C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.genruntimeconfig.cache
+C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.ApplicationSPA.resources
