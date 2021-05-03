@@ -15,5 +15,6 @@ namespace SPA.Models
         {
             return SessionDAO.ExistSession(login, password);
         }
+
     }
 }

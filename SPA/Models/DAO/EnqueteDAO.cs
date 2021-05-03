@@ -68,8 +68,8 @@ namespace SPA.Models
                     cmd.Parameters.AddWithValue("@Id", enquete.Id);
                     cmd.Parameters.AddWithValue("@Titulaire_enquete", enquete.Titulaire_enquete.Id);
                     cmd.Parameters.AddWithValue("@Delegue_enquete", enquete.Delegue_enqueteur.Id);
-                    cmd.Parameters.AddWithValue("@Infracteur", enquete.Delegue_enqueteur.Id);
-                    cmd.Parameters.AddWithValue("@Plaignant", enquete.Delegue_enqueteur.Id);
+                    cmd.Parameters.AddWithValue("@Infracteur", enquete.Infracteur.Id);
+                    cmd.Parameters.AddWithValue("@Plaignant", enquete.Plaignant.Id);
 
                     //open connection
                     conn.Open();
