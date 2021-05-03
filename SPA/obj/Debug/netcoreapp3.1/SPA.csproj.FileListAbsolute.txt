@@ -21,3 +21,4 @@ C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.pdb
 C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.genruntimeconfig.cache
 C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.Models.Accueil.resources
 C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.ApplicationSPAConnexion.resources
+C:\Users\admin\source\repos\SPA\SPA\obj\Debug\netcoreapp3.1\SPA.OuvrirEnquete.resources

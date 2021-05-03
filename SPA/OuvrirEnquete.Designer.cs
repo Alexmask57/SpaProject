@@ -30,13 +30,14 @@ namespace SPA
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.labelNomTitulaire = new System.Windows.Forms.Label();
-            this.textBoxNomTitulaire = new System.Windows.Forms.TextBox();
-            this.labelPrenomTitualire = new System.Windows.Forms.Label();
-            this.textBoxPrenomTitulaire = new System.Windows.Forms.TextBox();
-            this.labelTitulaireEnquete = new System.Windows.Forms.Label();
             this.labelTitre = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.labelTitulaireEnquete = new System.Windows.Forms.Label();
+            this.textBoxPrenomTitulaire = new System.Windows.Forms.TextBox();
+            this.labelPrenomTitualire = new System.Windows.Forms.Label();
+            this.textBoxNomTitulaire = new System.Windows.Forms.TextBox();
+            this.labelNomTitulaire = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -49,8 +50,18 @@ namespace SPA
             this.panel1.Size = new System.Drawing.Size(1232, 54);
             this.panel1.TabIndex = 0;
             // 
+            // labelTitre
+            // 
+            this.labelTitre.AutoSize = true;
+            this.labelTitre.Location = new System.Drawing.Point(589, 18);
+            this.labelTitre.Name = "labelTitre";
+            this.labelTitre.Size = new System.Drawing.Size(139, 15);
+            this.labelTitre.TabIndex = 0;
+            this.labelTitre.Text = "Ouverture d\'une enquête";
+            // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.labelTitulaireEnquete);
             this.panel2.Controls.Add(this.textBoxPrenomTitulaire);
             this.panel2.Controls.Add(this.labelPrenomTitualire);
@@ -60,38 +71,6 @@ namespace SPA
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1229, 579);
             this.panel2.TabIndex = 1;
-            // 
-            // labelNomTitulaire
-            // 
-            this.labelNomTitulaire.AutoSize = true;
-            this.labelNomTitulaire.Location = new System.Drawing.Point(73, 76);
-            this.labelNomTitulaire.Name = "labelNomTitulaire";
-            this.labelNomTitulaire.Size = new System.Drawing.Size(77, 15);
-            this.labelNomTitulaire.TabIndex = 0;
-            this.labelNomTitulaire.Text = "Nom titulaire";
-            // 
-            // textBoxNomTitulaire
-            // 
-            this.textBoxNomTitulaire.Location = new System.Drawing.Point(182, 72);
-            this.textBoxNomTitulaire.Name = "textBoxNomTitulaire";
-            this.textBoxNomTitulaire.Size = new System.Drawing.Size(170, 23);
-            this.textBoxNomTitulaire.TabIndex = 1;
-            // 
-            // labelPrenomTitualire
-            // 
-            this.labelPrenomTitualire.AutoSize = true;
-            this.labelPrenomTitualire.Location = new System.Drawing.Point(73, 112);
-            this.labelPrenomTitualire.Name = "labelPrenomTitualire";
-            this.labelPrenomTitualire.Size = new System.Drawing.Size(92, 15);
-            this.labelPrenomTitualire.TabIndex = 2;
-            this.labelPrenomTitualire.Text = "Prenom titulaire";
-            // 
-            // textBoxPrenomTitulaire
-            // 
-            this.textBoxPrenomTitulaire.Location = new System.Drawing.Point(182, 109);
-            this.textBoxPrenomTitulaire.Name = "textBoxPrenomTitulaire";
-            this.textBoxPrenomTitulaire.Size = new System.Drawing.Size(170, 23);
-            this.textBoxPrenomTitulaire.TabIndex = 3;
             // 
             // labelTitulaireEnquete
             // 
@@ -103,14 +82,46 @@ namespace SPA
             this.labelTitulaireEnquete.Text = "Titulaire de l\'enquête :";
             this.labelTitulaireEnquete.Click += new System.EventHandler(this.label2_Click);
             // 
-            // labelTitre
+            // textBoxPrenomTitulaire
             // 
-            this.labelTitre.AutoSize = true;
-            this.labelTitre.Location = new System.Drawing.Point(589, 18);
-            this.labelTitre.Name = "labelTitre";
-            this.labelTitre.Size = new System.Drawing.Size(139, 15);
-            this.labelTitre.TabIndex = 0;
-            this.labelTitre.Text = "Ouverture d\'une enquête";
+            this.textBoxPrenomTitulaire.Location = new System.Drawing.Point(182, 109);
+            this.textBoxPrenomTitulaire.Name = "textBoxPrenomTitulaire";
+            this.textBoxPrenomTitulaire.Size = new System.Drawing.Size(170, 23);
+            this.textBoxPrenomTitulaire.TabIndex = 3;
+            // 
+            // labelPrenomTitualire
+            // 
+            this.labelPrenomTitualire.AutoSize = true;
+            this.labelPrenomTitualire.Location = new System.Drawing.Point(73, 112);
+            this.labelPrenomTitualire.Name = "labelPrenomTitualire";
+            this.labelPrenomTitualire.Size = new System.Drawing.Size(92, 15);
+            this.labelPrenomTitualire.TabIndex = 2;
+            this.labelPrenomTitualire.Text = "Prenom titulaire";
+            // 
+            // textBoxNomTitulaire
+            // 
+            this.textBoxNomTitulaire.Location = new System.Drawing.Point(182, 72);
+            this.textBoxNomTitulaire.Name = "textBoxNomTitulaire";
+            this.textBoxNomTitulaire.Size = new System.Drawing.Size(170, 23);
+            this.textBoxNomTitulaire.TabIndex = 1;
+            // 
+            // labelNomTitulaire
+            // 
+            this.labelNomTitulaire.AutoSize = true;
+            this.labelNomTitulaire.Location = new System.Drawing.Point(73, 76);
+            this.labelNomTitulaire.Name = "labelNomTitulaire";
+            this.labelNomTitulaire.Size = new System.Drawing.Size(77, 15);
+            this.labelNomTitulaire.TabIndex = 0;
+            this.labelNomTitulaire.Text = "Nom titulaire";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(73, 164);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(123, 15);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Titulaire de l\'enquête :";
             // 
             // OuvrirEnquete
             // 
@@ -140,5 +151,6 @@ namespace SPA
         private System.Windows.Forms.TextBox textBoxNomTitulaire;
         private System.Windows.Forms.Label labelNomTitulaire;
         private System.Windows.Forms.Label labelTitre;
+        private System.Windows.Forms.Label label1;
     }
 }
