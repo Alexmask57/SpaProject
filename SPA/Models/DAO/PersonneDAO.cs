@@ -144,15 +144,20 @@ namespace SPA.Models
             }
         }
 
-        public static bool AddPersonne(Personne personne)
+        /// <summary>
+        /// ajoute une personne en base de données et retourne l'id généré
+        /// </summary>
+        /// <param name="personne"></param>
+        /// <returns></returns>
+        public static int AddPersonne(Personne personne)
         {
-            bool res = false;
+            int res = -1;
             try
             {
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"INSERT INTO Personne (Nom, Prenom, Adresse, Code_postal, Ville, Email) VALUES (@Nom, @Prenom, @Adresse, @CP, @Ville, @Email);";
+                    string query = @"INSERT INTO Personne (Nom, Prenom, Adresse, Code_postal, Ville, Email) output INSERTED.Id VALUES (@Nom, @Prenom, @Adresse, @CP, @Ville, @Email);";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -166,22 +171,16 @@ namespace SPA.Models
                     //open connection
                     conn.Open();
 
-                    //execute the SQLCommand
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    //check if there are records
-                    if (dr.HasRows)
-                    {
-                        res = true;
-                    }
-                    dr.Close();
+                    res = (int)cmd.ExecuteScalar();
+                    if (conn.State == System.Data.ConnectionState.Open)
+                        conn.Close();
                 }
                 return res;
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Exception: " + ex.Message);
-                res = false;
+                res = -1;
                 return res;
             }
         }

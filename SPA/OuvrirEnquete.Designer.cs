@@ -38,8 +38,10 @@ namespace SPA
             this.textBoxNomTitulaire = new System.Windows.Forms.TextBox();
             this.labelNomTitulaire = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -61,6 +63,7 @@ namespace SPA
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.labelTitulaireEnquete);
             this.panel2.Controls.Add(this.textBoxPrenomTitulaire);
@@ -123,6 +126,14 @@ namespace SPA
             this.label1.TabIndex = 5;
             this.label1.Text = "Titulaire de l\'enquête :";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(360, 243);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
             // OuvrirEnquete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -137,6 +148,7 @@ namespace SPA
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -152,5 +164,6 @@ namespace SPA
         private System.Windows.Forms.Label labelNomTitulaire;
         private System.Windows.Forms.Label labelTitre;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

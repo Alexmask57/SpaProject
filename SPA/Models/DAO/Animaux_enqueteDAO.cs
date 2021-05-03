@@ -1,10 +1,101 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace SPA.Models.DAO
 {
-    class Animaux_enqueteDAO
+    public static class Animaux_enqueteDAO
     {
+        /// <summary>
+        /// Recupere les animaux de l'enquete 
+        /// </summary>
+        /// <param name="Id">id de l'enquete</param>
+        /// <returns></returns>
+        public static List<Animaux_enquete> GetAnimaux(string Id)
+        {
+            List<Animaux_enquete> animaux_Enquetes = new List<Animaux_enquete>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"SELECT * FROM Animaux_enquete WHERE Id = @Id";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Id", Id);
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            Animaux_enquete animal = new Animaux_enquete();
+                            //display retrieved record (first column only/string value)
+                            animal.Id = dr.GetInt32(0);
+                            animal.Race = Race_animal.GetRace_AnimalBdd(dr.GetInt32(1));
+                            animal.Nombre = dr.GetInt32(2);
+                            animaux_Enquetes.Add(animal);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found.");
+                    }
+                    dr.Close();
+                }
+                return animaux_Enquetes;
+            }
+            catch (Exception ex)
+            {
+                //display error message
+                Console.WriteLine("Exception: " + ex.Message);
+                return null;
+            }
+        }
+
+        public static bool AddAnimalEnquete(Animaux_enquete animal)
+        {
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"INSERT INTO Animaux_enquete (Id, Race, Nombre) VALUES (@Id, @Race, @Nombre);";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Id", animal.Id);
+                    cmd.Parameters.AddWithValue("@Race", animal.Race.Id);
+                    cmd.Parameters.AddWithValue("@Nombre", animal.Nombre);
+
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: " + ex.Message);
+                res = false;
+                return res;
+            }
+        }
     }
 }

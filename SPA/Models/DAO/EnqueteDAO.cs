@@ -52,7 +52,8 @@ namespace SPA.Models
             }
         }
 
-        public static bool ExistSession(string login, string password)
+
+        public static bool AddEnquete(Enquete enquete)
         {
             bool res = false;
             try
@@ -60,49 +61,15 @@ namespace SPA.Models
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"SELECT * FROM Session WHERE Login = @Login AND Password = @Password";
-
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Login", login);
-                    cmd.Parameters.AddWithValue("@Password", password);
-                    //open connection
-                    conn.Open();
-
-                    //execute the SQLCommand
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    //check if there are records
-                    if (dr.HasRows)
-                    {
-                        res = true;
-                    }
-                    dr.Close();
-                }
-                return res;
-            }
-            catch (Exception ex)
-            {
-                //display error message
-                Console.WriteLine("Exception: " + ex.Message);
-                return false;
-            }
-        }
-
-        public static bool AddSession(Session session)
-        {
-            bool res = false;
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
-                {
-                    //retrieve the SQL Server instance version
-                    string query = @"INSERT INTO Personne (Id, Login, Password) VALUES (@Id, @Login, @Password);";
+                    string query = @"INSERT INTO Enquete (Id, Titulaire_enquete, Delegue_enquete, Infracteur, Plaignant, Etat, Avis) VALUES (@Id, @Titulaire_enquete, @Delegue_enquete, @Infracteur, @Plaignant, 0, '');";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
-                    cmd.Parameters.AddWithValue("@Id", session.Id);
-                    cmd.Parameters.AddWithValue("@Login", session.Login);
-                    cmd.Parameters.AddWithValue("@Password", session.Password);
+                    cmd.Parameters.AddWithValue("@Id", enquete.Id);
+                    cmd.Parameters.AddWithValue("@Titulaire_enquete", enquete.Titulaire_enquete.Id);
+                    cmd.Parameters.AddWithValue("@Delegue_enquete", enquete.Delegue_enqueteur.Id);
+                    cmd.Parameters.AddWithValue("@Infracteur", enquete.Delegue_enqueteur.Id);
+                    cmd.Parameters.AddWithValue("@Plaignant", enquete.Delegue_enqueteur.Id);
 
                     //open connection
                     conn.Open();
