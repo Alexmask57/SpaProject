@@ -388,6 +388,7 @@ namespace SPA
             this.Controls.Add(this.panel2);
             this.Name = "OuvrirEnquete";
             this.Text = "OuvrirEnquete";
+            this.Load += new System.EventHandler(this.OuvrirEnquete_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

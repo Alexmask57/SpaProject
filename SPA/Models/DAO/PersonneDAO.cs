@@ -147,7 +147,6 @@ namespace SPA.Models
         public static List<Personne> GetAllSalarieBenevole()
         {
             List<Personne> list = new List<Personne>();
-            Personne personne = new Personne();
             try
             {
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
@@ -167,6 +166,7 @@ namespace SPA.Models
                     {
                         while (dr.Read())
                         {
+                            Personne personne = new Personne();
                             //display retrieved record (first column only/string value)
                             personne.Id = dr.GetInt32(0);
                             personne.Nom = dr.GetString(1);

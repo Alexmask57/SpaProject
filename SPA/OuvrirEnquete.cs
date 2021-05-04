@@ -34,5 +34,12 @@ namespace SPA
 
         }
 
+        private void OuvrirEnquete_Load(object sender, EventArgs e)
+        {
+            foreach(Personne personne in Personne.GetSalarieBenvole())
+            {
+                comboBoxPlaignant.Items.Add(personne.Nom + " " + personne.Prenom);
+            }
+        }
     }
 }
