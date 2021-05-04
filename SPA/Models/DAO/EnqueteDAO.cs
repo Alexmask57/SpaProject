@@ -93,5 +93,51 @@ namespace SPA.Models
                 return res;
             }
         }
+
+        /*
+        public static int GenerateId(string departement, string mois, string annee)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"SELECT * FROM Enquete WHERE Id = @Id";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            //display retrieved record (first column only/string value)
+                            session.Id = dr.GetInt32(0);
+                            session.Login = dr.GetString(1);
+                            session.Password = dr.GetString(2);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found.");
+                    }
+                    dr.Close();
+                }
+                return session;
+            }
+            catch (Exception ex)
+            {
+                //display error message
+                Console.WriteLine("Exception: " + ex.Message);
+                return null;
+            }
+        }
+        */
     }
 }

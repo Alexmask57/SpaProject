@@ -37,7 +37,7 @@ namespace SPA.Models.DAO
                         {
                             Animaux_enquete animal = new Animaux_enquete();
                             //display retrieved record (first column only/string value)
-                            animal.Id = dr.GetInt32(0);
+                            animal.Enquete.Id = dr.GetString(0);
                             animal.Race = Race_animal.GetRace_AnimalBdd(dr.GetInt32(1));
                             animal.Nombre = dr.GetInt32(2);
                             animaux_Enquetes.Add(animal);
@@ -71,7 +71,7 @@ namespace SPA.Models.DAO
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
-                    cmd.Parameters.AddWithValue("@Id", animal.Id);
+                    cmd.Parameters.AddWithValue("@Id", animal.Enquete.Id);
                     cmd.Parameters.AddWithValue("@Race", animal.Race.Id);
                     cmd.Parameters.AddWithValue("@Nombre", animal.Nombre);
 

@@ -7,15 +7,25 @@ namespace SPA.Models
 {
     public class Animaux_enquete
     {
-        public int Id { get; set; }
+        public Enquete Enquete { get; set; }
         public Race_animal Race { get; set; }
         public int Nombre { get; set; }
 
+        /// <summary>
+        /// recupere les animaux d'une enquete
+        /// </summary>
+        /// <param name="id">i de l'enquete</param>
+        /// <returns></returns>
         public static List<Animaux_enquete> GetAnimaux_EnquetesBdd(string id)
         {
             return Animaux_enqueteDAO.GetAnimaux(id);
         }
 
+        /// <summary>
+        /// Ajoute un animal pour une enquete
+        /// </summary>
+        /// <param name="animal">Animal à ajouter</param>
+        /// <returns></returns>
         public static bool AddAnimalEnqueteBdd (Animaux_enquete animal)
         {
             return Animaux_enqueteDAO.AddAnimalEnquete(animal);
