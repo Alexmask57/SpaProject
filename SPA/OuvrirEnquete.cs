@@ -18,44 +18,21 @@ namespace SPA
             InitializeComponent();
         }
 
-        private void OuvrirEnquete_Load(object sender, EventArgs e)
+        private void buttonEnregistrer_Click(object sender, EventArgs e)
+        {
+            String valuePrenomPlaignant = textBoxPrenomPlaignant.Text;
+            // Enquete enquete1 = new Enquete { Id = "test", Plaignant = new Personne { Id = 1 } };
+        }
+
+        private void comboBoxTitulaire_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void comboBoxPlaignant_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxNomPlaignant_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
