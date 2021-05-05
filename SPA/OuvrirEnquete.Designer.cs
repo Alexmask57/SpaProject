@@ -32,6 +32,24 @@ namespace SPA
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTitre = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.listViewDocuments = new System.Windows.Forms.ListView();
+            this.columnHeaderNomFichier = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderEmplacement = new System.Windows.Forms.ColumnHeader();
+            this.buttonSupprimerFichier = new System.Windows.Forms.Button();
+            this.buttonAjouterFichier = new System.Windows.Forms.Button();
+            this.labelDocuments = new System.Windows.Forms.Label();
+            this.listViewAnimaux = new System.Windows.Forms.ListView();
+            this.columnHeaderAnimaux = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderRace = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderNombre = new System.Windows.Forms.ColumnHeader();
+            this.buttonSupprimer = new System.Windows.Forms.Button();
+            this.buttonAjouter = new System.Windows.Forms.Button();
+            this.numericUpDownNombre = new System.Windows.Forms.NumericUpDown();
+            this.labelNombre = new System.Windows.Forms.Label();
+            this.comboBoxRace = new System.Windows.Forms.ComboBox();
+            this.comboBoxAnimaux = new System.Windows.Forms.ComboBox();
+            this.labelRace = new System.Windows.Forms.Label();
+            this.labelAnimaux = new System.Windows.Forms.Label();
             this.buttonEnregistrer = new System.Windows.Forms.Button();
             this.labelMotif = new System.Windows.Forms.Label();
             this.textBoxEmailInfracteur = new System.Windows.Forms.TextBox();
@@ -58,13 +76,14 @@ namespace SPA
             this.labelPrenomPlaignant = new System.Windows.Forms.Label();
             this.textBoxNomPlaignant = new System.Windows.Forms.TextBox();
             this.labelNomPlaignant = new System.Windows.Forms.Label();
-            this.comboBoxPlaignant = new System.Windows.Forms.ComboBox();
+            this.comboBoxDelegue = new System.Windows.Forms.ComboBox();
             this.comboBoxTitulaire = new System.Windows.Forms.ComboBox();
             this.labelDelegue = new System.Windows.Forms.Label();
             this.labelTitulaireEnquete = new System.Windows.Forms.Label();
             this.richTextBoxMotif = new System.Windows.Forms.RichTextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNombre)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -86,8 +105,20 @@ namespace SPA
             // 
             // panel2
             // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.listViewDocuments);
+            this.panel2.Controls.Add(this.buttonSupprimerFichier);
+            this.panel2.Controls.Add(this.buttonAjouterFichier);
+            this.panel2.Controls.Add(this.labelDocuments);
+            this.panel2.Controls.Add(this.listViewAnimaux);
+            this.panel2.Controls.Add(this.buttonSupprimer);
+            this.panel2.Controls.Add(this.buttonAjouter);
+            this.panel2.Controls.Add(this.numericUpDownNombre);
+            this.panel2.Controls.Add(this.labelNombre);
+            this.panel2.Controls.Add(this.comboBoxRace);
+            this.panel2.Controls.Add(this.comboBoxAnimaux);
+            this.panel2.Controls.Add(this.labelRace);
+            this.panel2.Controls.Add(this.labelAnimaux);
             this.panel2.Controls.Add(this.buttonEnregistrer);
             this.panel2.Controls.Add(this.labelMotif);
             this.panel2.Controls.Add(this.textBoxEmailInfracteur);
@@ -114,7 +145,7 @@ namespace SPA
             this.panel2.Controls.Add(this.labelPrenomPlaignant);
             this.panel2.Controls.Add(this.textBoxNomPlaignant);
             this.panel2.Controls.Add(this.labelNomPlaignant);
-            this.panel2.Controls.Add(this.comboBoxPlaignant);
+            this.panel2.Controls.Add(this.comboBoxDelegue);
             this.panel2.Controls.Add(this.comboBoxTitulaire);
             this.panel2.Controls.Add(this.labelDelegue);
             this.panel2.Controls.Add(this.labelTitulaireEnquete);
@@ -124,9 +155,167 @@ namespace SPA
             this.panel2.Size = new System.Drawing.Size(1229, 579);
             this.panel2.TabIndex = 1;
             // 
+            // listViewDocuments
+            // 
+            this.listViewDocuments.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listViewDocuments.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderNomFichier,
+            this.columnHeaderEmplacement});
+            this.listViewDocuments.FullRowSelect = true;
+            this.listViewDocuments.GridLines = true;
+            this.listViewDocuments.HideSelection = false;
+            this.listViewDocuments.Location = new System.Drawing.Point(225, 920);
+            this.listViewDocuments.Name = "listViewDocuments";
+            this.listViewDocuments.Size = new System.Drawing.Size(825, 100);
+            this.listViewDocuments.TabIndex = 51;
+            this.listViewDocuments.UseCompatibleStateImageBehavior = false;
+            this.listViewDocuments.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderNomFichier
+            // 
+            this.columnHeaderNomFichier.Text = "Nom du fichier";
+            this.columnHeaderNomFichier.Width = 300;
+            // 
+            // columnHeaderEmplacement
+            // 
+            this.columnHeaderEmplacement.Text = "Emplacement";
+            this.columnHeaderEmplacement.Width = 522;
+            // 
+            // buttonSupprimerFichier
+            // 
+            this.buttonSupprimerFichier.Location = new System.Drawing.Point(360, 875);
+            this.buttonSupprimerFichier.Name = "buttonSupprimerFichier";
+            this.buttonSupprimerFichier.Size = new System.Drawing.Size(125, 23);
+            this.buttonSupprimerFichier.TabIndex = 50;
+            this.buttonSupprimerFichier.Text = "Supprimer fichier";
+            this.buttonSupprimerFichier.UseVisualStyleBackColor = true;
+            this.buttonSupprimerFichier.Click += new System.EventHandler(this.buttonSupprimerFichier_Click);
+            // 
+            // buttonAjouterFichier
+            // 
+            this.buttonAjouterFichier.Location = new System.Drawing.Point(225, 875);
+            this.buttonAjouterFichier.Name = "buttonAjouterFichier";
+            this.buttonAjouterFichier.Size = new System.Drawing.Size(127, 23);
+            this.buttonAjouterFichier.TabIndex = 49;
+            this.buttonAjouterFichier.Text = "Ajouter fichier";
+            this.buttonAjouterFichier.UseVisualStyleBackColor = true;
+            this.buttonAjouterFichier.Click += new System.EventHandler(this.buttonAjouterFichier_Click);
+            // 
+            // labelDocuments
+            // 
+            this.labelDocuments.AutoSize = true;
+            this.labelDocuments.Location = new System.Drawing.Point(96, 879);
+            this.labelDocuments.Name = "labelDocuments";
+            this.labelDocuments.Size = new System.Drawing.Size(74, 15);
+            this.labelDocuments.TabIndex = 48;
+            this.labelDocuments.Text = "Documents :";
+            // 
+            // listViewAnimaux
+            // 
+            this.listViewAnimaux.Activation = System.Windows.Forms.ItemActivation.OneClick;
+            this.listViewAnimaux.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderAnimaux,
+            this.columnHeaderRace,
+            this.columnHeaderNombre});
+            this.listViewAnimaux.FullRowSelect = true;
+            this.listViewAnimaux.GridLines = true;
+            this.listViewAnimaux.HideSelection = false;
+            this.listViewAnimaux.Location = new System.Drawing.Point(225, 744);
+            this.listViewAnimaux.Name = "listViewAnimaux";
+            this.listViewAnimaux.Size = new System.Drawing.Size(825, 100);
+            this.listViewAnimaux.TabIndex = 47;
+            this.listViewAnimaux.UseCompatibleStateImageBehavior = false;
+            this.listViewAnimaux.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderAnimaux
+            // 
+            this.columnHeaderAnimaux.Text = "Animaux ";
+            this.columnHeaderAnimaux.Width = 273;
+            // 
+            // columnHeaderRace
+            // 
+            this.columnHeaderRace.Text = "Race";
+            this.columnHeaderRace.Width = 273;
+            // 
+            // columnHeaderNombre
+            // 
+            this.columnHeaderNombre.Text = "Nombre";
+            this.columnHeaderNombre.Width = 273;
+            // 
+            // buttonSupprimer
+            // 
+            this.buttonSupprimer.Location = new System.Drawing.Point(923, 698);
+            this.buttonSupprimer.Name = "buttonSupprimer";
+            this.buttonSupprimer.Size = new System.Drawing.Size(125, 23);
+            this.buttonSupprimer.TabIndex = 46;
+            this.buttonSupprimer.Text = "Supprimer -";
+            this.buttonSupprimer.UseVisualStyleBackColor = true;
+            this.buttonSupprimer.Click += new System.EventHandler(this.buttonSupprimer_Click);
+            // 
+            // buttonAjouter
+            // 
+            this.buttonAjouter.Location = new System.Drawing.Point(790, 698);
+            this.buttonAjouter.Name = "buttonAjouter";
+            this.buttonAjouter.Size = new System.Drawing.Size(127, 23);
+            this.buttonAjouter.TabIndex = 45;
+            this.buttonAjouter.Text = "Ajouter +";
+            this.buttonAjouter.UseVisualStyleBackColor = true;
+            this.buttonAjouter.Click += new System.EventHandler(this.buttonAjouter_Click);
+            // 
+            // numericUpDownNombre
+            // 
+            this.numericUpDownNombre.Location = new System.Drawing.Point(225, 698);
+            this.numericUpDownNombre.Name = "numericUpDownNombre";
+            this.numericUpDownNombre.Size = new System.Drawing.Size(127, 23);
+            this.numericUpDownNombre.TabIndex = 44;
+            // 
+            // labelNombre
+            // 
+            this.labelNombre.AutoSize = true;
+            this.labelNombre.Location = new System.Drawing.Point(97, 700);
+            this.labelNombre.Name = "labelNombre";
+            this.labelNombre.Size = new System.Drawing.Size(60, 15);
+            this.labelNombre.TabIndex = 43;
+            this.labelNombre.Text = "Nombre : ";
+            // 
+            // comboBoxRace
+            // 
+            this.comboBoxRace.FormattingEnabled = true;
+            this.comboBoxRace.Location = new System.Drawing.Point(789, 644);
+            this.comboBoxRace.Name = "comboBoxRace";
+            this.comboBoxRace.Size = new System.Drawing.Size(259, 23);
+            this.comboBoxRace.TabIndex = 42;
+            // 
+            // comboBoxAnimaux
+            // 
+            this.comboBoxAnimaux.FormattingEnabled = true;
+            this.comboBoxAnimaux.Location = new System.Drawing.Point(225, 644);
+            this.comboBoxAnimaux.Name = "comboBoxAnimaux";
+            this.comboBoxAnimaux.Size = new System.Drawing.Size(259, 23);
+            this.comboBoxAnimaux.TabIndex = 41;
+            this.comboBoxAnimaux.SelectedIndexChanged += new System.EventHandler(this.comboBoxAnimaux_SelectedIndexChanged);
+            // 
+            // labelRace
+            // 
+            this.labelRace.AutoSize = true;
+            this.labelRace.Location = new System.Drawing.Point(662, 647);
+            this.labelRace.Name = "labelRace";
+            this.labelRace.Size = new System.Drawing.Size(38, 15);
+            this.labelRace.TabIndex = 40;
+            this.labelRace.Text = "Race :";
+            // 
+            // labelAnimaux
+            // 
+            this.labelAnimaux.AutoSize = true;
+            this.labelAnimaux.Location = new System.Drawing.Point(97, 647);
+            this.labelAnimaux.Name = "labelAnimaux";
+            this.labelAnimaux.Size = new System.Drawing.Size(61, 15);
+            this.labelAnimaux.TabIndex = 39;
+            this.labelAnimaux.Text = "Animaux :";
+            // 
             // buttonEnregistrer
             // 
-            this.buttonEnregistrer.Location = new System.Drawing.Point(577, 643);
+            this.buttonEnregistrer.Location = new System.Drawing.Point(577, 1042);
             this.buttonEnregistrer.Name = "buttonEnregistrer";
             this.buttonEnregistrer.Size = new System.Drawing.Size(139, 35);
             this.buttonEnregistrer.TabIndex = 1;
@@ -137,7 +326,7 @@ namespace SPA
             // labelMotif
             // 
             this.labelMotif.AutoSize = true;
-            this.labelMotif.Location = new System.Drawing.Point(96, 477);
+            this.labelMotif.Location = new System.Drawing.Point(96, 491);
             this.labelMotif.Name = "labelMotif";
             this.labelMotif.Size = new System.Drawing.Size(42, 15);
             this.labelMotif.TabIndex = 37;
@@ -335,14 +524,13 @@ namespace SPA
             this.labelNomPlaignant.TabIndex = 11;
             this.labelNomPlaignant.Text = "Nom plaignant : ";
             // 
-            // comboBoxPlaignant
+            // comboBoxDelegue
             // 
-            this.comboBoxPlaignant.FormattingEnabled = true;
-            this.comboBoxPlaignant.Location = new System.Drawing.Point(226, 58);
-            this.comboBoxPlaignant.Name = "comboBoxPlaignant";
-            this.comboBoxPlaignant.Size = new System.Drawing.Size(259, 23);
-            this.comboBoxPlaignant.TabIndex = 9;
-            this.comboBoxPlaignant.SelectedIndexChanged += new System.EventHandler(this.comboBoxPlaignant_SelectedIndexChanged);
+            this.comboBoxDelegue.FormattingEnabled = true;
+            this.comboBoxDelegue.Location = new System.Drawing.Point(226, 58);
+            this.comboBoxDelegue.Name = "comboBoxDelegue";
+            this.comboBoxDelegue.Size = new System.Drawing.Size(259, 23);
+            this.comboBoxDelegue.TabIndex = 9;
             // 
             // comboBoxTitulaire
             // 
@@ -351,7 +539,6 @@ namespace SPA
             this.comboBoxTitulaire.Name = "comboBoxTitulaire";
             this.comboBoxTitulaire.Size = new System.Drawing.Size(259, 23);
             this.comboBoxTitulaire.TabIndex = 7;
-            this.comboBoxTitulaire.SelectedIndexChanged += new System.EventHandler(this.comboBoxTitulaire_SelectedIndexChanged);
             // 
             // labelDelegue
             // 
@@ -373,9 +560,9 @@ namespace SPA
             // 
             // richTextBoxMotif
             // 
-            this.richTextBoxMotif.Location = new System.Drawing.Point(225, 477);
+            this.richTextBoxMotif.Location = new System.Drawing.Point(225, 491);
             this.richTextBoxMotif.Name = "richTextBoxMotif";
-            this.richTextBoxMotif.Size = new System.Drawing.Size(825, 134);
+            this.richTextBoxMotif.Size = new System.Drawing.Size(822, 100);
             this.richTextBoxMotif.TabIndex = 38;
             this.richTextBoxMotif.Text = "";
             // 
@@ -393,6 +580,7 @@ namespace SPA
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNombre)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -406,7 +594,7 @@ namespace SPA
         private System.Windows.Forms.Label labelDelegue;
         private System.Windows.Forms.Button buttonEnregistrer;
         private System.Windows.Forms.ComboBox comboBoxTitulaire;
-        private System.Windows.Forms.ComboBox comboBoxPlaignant;
+        private System.Windows.Forms.ComboBox comboBoxDelegue;
         private System.Windows.Forms.TextBox textBoxPrenomPlaignant;
         private System.Windows.Forms.Label labelPrenomPlaignant;
         private System.Windows.Forms.TextBox textBoxNomPlaignant;
@@ -433,5 +621,23 @@ namespace SPA
         private System.Windows.Forms.TextBox textBoxEmailPlaignant;
         private System.Windows.Forms.RichTextBox richTextBoxMotif;
         private System.Windows.Forms.Label labelMotif;
+        private System.Windows.Forms.Label labelNombre;
+        private System.Windows.Forms.ComboBox comboBoxRace;
+        private System.Windows.Forms.ComboBox comboBoxAnimaux;
+        private System.Windows.Forms.Label labelRace;
+        private System.Windows.Forms.Label labelAnimaux;
+        private System.Windows.Forms.ListView listViewAnimaux;
+        private System.Windows.Forms.Button buttonSupprimer;
+        private System.Windows.Forms.Button buttonAjouter;
+        private System.Windows.Forms.NumericUpDown numericUpDownNombre;
+        private System.Windows.Forms.ColumnHeader columnHeaderAnimaux;
+        private System.Windows.Forms.ColumnHeader columnHeaderRace;
+        private System.Windows.Forms.ColumnHeader columnHeaderNombre;
+        private System.Windows.Forms.Label labelDocuments;
+        private System.Windows.Forms.ColumnHeader columnHeaderNomFichier;
+        private System.Windows.Forms.Button buttonSupprimerFichier;
+        private System.Windows.Forms.Button buttonAjouterFichier;
+        private System.Windows.Forms.ColumnHeader columnHeaderEmplacement;
+        private System.Windows.Forms.ListView listViewDocuments;
     }
 }
