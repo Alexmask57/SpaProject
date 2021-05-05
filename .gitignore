@@ -379,4 +379,4 @@ InteropTests/NativeTests/out
 .json
 .AssemblyInfo.cs
 
-SPA/obj/
+SPA/obj/**
