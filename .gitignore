@@ -378,3 +378,5 @@ InteropTests/NativeTests/out
 .cache
 .json
 .AssemblyInfo.cs
+
+SPA/obj/
