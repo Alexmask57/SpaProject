@@ -37,6 +37,7 @@ namespace SPA
         }
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {
+            ListView list = listViewAnimaux;
             //Creation des regex
             Regex lettres_regex = new Regex("^[a-zA-Z]+$");
             Regex adresse_email_regex = new Regex("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
@@ -51,13 +52,13 @@ namespace SPA
                     element.Visible = false;
                 }
             }
-            if(!lettres_regex.IsMatch(textBoxPrenomPlaignant.Text)||
+            if (!lettres_regex.IsMatch(textBoxPrenomPlaignant.Text) ||
                !lettres_regex.IsMatch(textBoxNomPlaignant.Text))
             {
                 labelErrorNomPrenomPlaignant.Visible = true;
                 enquete_complete = false;
             }
-            if (!lettres_regex.IsMatch(textBoxPrenomInfracteur.Text)||
+            if (!lettres_regex.IsMatch(textBoxPrenomInfracteur.Text) ||
                 !lettres_regex.IsMatch(textBoxNomInfracteur.Text))
             {
                 labelErrorNomPrenomInfracteur.Visible = true;
@@ -110,7 +111,7 @@ namespace SPA
             }
             if (listViewAnimaux.Items.Count <= 0)
             {
-                labelErrorMotif.Visible = true;
+                labelErrorAnimaux.Visible = true;
                 enquete_complete = false;
             }
             if (!enquete_complete)
@@ -119,7 +120,53 @@ namespace SPA
             }
             else
             {
-                //Enquete enquete1 = new Enquete { Id = "test", Plaignant = new Personne { Id = 1 } };
+                List<Animaux_enquete> list_animaux = new List<Animaux_enquete>();
+                foreach (ListViewItem item in listViewAnimaux.Items)
+                {
+                    Animaux_enquete animal = new Animaux_enquete 
+                    { 
+                        Race = new Race_animal 
+                        { 
+                            Animal = item.SubItems[0].Text, 
+                            Nom_race = item.SubItems[1].Text 
+                        },
+                        Nombre = Int32.Parse(item.SubItems[2].Text)
+                    };
+                    list_animaux.Add(animal);
+                }
+                Enquete enquete = new Enquete
+                {
+                    Plaignant = new Personne
+                    {
+                        Nom = textBoxNomPlaignant.Text,
+                        Prenom = textBoxPrenomPlaignant.Text,
+                        Adresse = textBoxAdressePlaignant.Text,
+                        Ville = textBoxVillePlaignant.Text,
+                        Code_postal = Int32.Parse(textBoxCodePostalPlaignant.Text),
+                        Email = textBoxEmailPlaignant.Text
+                    },
+                    Infracteur = new Personne
+                    {
+                        Nom = textBoxNomInfracteur.Text,
+                        Prenom = textBoxPrenomInfracteur.Text,
+                        Adresse = textBoxAdresseInfracteur.Text,
+                        Ville = textBoxVilleInfracteur.Text,
+                        Code_postal = Int32.Parse(textBoxCodePostalInfracteur.Text),
+                        Email = textBoxEmailInfracteur.Text
+                    },
+                    Titulaire_enquete = new Personne
+                    {
+                        Nom = comboBoxTitulaire.SelectedItem.ToString().Split(new char[] { ' ' })[0],
+                        Prenom = comboBoxTitulaire.SelectedItem.ToString().Split(new char[] { ' ' })[1]
+                    },
+                    Delegue_enqueteur = new Personne
+                    {
+                        Nom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[0],
+                        Prenom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[1]
+                    },
+                    Animaux = list_animaux
+                };
+                Enquete.CreerEnqueteBdd(enquete);
             }
         }
         private void buttonAjouter_Click(object sender, EventArgs e)
@@ -137,11 +184,11 @@ namespace SPA
             else
             {
                 labelErrorAnimaux.Visible = true;
-            } 
+            }
         }
         private void buttonSupprimer_Click(object sender, EventArgs e)
         {
-            if(listViewAnimaux.Items.Count>0)
+            if (listViewAnimaux.Items.Count > 0)
             {
                 foreach (ListViewItem item in listViewAnimaux.SelectedItems)
                 {
@@ -162,11 +209,11 @@ namespace SPA
         }
         private void buttonAjouterFichier_Click(object sender, EventArgs e)
         {
-            using(OpenFileDialog ofd = new OpenFileDialog() { Filter="All files|*.*", ValidateNames=true, Multiselect = true })
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "All files|*.*", ValidateNames = true, Multiselect = true })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    foreach(string f in ofd.FileNames)
+                    foreach (string f in ofd.FileNames)
                     {
                         FileInfo fi = new FileInfo(f);
                         ListViewItem item = new ListViewItem(fi.Name);

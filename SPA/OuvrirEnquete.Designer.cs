@@ -336,7 +336,7 @@ namespace SPA
             this.listViewDocuments.FullRowSelect = true;
             this.listViewDocuments.GridLines = true;
             this.listViewDocuments.HideSelection = false;
-            this.listViewDocuments.Location = new System.Drawing.Point(546, 2515);
+            this.listViewDocuments.Location = new System.Drawing.Point(549, 2510);
             this.listViewDocuments.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.listViewDocuments.Name = "listViewDocuments";
             this.listViewDocuments.Size = new System.Drawing.Size(1998, 266);
@@ -500,7 +500,7 @@ namespace SPA
             // 
             // buttonEnregistrer
             // 
-            this.buttonEnregistrer.Location = new System.Drawing.Point(1401, 2867);
+            this.buttonEnregistrer.Location = new System.Drawing.Point(1770, 2359);
             this.buttonEnregistrer.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.buttonEnregistrer.Name = "buttonEnregistrer";
             this.buttonEnregistrer.Size = new System.Drawing.Size(338, 96);
