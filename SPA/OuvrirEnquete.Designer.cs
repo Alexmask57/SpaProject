@@ -40,7 +40,7 @@ namespace SPA
             this.labelErrorAdresseInfracteur = new System.Windows.Forms.Label();
             this.labelErrorEnquete = new System.Windows.Forms.Label();
             this.labelErrorMotif = new System.Windows.Forms.Label();
-            this.labelErrorCodePostalPlaigant = new System.Windows.Forms.Label();
+            this.labelErrorCodePostalPlaignant = new System.Windows.Forms.Label();
             this.labelErrorVillePlaignant = new System.Windows.Forms.Label();
             this.labelErrorAdressePlaignant = new System.Windows.Forms.Label();
             this.labelErrorNomPrenomInfracteur = new System.Windows.Forms.Label();
@@ -129,7 +129,7 @@ namespace SPA
             this.panel2.Controls.Add(this.labelErrorAdresseInfracteur);
             this.panel2.Controls.Add(this.labelErrorEnquete);
             this.panel2.Controls.Add(this.labelErrorMotif);
-            this.panel2.Controls.Add(this.labelErrorCodePostalPlaigant);
+            this.panel2.Controls.Add(this.labelErrorCodePostalPlaignant);
             this.panel2.Controls.Add(this.labelErrorVillePlaignant);
             this.panel2.Controls.Add(this.labelErrorAdressePlaignant);
             this.panel2.Controls.Add(this.labelErrorNomPrenomInfracteur);
@@ -272,16 +272,16 @@ namespace SPA
             this.labelErrorMotif.Text = "* Motif manquant ou invalide";
             this.labelErrorMotif.Visible = false;
             // 
-            // labelErrorCodePostalPlaigant
+            // labelErrorCodePostalPlaignant
             // 
-            this.labelErrorCodePostalPlaigant.AutoSize = true;
-            this.labelErrorCodePostalPlaigant.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorCodePostalPlaigant.Location = new System.Drawing.Point(549, 1080);
-            this.labelErrorCodePostalPlaigant.Name = "labelErrorCodePostalPlaigant";
-            this.labelErrorCodePostalPlaigant.Size = new System.Drawing.Size(669, 41);
-            this.labelErrorCodePostalPlaigant.TabIndex = 56;
-            this.labelErrorCodePostalPlaigant.Text = "* Code postal du plaignant manquant ou invalide";
-            this.labelErrorCodePostalPlaigant.Visible = false;
+            this.labelErrorCodePostalPlaignant.AutoSize = true;
+            this.labelErrorCodePostalPlaignant.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorCodePostalPlaignant.Location = new System.Drawing.Point(549, 1080);
+            this.labelErrorCodePostalPlaignant.Name = "labelErrorCodePostalPlaignant";
+            this.labelErrorCodePostalPlaignant.Size = new System.Drawing.Size(669, 41);
+            this.labelErrorCodePostalPlaignant.TabIndex = 56;
+            this.labelErrorCodePostalPlaignant.Text = "* Code postal du plaignant manquant ou invalide";
+            this.labelErrorCodePostalPlaignant.Visible = false;
             // 
             // labelErrorVillePlaignant
             // 
@@ -862,7 +862,7 @@ namespace SPA
         private System.Windows.Forms.Label labelErrorMotif;
         private System.Windows.Forms.Label labelErrorVillePlaignant;
         private System.Windows.Forms.Label labelErrorAdressePlaignant;
-        private System.Windows.Forms.Label labelErrorCodePostalPlaigant;
+        private System.Windows.Forms.Label labelErrorCodePostalPlaignant;
         private System.Windows.Forms.Label labelErrorAdresseInfracteur;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelErrorVilleInfracteur;

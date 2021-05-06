@@ -49,7 +49,62 @@ namespace SPA
                 labelErrorNomPrenomPlaignant.Visible = true;
                 enquete_complete = false;
             }
-            if(!enquete_complete)
+            if (textBoxPrenomInfracteur.Text == "" || textBoxNomInfracteur.Text == "")
+            {
+                labelErrorNomPrenomInfracteur.Visible = true;
+                enquete_complete = false;
+            }
+            if (textBoxAdressePlaignant.Text == "")
+            {
+                labelErrorAdressePlaignant.Visible = true;
+                enquete_complete = false;
+            }
+            if (textBoxAdresseInfracteur.Text == "")
+            {
+                labelErrorAdresseInfracteur.Visible = true;
+                enquete_complete = false;
+            }
+            if (textBoxVillePlaignant.Text == "")
+            {
+                labelErrorVillePlaignant.Visible = true;
+                enquete_complete = false;
+            }
+            if (textBoxVilleInfracteur.Text == "")
+            {
+                labelErrorVilleInfracteur.Visible = true;
+                enquete_complete = false;
+            }
+            if (textBoxCodePostalPlaignant.Text == "")
+            {
+                labelErrorCodePostalPlaignant.Visible = true;
+                enquete_complete = false;
+            }
+            if (textBoxCodePostalInfracteur.Text == "")
+            {
+                labelErrorCodePostalInfracteur.Visible = true;
+                enquete_complete = false;
+            }
+            if (textBoxEmailPlaignant.Text == "")
+            {
+                labelErrorEmailPlaignant.Visible = true;
+                enquete_complete = false;
+            }
+            if (textBoxEmailInfracteur.Text == "")
+            {
+                labelErrorEmailInfracteur.Visible = true;
+                enquete_complete = false;
+            }
+            if (richTextBoxMotif.Text == "")
+            {
+                labelErrorMotif.Visible = true;
+                enquete_complete = false;
+            }
+            if (listViewAnimaux.Items.Count <= 0)
+            {
+                labelErrorMotif.Visible = true;
+                enquete_complete = false;
+            }
+            if (!enquete_complete)
             {
                 labelErrorEnquete.Visible = true;
             }
