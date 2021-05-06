@@ -27,5 +27,15 @@ namespace SPA.Models
             OuvrirEnquete ouvrirEnquete = new OuvrirEnquete(utilisateur);
             ouvrirEnquete.Show();
         }
+
+        private void buttonDeleteEnquete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonModifyEnquetes_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
