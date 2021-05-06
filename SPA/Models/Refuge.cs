@@ -21,5 +21,9 @@ namespace SPA.Models
         {
             return RefugeDAO.GetRefuge(personne);
         }
+        public static Refuge GetRefugeById(int id)
+        {
+            return RefugeDAO.GetRefugeById(id);
+        }
     }
 }

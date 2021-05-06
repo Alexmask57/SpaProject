@@ -21,6 +21,11 @@ namespace SPA
         }
         private void OuvrirEnquete_Load(object sender, EventArgs e)
         {
+            comboBoxAnimaux.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxDelegue.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxRace.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxTitulaire.DropDownStyle = ComboBoxStyle.DropDownList;
+
             foreach (Personne personne in Personne.GetSalarieBenvole())
             {
                 comboBoxDelegue.Items.Add(personne.Nom + " " + personne.Prenom);
@@ -37,136 +42,13 @@ namespace SPA
         }
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {
-            ListView list = listViewAnimaux;
-            //Creation des regex
-            Regex lettres_regex = new Regex("^[a-zA-Z]+$");
-            Regex adresse_email_regex = new Regex("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
-            Regex code_postal_regex = new Regex("^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$");
-            Regex alphanumeriques_regex = new Regex("^[a-bA-B0-9,.;:?!+\\-=() ]+$");
-
-            bool enquete_complete = true;
-            foreach (Control element in this.Controls)
-            {
-                if (element is Label && ((Label)element).ForeColor == Color.Red)
-                {
-                    element.Visible = false;
-                }
-            }
-            if (!lettres_regex.IsMatch(textBoxPrenomPlaignant.Text) ||
-               !lettres_regex.IsMatch(textBoxNomPlaignant.Text))
-            {
-                labelErrorNomPrenomPlaignant.Visible = true;
-                enquete_complete = false;
-            }
-            if (!lettres_regex.IsMatch(textBoxPrenomInfracteur.Text) ||
-                !lettres_regex.IsMatch(textBoxNomInfracteur.Text))
-            {
-                labelErrorNomPrenomInfracteur.Visible = true;
-                enquete_complete = false;
-            }
-            if (!alphanumeriques_regex.IsMatch(textBoxAdressePlaignant.Text))
-            {
-                labelErrorAdressePlaignant.Visible = true;
-                enquete_complete = false;
-            }
-            if (!alphanumeriques_regex.IsMatch(textBoxAdresseInfracteur.Text))
-            {
-                labelErrorAdresseInfracteur.Visible = true;
-                enquete_complete = false;
-            }
-            if (!lettres_regex.IsMatch(textBoxVillePlaignant.Text))
-            {
-                labelErrorVillePlaignant.Visible = true;
-                enquete_complete = false;
-            }
-            if (!lettres_regex.IsMatch(textBoxVilleInfracteur.Text))
-            {
-                labelErrorVilleInfracteur.Visible = true;
-                enquete_complete = false;
-            }
-            if (!code_postal_regex.IsMatch(textBoxCodePostalPlaignant.Text))
-            {
-                labelErrorCodePostalPlaignant.Visible = true;
-                enquete_complete = false;
-            }
-            if (!code_postal_regex.IsMatch(textBoxCodePostalInfracteur.Text))
-            {
-                labelErrorCodePostalInfracteur.Visible = true;
-                enquete_complete = false;
-            }
-            if (!adresse_email_regex.IsMatch(textBoxEmailPlaignant.Text))
-            {
-                labelErrorEmailPlaignant.Visible = true;
-                enquete_complete = false;
-            }
-            if (!adresse_email_regex.IsMatch(textBoxEmailInfracteur.Text))
-            {
-                labelErrorEmailInfracteur.Visible = true;
-                enquete_complete = false;
-            }
-            if (!alphanumeriques_regex.IsMatch(richTextBoxMotif.Text))
-            {
-                labelErrorMotif.Visible = true;
-                enquete_complete = false;
-            }
-            if (listViewAnimaux.Items.Count <= 0)
-            {
-                labelErrorAnimaux.Visible = true;
-                enquete_complete = false;
-            }
-            if (!enquete_complete)
+            if (!ValiderFormulaire())
             {
                 labelErrorEnquete.Visible = true;
             }
             else
             {
-                List<Animaux_enquete> list_animaux = new List<Animaux_enquete>();
-                foreach (ListViewItem item in listViewAnimaux.Items)
-                {
-                    Animaux_enquete animal = new Animaux_enquete 
-                    { 
-                        Race = new Race_animal 
-                        { 
-                            Animal = item.SubItems[0].Text, 
-                            Nom_race = item.SubItems[1].Text 
-                        },
-                        Nombre = Int32.Parse(item.SubItems[2].Text)
-                    };
-                    list_animaux.Add(animal);
-                }
-                Enquete enquete = new Enquete
-                {
-                    Plaignant = new Personne
-                    {
-                        Nom = textBoxNomPlaignant.Text,
-                        Prenom = textBoxPrenomPlaignant.Text,
-                        Adresse = textBoxAdressePlaignant.Text,
-                        Ville = textBoxVillePlaignant.Text,
-                        Code_postal = Int32.Parse(textBoxCodePostalPlaignant.Text),
-                        Email = textBoxEmailPlaignant.Text
-                    },
-                    Infracteur = new Personne
-                    {
-                        Nom = textBoxNomInfracteur.Text,
-                        Prenom = textBoxPrenomInfracteur.Text,
-                        Adresse = textBoxAdresseInfracteur.Text,
-                        Ville = textBoxVilleInfracteur.Text,
-                        Code_postal = Int32.Parse(textBoxCodePostalInfracteur.Text),
-                        Email = textBoxEmailInfracteur.Text
-                    },
-                    Titulaire_enquete = new Personne
-                    {
-                        Nom = comboBoxTitulaire.SelectedItem.ToString().Split(new char[] { ' ' })[0],
-                        Prenom = comboBoxTitulaire.SelectedItem.ToString().Split(new char[] { ' ' })[1]
-                    },
-                    Delegue_enqueteur = new Personne
-                    {
-                        Nom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[0],
-                        Prenom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[1]
-                    },
-                    Animaux = list_animaux
-                };
-                Enquete.CreerEnqueteBdd(enquete);
+                EnvoiDonnees();
             }
         }
         private void buttonAjouter_Click(object sender, EventArgs e)
@@ -233,5 +115,186 @@ namespace SPA
                 }
             }
         }
+
+        private bool ValiderFormulaire()
+        {
+            //Creation des regex
+            Regex lettres_regex = new Regex("^[a-zA-Z]+$");
+            Regex adresse_email_regex = new Regex("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
+            Regex code_postal_regex = new Regex("^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$");
+            Regex alphanumeriques_regex = new Regex("^[a-zA-Z0-9,.;:?!+\\-=() ]+$");
+
+            bool enquete_complete = true;
+
+            //Le titulaire ne peut etre aussi le delegue
+            if (string.IsNullOrEmpty(comboBoxTitulaire.Text) || string.IsNullOrEmpty(comboBoxDelegue.Text))
+            {
+                labelErrorTitulaireDelegue.Text = "Selectionner un Titulaire et un Délégué";
+                labelErrorTitulaireDelegue.Visible = true;
+                enquete_complete = false;
+            }
+            else if (comboBoxTitulaire.Text == comboBoxDelegue.Text)
+            {
+                labelErrorTitulaireDelegue.Text = "Le Titulaire ne peut être aussi le Délégué";
+                labelErrorTitulaireDelegue.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorTitulaireDelegue.Visible = false;
+
+            if (!lettres_regex.IsMatch(textBoxPrenomPlaignant.Text) ||
+               !lettres_regex.IsMatch(textBoxNomPlaignant.Text))
+            {
+                labelErrorNomPrenomPlaignant.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorNomPrenomPlaignant.Visible = false;
+
+            if (!lettres_regex.IsMatch(textBoxPrenomInfracteur.Text) ||
+                !lettres_regex.IsMatch(textBoxNomInfracteur.Text))
+            {
+                labelErrorNomPrenomInfracteur.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorNomPrenomInfracteur.Visible = false;
+
+            if (!alphanumeriques_regex.IsMatch(textBoxAdressePlaignant.Text))
+            {
+                labelErrorAdressePlaignant.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorAdressePlaignant.Visible = false;
+
+            if (!alphanumeriques_regex.IsMatch(textBoxAdresseInfracteur.Text))
+            {
+                labelErrorAdresseInfracteur.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorAdresseInfracteur.Visible = false;
+
+            if (!lettres_regex.IsMatch(textBoxVillePlaignant.Text))
+            {
+                labelErrorVillePlaignant.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorVillePlaignant.Visible = false;
+
+            if (!lettres_regex.IsMatch(textBoxVilleInfracteur.Text))
+            {
+                labelErrorVilleInfracteur.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorVilleInfracteur.Visible = false;
+
+            if (!code_postal_regex.IsMatch(textBoxCodePostalPlaignant.Text))
+            {
+                labelErrorCodePostalPlaignant.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorCodePostalPlaignant.Visible = false;
+
+            if (!code_postal_regex.IsMatch(textBoxCodePostalInfracteur.Text))
+            {
+                labelErrorCodePostalInfracteur.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorCodePostalInfracteur.Visible = false;
+
+            if (!adresse_email_regex.IsMatch(textBoxEmailPlaignant.Text))
+            {
+                labelErrorEmailPlaignant.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorEmailPlaignant.Visible = false;
+
+            if (!adresse_email_regex.IsMatch(textBoxEmailInfracteur.Text))
+            {
+                labelErrorEmailInfracteur.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorEmailInfracteur.Visible = false;
+
+            if (!alphanumeriques_regex.IsMatch(richTextBoxMotif.Text))
+            {
+                labelErrorMotif.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorMotif.Visible = false;
+
+            if (listViewAnimaux.Items.Count <= 0)
+            {
+                labelErrorAnimaux.Visible = true;
+                enquete_complete = false;
+            }
+            else
+                labelErrorAnimaux.Visible = false;
+
+            return enquete_complete;
+        }
+
+        private void EnvoiDonnees()
+        {
+            List<Animaux_enquete> list_animaux = new List<Animaux_enquete>();
+            foreach (ListViewItem item in listViewAnimaux.Items)
+            {
+                Animaux_enquete animal = new Animaux_enquete
+                {
+                    Race = Race_animal.GetRace_AnimalBdd(item.SubItems[0].Text, item.SubItems[1].Text),
+                    Nombre = Int32.Parse(item.SubItems[2].Text)
+                };
+                list_animaux.Add(animal);
+            }
+            Enquete enquete = new Enquete
+            {
+                Plaignant = new Personne
+                {
+                    Nom = textBoxNomPlaignant.Text,
+                    Prenom = textBoxPrenomPlaignant.Text,
+                    Adresse = textBoxAdressePlaignant.Text,
+                    Ville = textBoxVillePlaignant.Text,
+                    Code_postal = Int32.Parse(textBoxCodePostalPlaignant.Text),
+                    Email = textBoxEmailPlaignant.Text
+                },
+                Infracteur = new Personne
+                {
+                    Nom = textBoxNomInfracteur.Text,
+                    Prenom = textBoxPrenomInfracteur.Text,
+                    Adresse = textBoxAdresseInfracteur.Text,
+                    Ville = textBoxVilleInfracteur.Text,
+                    Code_postal = Int32.Parse(textBoxCodePostalInfracteur.Text),
+                    Email = textBoxEmailInfracteur.Text
+                },
+                Titulaire_enquete = new Personne
+                {
+                    Nom = comboBoxTitulaire.SelectedItem.ToString().Split(new char[] { ' ' })[0],
+                    Prenom = comboBoxTitulaire.SelectedItem.ToString().Split(new char[] { ' ' })[1]
+                },
+                Delegue_enqueteur = new Personne
+                {
+                    Nom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[0],
+                    Prenom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[1]
+                },
+                Animaux = list_animaux
+            };
+            Enquete.CreerEnqueteBdd(enquete);
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

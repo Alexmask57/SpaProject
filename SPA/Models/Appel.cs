@@ -7,7 +7,7 @@ namespace SPA.Models
 {
     public class Appel
     {
-        public Enquete Enquete { get; set; }
+        public Enquete Enquete { get; set; } = new Enquete();
         public DateTime Date { get; set; }
         public string Commentaire { get; set; }
 

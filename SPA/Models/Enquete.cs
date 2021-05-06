@@ -7,13 +7,13 @@ namespace SPA.Models
     public class Enquete
     {
         public string Id { get; set; }
-        public Personne Titulaire_enquete { get; set; }
-        public Personne Delegue_enqueteur { get; set; }
-        public Personne Infracteur { get; set; }
-        public Personne Plaignant { get; set; }
+        public Personne Titulaire_enquete { get; set; } = new Personne();
+        public Personne Delegue_enqueteur { get; set; } = new Personne();
+        public Personne Infracteur { get; set; } = new Personne();
+        public Personne Plaignant { get; set; } = new Personne();
         public string Avis { get; set; }
         public int Etat { get; set; }
-        public List<Animaux_enquete> Animaux { get; set; }
+        public List<Animaux_enquete> Animaux { get; set; } = new List<Animaux_enquete>();
         
         /// <summary>
         /// Creer une enquete en base de données
@@ -44,6 +44,7 @@ namespace SPA.Models
 
             foreach (Animaux_enquete animal in enquete.Animaux)
             {
+                animal.Enquete.Id = enquete.Id;
                 Animaux_enquete.AddAnimalEnqueteBdd(animal);
             }
             EnqueteDAO.AddEnquete(enquete);
@@ -51,10 +52,10 @@ namespace SPA.Models
         
         private void GenerateId()
         {
-            string departement = this.Titulaire_enquete.Refuge.Departement.ToString();
+            string departement = this.Titulaire_enquete.Refuge.Departement.ToString("00");
             string annee = DateTime.Now.ToString("yy");
             string mois = DateTime.Now.ToString("MM");
-            this.Id = EnqueteDAO.GenerateId(departement, mois, annee);
+            this.Id = departement + "/" + annee + "/" + mois + "/" + EnqueteDAO.GenerateId(departement, mois, annee);
         }
         
     }

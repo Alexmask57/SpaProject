@@ -7,8 +7,8 @@ namespace SPA.Models
 {
     public class Animaux_enquete
     {
-        public Enquete Enquete { get; set; }
-        public Race_animal Race { get; set; }
+        public Enquete Enquete { get; set; } = new Enquete();
+        public Race_animal Race { get; set; } = new Race_animal();
         public int Nombre { get; set; }
 
         /// <summary>

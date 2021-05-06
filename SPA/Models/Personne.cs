@@ -13,9 +13,9 @@ namespace SPA.Models
         public int Code_postal { get; set; }
         public string Ville { get; set; }
         public string Email { get; set; }
-        public bool Salarie { get; set; }
-        public bool Benevole { get; set; }
-        public Refuge Refuge { get; set; }
+        public bool Salarie { get; set; } = false;
+        public bool Benevole { get; set; } = false;
+        public Refuge Refuge { get; set; } = new Refuge();
 
         public static Personne GetPersonneById(int id)
         {

@@ -15,6 +15,10 @@ namespace SPA.Models
         {
             return Race_animalDAO.GetRaceAnimal(id);
         }
+        public static Race_animal GetRace_AnimalBdd(string animal, string raceAnimale)
+        {
+            return Race_animalDAO.GetRaceAnimal(animal, raceAnimale);
+        }
 
         public static List<Race_animal> GetRace_Animals()
         {

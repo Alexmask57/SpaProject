@@ -7,7 +7,7 @@ namespace SPA.Models
 {
     public class Commentaire
     {
-        public Enquete Enquete { get; set; }
+        public Enquete Enquete { get; set; } = new Enquete();
         public DateTime Date { get; set; }
         public string Detail { get; set; }
 

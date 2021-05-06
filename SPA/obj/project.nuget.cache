@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "P1xcUf2jUtAIxEHvKqLQK93Cuzly6/1clDriCnN1RKyaBgsxOwZYIvJhJUYDgACK8Rh3yKaeSbqcyeutx4OGAQ==",
+  "dgSpecHash": "2x6Ynbm1LSreTbYQ4MHz7m+FE9yVTF27D2t4cPNMON6m47TEQ5uT5+MV7oTUCHxjQd/B9Lj3uDQV90aNghCfbg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\admin\\source\\repos\\Spa2\\SPA\\SPA.csproj",
+  "projectFilePath": "C:\\Users\\admin\\source\\repos\\SpaProject\\SPA\\SPA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

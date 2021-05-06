@@ -47,9 +47,7 @@ namespace SPA.Models.DAO
             }
             catch (Exception ex)
             {
-                //display error message
-                Console.WriteLine("Exception: " + ex.Message);
-                return null;
+                throw;
             }
         }
 
@@ -91,9 +89,7 @@ namespace SPA.Models.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: " + ex.Message);
-                res = false;
-                return res;
+                throw;
             }
         }
     }

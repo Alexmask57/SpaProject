@@ -46,9 +46,7 @@ namespace SPA.Models
             }
             catch (Exception ex)
             {
-                //display error message
-                Console.WriteLine("Exception: " + ex.Message);
-                return null;
+                throw;
             }
         }
 
@@ -61,7 +59,7 @@ namespace SPA.Models
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"INSERT INTO Enquete (Id, Titulaire_enquete, Delegue_enquete, Infracteur, Plaignant, Etat, Avis) VALUES (@Id, @Titulaire_enquete, @Delegue_enquete, @Infracteur, @Plaignant, 0, '');";
+                    string query = @"INSERT INTO Enquete (Id, Titulaire_enquete, Delegue_enqueteur, Infracteur, Plaignant, Etat, Avis) VALUES (@Id, @Titulaire_enquete, @Delegue_enquete, @Infracteur, @Plaignant, 0, '');";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -88,9 +86,7 @@ namespace SPA.Models
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: " + ex.Message);
-                res = false;
-                return res;
+                throw;
             }
         }
 
@@ -126,9 +122,14 @@ namespace SPA.Models
                     {
                         if (dr.Read())
                         {
-                            //display retrieved record (first column only/string value)
-                            string id = dr.GetString(0) + 1;
-                            return id + 1;
+                            if (dr.IsDBNull(0))
+                                return "000";
+                            else
+                            {
+                                int id = Int32.Parse(dr.GetString(0)) + 1;
+                                return id.ToString("000");
+                            }
+                            
                         }
                     }
                     dr.Close();
@@ -137,9 +138,7 @@ namespace SPA.Models
             }
             catch (Exception ex)
             {
-                //display error message
-                Console.WriteLine("Exception: " + ex.Message);
-                return "-1";
+                throw;
             }
         }
         

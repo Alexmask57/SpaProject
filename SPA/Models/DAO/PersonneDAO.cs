@@ -50,9 +50,7 @@ namespace SPA.Models
             }
             catch (Exception ex)
             {
-                //display error message
-                Console.WriteLine("Exception: " + ex.Message);
-                return null;
+                throw;
             }
         }
 
@@ -88,6 +86,9 @@ namespace SPA.Models
                             personne.Code_postal = dr.GetInt32(4);
                             personne.Ville = dr.GetString(5);
                             personne.Email = dr.GetString(6);
+                            personne.Salarie = IntToBool(dr.GetInt32(7));
+                            personne.Benevole = IntToBool(dr.GetInt32(8));
+                            personne.Refuge = Refuge.GetRefugeById(dr.GetInt32(9));
                         }
                     }
                     else
@@ -100,9 +101,7 @@ namespace SPA.Models
             }
             catch (Exception ex)
             {
-                //display error message
-                Console.WriteLine("Exception: " + ex.Message);
-                return null;
+                throw;
             }
         }
 
@@ -139,9 +138,7 @@ namespace SPA.Models
             }
             catch (Exception ex)
             {
-                //display error message
-                Console.WriteLine("Exception: " + ex.Message);
-                return false;
+                throw;
             }
         }
         public static List<Personne> GetAllPersonne()
@@ -175,6 +172,9 @@ namespace SPA.Models
                             personne.Code_postal = dr.GetInt32(4);
                             personne.Ville = dr.GetString(5);
                             personne.Email = dr.GetString(6);
+                            personne.Salarie = IntToBool(dr.GetInt32(7));
+                            personne.Benevole = IntToBool(dr.GetInt32(8));
+                            personne.Refuge = Refuge.GetRefugeById(dr.GetInt32(9));
                             list.Add(personne);
                         }
                     }
@@ -188,9 +188,7 @@ namespace SPA.Models
             }
             catch (Exception ex)
             {
-                //display error message
-                Console.WriteLine("Exception: " + ex.Message);
-                return null;
+                throw;
             }
         }
 
@@ -225,6 +223,10 @@ namespace SPA.Models
                             personne.Code_postal = dr.GetInt32(4);
                             personne.Ville = dr.GetString(5);
                             personne.Email = dr.GetString(6);
+                            personne.Salarie = IntToBool(dr.GetInt32(7));
+                            personne.Benevole = IntToBool(dr.GetInt32(8));
+                            if (personne.Benevole || personne.Salarie)
+                                personne.Refuge = Refuge.GetRefugeById(dr.GetInt32(9));
                             list.Add(personne);
                         }
                     }
@@ -238,9 +240,7 @@ namespace SPA.Models
             }
             catch (Exception ex)
             {
-                //display error message
-                Console.WriteLine("Exception: " + ex.Message);
-                return null;
+                throw;
             }
         }
 
@@ -267,9 +267,9 @@ namespace SPA.Models
                     cmd.Parameters.AddWithValue("@CP", personne.Code_postal);
                     cmd.Parameters.AddWithValue("@Ville", personne.Ville);
                     cmd.Parameters.AddWithValue("@Email", personne.Email);
-                    cmd.Parameters.AddWithValue("@Salarie", personne.Email);
-                    cmd.Parameters.AddWithValue("@Benevole", personne.Email);
-                    cmd.Parameters.AddWithValue("@IdRefuge", personne.Email);
+                    cmd.Parameters.AddWithValue("@Salarie", BoolToInt(personne.Salarie));
+                    cmd.Parameters.AddWithValue("@Benevole", BoolToInt(personne.Benevole));
+                    cmd.Parameters.AddWithValue("@IdRefuge", personne.Refuge.Id);
 
                     //open connection
                     conn.Open();
@@ -282,10 +282,23 @@ namespace SPA.Models
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: " + ex.Message);
-                res = -1;
-                return res;
+                throw;
             }
+        }
+
+        private static bool IntToBool(int entier)
+        {
+            if (entier == 1)
+                return true;
+            else
+                return false;
+        }
+
+        private static int BoolToInt(bool booleen)
+        {
+            if (booleen)
+                return 1;
+            return 0;
         }
     }
 }

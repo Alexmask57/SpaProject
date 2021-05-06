@@ -39,10 +39,47 @@ namespace SPA.Models.DAO
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Exception: " + ex.Message);
-                return null;
+                throw;
             }
         }
+
+        public static Race_animal GetRaceAnimal(string animal, string nomRace)
+        {
+            Race_animal race = new Race_animal();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    string query = @"SELECT * FROM Race_animal WHERE Animal = @Animal AND Nom_race = @NomRace";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Animal", animal);
+                    cmd.Parameters.AddWithValue("@NomRace", nomRace);
+                    conn.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            race.Id = dr.GetInt32(0);
+                            race.Animal = dr.GetString(1);
+                            race.Nom_race = dr.GetString(2);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found.");
+                    }
+                    dr.Close();
+                }
+                return race;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public static List<Race_animal> GetListRaceAnimal()
         {
             List<Race_animal> races = new List<Race_animal>();
@@ -77,9 +114,7 @@ namespace SPA.Models.DAO
             }
             catch (Exception ex)
             {
-                //display error message
-                Console.WriteLine("Exception: " + ex.Message);
-                return null;
+                throw;
             }
         }
     }
