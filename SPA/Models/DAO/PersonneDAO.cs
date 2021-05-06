@@ -56,6 +56,56 @@ namespace SPA.Models
             }
         }
 
+        public static Personne GetPersonne(string nom, string prenom)
+        {
+            Personne personne = new Personne();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"SELECT * FROM Personne WHERE Nom = @nom and Prenom = @prenom";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@nom", nom);
+                    cmd.Parameters.AddWithValue("@prenom", prenom);
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            //display retrieved record (first column only/string value)
+                            personne.Id = dr.GetInt32(0);
+                            personne.Nom = dr.GetString(1);
+                            personne.Prenom = dr.GetString(2);
+                            personne.Adresse = dr.GetString(3);
+                            personne.Code_postal = dr.GetInt32(4);
+                            personne.Ville = dr.GetString(5);
+                            personne.Email = dr.GetString(6);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found.");
+                    }
+                    dr.Close();
+                }
+                return personne;
+            }
+            catch (Exception ex)
+            {
+                //display error message
+                Console.WriteLine("Exception: " + ex.Message);
+                return null;
+            }
+        }
+
         public static bool ExistPersonne(Personne personne)
         {
             string nom = personne.Nom;

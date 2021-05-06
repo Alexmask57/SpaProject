@@ -21,16 +21,24 @@ namespace SPA.Models
         /// <param name="enquete">Enquete à ajouter dans la base de données</param>
         public static void CreerEnqueteBdd(Enquete enquete)
         {
-            
+
             //Création des personnes en BDD (dans le cas ou elles n'existent pas)
             if (!PersonneDAO.ExistPersonne(enquete.Titulaire_enquete))
                 enquete.Titulaire_enquete.Id = PersonneDAO.AddPersonne(enquete.Titulaire_enquete);
+            else
+                enquete.Titulaire_enquete = PersonneDAO.GetPersonne(enquete.Titulaire_enquete.Nom, enquete.Titulaire_enquete.Prenom);
             if (!PersonneDAO.ExistPersonne(enquete.Delegue_enqueteur))
                 enquete.Delegue_enqueteur.Id =  PersonneDAO.AddPersonne(enquete.Delegue_enqueteur);
+            else
+                enquete.Delegue_enqueteur = PersonneDAO.GetPersonne(enquete.Delegue_enqueteur.Nom, enquete.Delegue_enqueteur.Prenom);
             if (!PersonneDAO.ExistPersonne(enquete.Infracteur))
                 enquete.Infracteur.Id =  PersonneDAO.AddPersonne(enquete.Infracteur);
+            else
+                enquete.Infracteur = PersonneDAO.GetPersonne(enquete.Infracteur.Nom, enquete.Infracteur.Prenom);
             if (!PersonneDAO.ExistPersonne(enquete.Plaignant))
                 enquete.Plaignant.Id = PersonneDAO.AddPersonne(enquete.Plaignant);
+            else
+                enquete.Plaignant = PersonneDAO.GetPersonne(enquete.Plaignant.Nom, enquete.Plaignant.Prenom);
 
             enquete.GenerateId();
 
