@@ -21,7 +21,7 @@ namespace SPA.Models
         /// <param name="enquete">Enquete à ajouter dans la base de données</param>
         public static void CreerEnqueteBdd(Enquete enquete)
         {
-
+            
             //Création des personnes en BDD (dans le cas ou elles n'existent pas)
             if (!PersonneDAO.ExistPersonne(enquete.Titulaire_enquete))
                 enquete.Titulaire_enquete.Id = PersonneDAO.AddPersonne(enquete.Titulaire_enquete);
@@ -32,19 +32,22 @@ namespace SPA.Models
             if (!PersonneDAO.ExistPersonne(enquete.Plaignant))
                 enquete.Plaignant.Id = PersonneDAO.AddPersonne(enquete.Plaignant);
 
-            foreach(Animaux_enquete animal in enquete.Animaux)
+            enquete.GenerateId();
+
+            foreach (Animaux_enquete animal in enquete.Animaux)
             {
                 Animaux_enquete.AddAnimalEnqueteBdd(animal);
             }
             EnqueteDAO.AddEnquete(enquete);
         }
-        /*
-        private string GenerateId()
+        
+        private void GenerateId()
         {
             string departement = this.Titulaire_enquete.Refuge.Departement.ToString();
             string annee = DateTime.Now.ToString("yy");
             string mois = DateTime.Now.ToString("MM");
+            this.Id = EnqueteDAO.GenerateId(departement, mois, annee);
         }
-        */
+        
     }
 }

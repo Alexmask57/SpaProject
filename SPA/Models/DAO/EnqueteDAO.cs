@@ -94,18 +94,27 @@ namespace SPA.Models
             }
         }
 
-        /*
-        public static int GenerateId(string departement, string mois, string annee)
+        
+        public static string GenerateId(string departement, string mois, string annee)
         {
             try
             {
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"SELECT * FROM Enquete WHERE Id = @Id";
+                    string query = @"select MAX(id)
+                                    from (
+	                                    select SUBSTRING(E.Id, 1, 2)  as departement, SUBSTRING(E.Id, CHARINDEX('/', E.Id)+1, 2) as annee, SUBSTRING(E.Id, CHARINDEX('/', E.Id, CHARINDEX('/', E.Id) + 1)+1, 2) as mois, RIGHT(E.Id, 3) as id
+	                                    from Enquete E
+                                    ) t1
+                                    where departement = @departement
+                                    and annee = @annee
+                                    and mois = @mois";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
-                    cmd.Parameters.AddWithValue("@Id", id);
+                    cmd.Parameters.AddWithValue("@departement", departement);
+                    cmd.Parameters.AddWithValue("@annee", annee);
+                    cmd.Parameters.AddWithValue("@mois", mois);
                     //open connection
                     conn.Open();
 
@@ -115,29 +124,24 @@ namespace SPA.Models
                     //check if there are records
                     if (dr.HasRows)
                     {
-                        while (dr.Read())
+                        if (dr.Read())
                         {
                             //display retrieved record (first column only/string value)
-                            session.Id = dr.GetInt32(0);
-                            session.Login = dr.GetString(1);
-                            session.Password = dr.GetString(2);
+                            string id = dr.GetString(0) + 1;
+                            return id + 1;
                         }
-                    }
-                    else
-                    {
-                        Console.WriteLine("No data found.");
                     }
                     dr.Close();
                 }
-                return session;
+                return "000";
             }
             catch (Exception ex)
             {
                 //display error message
                 Console.WriteLine("Exception: " + ex.Message);
-                return null;
+                return "-1";
             }
         }
-        */
+        
     }
 }
