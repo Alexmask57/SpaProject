@@ -32,6 +32,19 @@ namespace SPA
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTitre = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelErrorAnimaux = new System.Windows.Forms.Label();
+            this.labelErrorEmailInfracteur = new System.Windows.Forms.Label();
+            this.labelErrorEmailPlaignant = new System.Windows.Forms.Label();
+            this.labelErrorCodePostalInfracteur = new System.Windows.Forms.Label();
+            this.labelErrorVilleInfracteur = new System.Windows.Forms.Label();
+            this.labelErrorAdresseInfracteur = new System.Windows.Forms.Label();
+            this.labelErrorEnquete = new System.Windows.Forms.Label();
+            this.labelErrorMotif = new System.Windows.Forms.Label();
+            this.labelErrorCodePostalPlaigant = new System.Windows.Forms.Label();
+            this.labelErrorVillePlaignant = new System.Windows.Forms.Label();
+            this.labelErrorAdressePlaignant = new System.Windows.Forms.Label();
+            this.labelErrorNomPrenomInfracteur = new System.Windows.Forms.Label();
+            this.labelErrorNomPrenomPlaignant = new System.Windows.Forms.Label();
             this.listViewDocuments = new System.Windows.Forms.ListView();
             this.columnHeaderNomFichier = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderEmplacement = new System.Windows.Forms.ColumnHeader();
@@ -89,23 +102,38 @@ namespace SPA
             // panel1
             // 
             this.panel1.Controls.Add(this.labelTitre);
-            this.panel1.Location = new System.Drawing.Point(3, 1);
+            this.panel1.Location = new System.Drawing.Point(7, 3);
+            this.panel1.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1232, 54);
+            this.panel1.Size = new System.Drawing.Size(2992, 148);
             this.panel1.TabIndex = 0;
             // 
             // labelTitre
             // 
             this.labelTitre.AutoSize = true;
-            this.labelTitre.Location = new System.Drawing.Point(579, 8);
+            this.labelTitre.Location = new System.Drawing.Point(1406, 22);
+            this.labelTitre.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelTitre.Name = "labelTitre";
-            this.labelTitre.Size = new System.Drawing.Size(139, 15);
+            this.labelTitre.Size = new System.Drawing.Size(352, 41);
             this.labelTitre.TabIndex = 0;
             this.labelTitre.Text = "Ouverture d\'une enquête";
             // 
             // panel2
             // 
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.labelErrorAnimaux);
+            this.panel2.Controls.Add(this.labelErrorEmailInfracteur);
+            this.panel2.Controls.Add(this.labelErrorEmailPlaignant);
+            this.panel2.Controls.Add(this.labelErrorCodePostalInfracteur);
+            this.panel2.Controls.Add(this.labelErrorVilleInfracteur);
+            this.panel2.Controls.Add(this.labelErrorAdresseInfracteur);
+            this.panel2.Controls.Add(this.labelErrorEnquete);
+            this.panel2.Controls.Add(this.labelErrorMotif);
+            this.panel2.Controls.Add(this.labelErrorCodePostalPlaigant);
+            this.panel2.Controls.Add(this.labelErrorVillePlaignant);
+            this.panel2.Controls.Add(this.labelErrorAdressePlaignant);
+            this.panel2.Controls.Add(this.labelErrorNomPrenomInfracteur);
+            this.panel2.Controls.Add(this.labelErrorNomPrenomPlaignant);
             this.panel2.Controls.Add(this.listViewDocuments);
             this.panel2.Controls.Add(this.buttonSupprimerFichier);
             this.panel2.Controls.Add(this.buttonAjouterFichier);
@@ -150,10 +178,154 @@ namespace SPA
             this.panel2.Controls.Add(this.labelDelegue);
             this.panel2.Controls.Add(this.labelTitulaireEnquete);
             this.panel2.Controls.Add(this.richTextBoxMotif);
-            this.panel2.Location = new System.Drawing.Point(5, 60);
+            this.panel2.Location = new System.Drawing.Point(12, 164);
+            this.panel2.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1229, 579);
+            this.panel2.Size = new System.Drawing.Size(2985, 1583);
             this.panel2.TabIndex = 1;
+            // 
+            // labelErrorAnimaux
+            // 
+            this.labelErrorAnimaux.AutoSize = true;
+            this.labelErrorAnimaux.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorAnimaux.Location = new System.Drawing.Point(549, 1836);
+            this.labelErrorAnimaux.Name = "labelErrorAnimaux";
+            this.labelErrorAnimaux.Size = new System.Drawing.Size(739, 41);
+            this.labelErrorAnimaux.TabIndex = 68;
+            this.labelErrorAnimaux.Text = "* Selectionner au moins un animal d\'une race specifiee";
+            this.labelErrorAnimaux.Visible = false;
+            // 
+            // labelErrorEmailInfracteur
+            // 
+            this.labelErrorEmailInfracteur.AutoSize = true;
+            this.labelErrorEmailInfracteur.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorEmailInfracteur.Location = new System.Drawing.Point(1919, 1211);
+            this.labelErrorEmailInfracteur.Name = "labelErrorEmailInfracteur";
+            this.labelErrorEmailInfracteur.Size = new System.Drawing.Size(605, 41);
+            this.labelErrorEmailInfracteur.TabIndex = 67;
+            this.labelErrorEmailInfracteur.Text = "* E-mail de l\'infracteur manquant ou invalide";
+            this.labelErrorEmailInfracteur.Visible = false;
+            // 
+            // labelErrorEmailPlaignant
+            // 
+            this.labelErrorEmailPlaignant.AutoSize = true;
+            this.labelErrorEmailPlaignant.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorEmailPlaignant.Location = new System.Drawing.Point(549, 1211);
+            this.labelErrorEmailPlaignant.Name = "labelErrorEmailPlaignant";
+            this.labelErrorEmailPlaignant.Size = new System.Drawing.Size(591, 41);
+            this.labelErrorEmailPlaignant.TabIndex = 66;
+            this.labelErrorEmailPlaignant.Text = "* E-mail du plaignant manquant ou invalide";
+            this.labelErrorEmailPlaignant.Visible = false;
+            // 
+            // labelErrorCodePostalInfracteur
+            // 
+            this.labelErrorCodePostalInfracteur.AutoSize = true;
+            this.labelErrorCodePostalInfracteur.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorCodePostalInfracteur.Location = new System.Drawing.Point(1919, 1080);
+            this.labelErrorCodePostalInfracteur.Name = "labelErrorCodePostalInfracteur";
+            this.labelErrorCodePostalInfracteur.Size = new System.Drawing.Size(683, 41);
+            this.labelErrorCodePostalInfracteur.TabIndex = 65;
+            this.labelErrorCodePostalInfracteur.Text = "* Code postal de l\'infracteur manquant ou invalide";
+            this.labelErrorCodePostalInfracteur.Visible = false;
+            // 
+            // labelErrorVilleInfracteur
+            // 
+            this.labelErrorVilleInfracteur.AutoSize = true;
+            this.labelErrorVilleInfracteur.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorVilleInfracteur.Location = new System.Drawing.Point(1919, 933);
+            this.labelErrorVilleInfracteur.Name = "labelErrorVilleInfracteur";
+            this.labelErrorVilleInfracteur.Size = new System.Drawing.Size(595, 41);
+            this.labelErrorVilleInfracteur.TabIndex = 64;
+            this.labelErrorVilleInfracteur.Text = "* Ville de l\'infracteur manquante ou invalide";
+            this.labelErrorVilleInfracteur.Visible = false;
+            // 
+            // labelErrorAdresseInfracteur
+            // 
+            this.labelErrorAdresseInfracteur.AutoSize = true;
+            this.labelErrorAdresseInfracteur.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorAdresseInfracteur.Location = new System.Drawing.Point(1921, 795);
+            this.labelErrorAdresseInfracteur.Name = "labelErrorAdresseInfracteur";
+            this.labelErrorAdresseInfracteur.Size = new System.Drawing.Size(644, 41);
+            this.labelErrorAdresseInfracteur.TabIndex = 63;
+            this.labelErrorAdresseInfracteur.Text = "* Adresse de l\'infracteur manquante ou invalide";
+            this.labelErrorAdresseInfracteur.Visible = false;
+            // 
+            // labelErrorEnquete
+            // 
+            this.labelErrorEnquete.AutoSize = true;
+            this.labelErrorEnquete.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorEnquete.Location = new System.Drawing.Point(1803, 2895);
+            this.labelErrorEnquete.Name = "labelErrorEnquete";
+            this.labelErrorEnquete.Size = new System.Drawing.Size(305, 41);
+            this.labelErrorEnquete.TabIndex = 62;
+            this.labelErrorEnquete.Text = "* Enquete incomplete";
+            this.labelErrorEnquete.Visible = false;
+            // 
+            // labelErrorMotif
+            // 
+            this.labelErrorMotif.AutoSize = true;
+            this.labelErrorMotif.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorMotif.Location = new System.Drawing.Point(549, 1644);
+            this.labelErrorMotif.Name = "labelErrorMotif";
+            this.labelErrorMotif.Size = new System.Drawing.Size(405, 41);
+            this.labelErrorMotif.TabIndex = 61;
+            this.labelErrorMotif.Text = "* Motif manquant ou invalide";
+            this.labelErrorMotif.Visible = false;
+            // 
+            // labelErrorCodePostalPlaigant
+            // 
+            this.labelErrorCodePostalPlaigant.AutoSize = true;
+            this.labelErrorCodePostalPlaigant.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorCodePostalPlaigant.Location = new System.Drawing.Point(549, 1080);
+            this.labelErrorCodePostalPlaigant.Name = "labelErrorCodePostalPlaigant";
+            this.labelErrorCodePostalPlaigant.Size = new System.Drawing.Size(669, 41);
+            this.labelErrorCodePostalPlaigant.TabIndex = 56;
+            this.labelErrorCodePostalPlaigant.Text = "* Code postal du plaignant manquant ou invalide";
+            this.labelErrorCodePostalPlaigant.Visible = false;
+            // 
+            // labelErrorVillePlaignant
+            // 
+            this.labelErrorVillePlaignant.AutoSize = true;
+            this.labelErrorVillePlaignant.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorVillePlaignant.Location = new System.Drawing.Point(549, 933);
+            this.labelErrorVillePlaignant.Name = "labelErrorVillePlaignant";
+            this.labelErrorVillePlaignant.Size = new System.Drawing.Size(581, 41);
+            this.labelErrorVillePlaignant.TabIndex = 55;
+            this.labelErrorVillePlaignant.Text = "* Ville du plaignant manquante ou invalide";
+            this.labelErrorVillePlaignant.Visible = false;
+            // 
+            // labelErrorAdressePlaignant
+            // 
+            this.labelErrorAdressePlaignant.AutoSize = true;
+            this.labelErrorAdressePlaignant.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorAdressePlaignant.Location = new System.Drawing.Point(549, 795);
+            this.labelErrorAdressePlaignant.Name = "labelErrorAdressePlaignant";
+            this.labelErrorAdressePlaignant.Size = new System.Drawing.Size(630, 41);
+            this.labelErrorAdressePlaignant.TabIndex = 54;
+            this.labelErrorAdressePlaignant.Text = "* Adresse du plaignant manquante ou invalide";
+            this.labelErrorAdressePlaignant.Visible = false;
+            // 
+            // labelErrorNomPrenomInfracteur
+            // 
+            this.labelErrorNomPrenomInfracteur.AutoSize = true;
+            this.labelErrorNomPrenomInfracteur.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorNomPrenomInfracteur.Location = new System.Drawing.Point(1919, 608);
+            this.labelErrorNomPrenomInfracteur.Name = "labelErrorNomPrenomInfracteur";
+            this.labelErrorNomPrenomInfracteur.Size = new System.Drawing.Size(745, 41);
+            this.labelErrorNomPrenomInfracteur.TabIndex = 53;
+            this.labelErrorNomPrenomInfracteur.Text = "* Nom ou prenom de l\'infracteur manquant ou invalide";
+            this.labelErrorNomPrenomInfracteur.Visible = false;
+            // 
+            // labelErrorNomPrenomPlaignant
+            // 
+            this.labelErrorNomPrenomPlaignant.AutoSize = true;
+            this.labelErrorNomPrenomPlaignant.ForeColor = System.Drawing.Color.Red;
+            this.labelErrorNomPrenomPlaignant.Location = new System.Drawing.Point(549, 608);
+            this.labelErrorNomPrenomPlaignant.Name = "labelErrorNomPrenomPlaignant";
+            this.labelErrorNomPrenomPlaignant.Size = new System.Drawing.Size(731, 41);
+            this.labelErrorNomPrenomPlaignant.TabIndex = 52;
+            this.labelErrorNomPrenomPlaignant.Text = "* Nom ou prenom du plaignant manquant ou invalide";
+            this.labelErrorNomPrenomPlaignant.Visible = false;
             // 
             // listViewDocuments
             // 
@@ -164,9 +336,10 @@ namespace SPA
             this.listViewDocuments.FullRowSelect = true;
             this.listViewDocuments.GridLines = true;
             this.listViewDocuments.HideSelection = false;
-            this.listViewDocuments.Location = new System.Drawing.Point(225, 920);
+            this.listViewDocuments.Location = new System.Drawing.Point(546, 2515);
+            this.listViewDocuments.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.listViewDocuments.Name = "listViewDocuments";
-            this.listViewDocuments.Size = new System.Drawing.Size(825, 100);
+            this.listViewDocuments.Size = new System.Drawing.Size(1998, 266);
             this.listViewDocuments.TabIndex = 51;
             this.listViewDocuments.UseCompatibleStateImageBehavior = false;
             this.listViewDocuments.View = System.Windows.Forms.View.Details;
@@ -183,9 +356,10 @@ namespace SPA
             // 
             // buttonSupprimerFichier
             // 
-            this.buttonSupprimerFichier.Location = new System.Drawing.Point(360, 875);
+            this.buttonSupprimerFichier.Location = new System.Drawing.Point(874, 2392);
+            this.buttonSupprimerFichier.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.buttonSupprimerFichier.Name = "buttonSupprimerFichier";
-            this.buttonSupprimerFichier.Size = new System.Drawing.Size(125, 23);
+            this.buttonSupprimerFichier.Size = new System.Drawing.Size(304, 63);
             this.buttonSupprimerFichier.TabIndex = 50;
             this.buttonSupprimerFichier.Text = "Supprimer fichier";
             this.buttonSupprimerFichier.UseVisualStyleBackColor = true;
@@ -193,9 +367,10 @@ namespace SPA
             // 
             // buttonAjouterFichier
             // 
-            this.buttonAjouterFichier.Location = new System.Drawing.Point(225, 875);
+            this.buttonAjouterFichier.Location = new System.Drawing.Point(546, 2392);
+            this.buttonAjouterFichier.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.buttonAjouterFichier.Name = "buttonAjouterFichier";
-            this.buttonAjouterFichier.Size = new System.Drawing.Size(127, 23);
+            this.buttonAjouterFichier.Size = new System.Drawing.Size(308, 63);
             this.buttonAjouterFichier.TabIndex = 49;
             this.buttonAjouterFichier.Text = "Ajouter fichier";
             this.buttonAjouterFichier.UseVisualStyleBackColor = true;
@@ -204,9 +379,10 @@ namespace SPA
             // labelDocuments
             // 
             this.labelDocuments.AutoSize = true;
-            this.labelDocuments.Location = new System.Drawing.Point(96, 879);
+            this.labelDocuments.Location = new System.Drawing.Point(233, 2403);
+            this.labelDocuments.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelDocuments.Name = "labelDocuments";
-            this.labelDocuments.Size = new System.Drawing.Size(74, 15);
+            this.labelDocuments.Size = new System.Drawing.Size(185, 41);
             this.labelDocuments.TabIndex = 48;
             this.labelDocuments.Text = "Documents :";
             // 
@@ -220,9 +396,10 @@ namespace SPA
             this.listViewAnimaux.FullRowSelect = true;
             this.listViewAnimaux.GridLines = true;
             this.listViewAnimaux.HideSelection = false;
-            this.listViewAnimaux.Location = new System.Drawing.Point(225, 744);
+            this.listViewAnimaux.Location = new System.Drawing.Point(546, 2034);
+            this.listViewAnimaux.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.listViewAnimaux.Name = "listViewAnimaux";
-            this.listViewAnimaux.Size = new System.Drawing.Size(825, 100);
+            this.listViewAnimaux.Size = new System.Drawing.Size(1998, 266);
             this.listViewAnimaux.TabIndex = 47;
             this.listViewAnimaux.UseCompatibleStateImageBehavior = false;
             this.listViewAnimaux.View = System.Windows.Forms.View.Details;
@@ -244,9 +421,10 @@ namespace SPA
             // 
             // buttonSupprimer
             // 
-            this.buttonSupprimer.Location = new System.Drawing.Point(923, 698);
+            this.buttonSupprimer.Location = new System.Drawing.Point(2242, 1908);
+            this.buttonSupprimer.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.buttonSupprimer.Name = "buttonSupprimer";
-            this.buttonSupprimer.Size = new System.Drawing.Size(125, 23);
+            this.buttonSupprimer.Size = new System.Drawing.Size(304, 63);
             this.buttonSupprimer.TabIndex = 46;
             this.buttonSupprimer.Text = "Supprimer -";
             this.buttonSupprimer.UseVisualStyleBackColor = true;
@@ -254,9 +432,10 @@ namespace SPA
             // 
             // buttonAjouter
             // 
-            this.buttonAjouter.Location = new System.Drawing.Point(790, 698);
+            this.buttonAjouter.Location = new System.Drawing.Point(1919, 1908);
+            this.buttonAjouter.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.buttonAjouter.Name = "buttonAjouter";
-            this.buttonAjouter.Size = new System.Drawing.Size(127, 23);
+            this.buttonAjouter.Size = new System.Drawing.Size(308, 63);
             this.buttonAjouter.TabIndex = 45;
             this.buttonAjouter.Text = "Ajouter +";
             this.buttonAjouter.UseVisualStyleBackColor = true;
@@ -264,60 +443,67 @@ namespace SPA
             // 
             // numericUpDownNombre
             // 
-            this.numericUpDownNombre.Location = new System.Drawing.Point(225, 698);
+            this.numericUpDownNombre.Location = new System.Drawing.Point(546, 1908);
+            this.numericUpDownNombre.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.numericUpDownNombre.Name = "numericUpDownNombre";
-            this.numericUpDownNombre.Size = new System.Drawing.Size(127, 23);
+            this.numericUpDownNombre.Size = new System.Drawing.Size(308, 47);
             this.numericUpDownNombre.TabIndex = 44;
             // 
             // labelNombre
             // 
             this.labelNombre.AutoSize = true;
-            this.labelNombre.Location = new System.Drawing.Point(97, 700);
+            this.labelNombre.Location = new System.Drawing.Point(236, 1913);
+            this.labelNombre.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelNombre.Name = "labelNombre";
-            this.labelNombre.Size = new System.Drawing.Size(60, 15);
+            this.labelNombre.Size = new System.Drawing.Size(151, 41);
             this.labelNombre.TabIndex = 43;
             this.labelNombre.Text = "Nombre : ";
             // 
             // comboBoxRace
             // 
             this.comboBoxRace.FormattingEnabled = true;
-            this.comboBoxRace.Location = new System.Drawing.Point(789, 644);
+            this.comboBoxRace.Location = new System.Drawing.Point(1916, 1760);
+            this.comboBoxRace.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.comboBoxRace.Name = "comboBoxRace";
-            this.comboBoxRace.Size = new System.Drawing.Size(259, 23);
+            this.comboBoxRace.Size = new System.Drawing.Size(623, 49);
             this.comboBoxRace.TabIndex = 42;
             // 
             // comboBoxAnimaux
             // 
             this.comboBoxAnimaux.FormattingEnabled = true;
-            this.comboBoxAnimaux.Location = new System.Drawing.Point(225, 644);
+            this.comboBoxAnimaux.Location = new System.Drawing.Point(546, 1760);
+            this.comboBoxAnimaux.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.comboBoxAnimaux.Name = "comboBoxAnimaux";
-            this.comboBoxAnimaux.Size = new System.Drawing.Size(259, 23);
+            this.comboBoxAnimaux.Size = new System.Drawing.Size(623, 49);
             this.comboBoxAnimaux.TabIndex = 41;
             this.comboBoxAnimaux.SelectedIndexChanged += new System.EventHandler(this.comboBoxAnimaux_SelectedIndexChanged);
             // 
             // labelRace
             // 
             this.labelRace.AutoSize = true;
-            this.labelRace.Location = new System.Drawing.Point(662, 647);
+            this.labelRace.Location = new System.Drawing.Point(1608, 1768);
+            this.labelRace.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelRace.Name = "labelRace";
-            this.labelRace.Size = new System.Drawing.Size(38, 15);
+            this.labelRace.Size = new System.Drawing.Size(96, 41);
             this.labelRace.TabIndex = 40;
             this.labelRace.Text = "Race :";
             // 
             // labelAnimaux
             // 
             this.labelAnimaux.AutoSize = true;
-            this.labelAnimaux.Location = new System.Drawing.Point(97, 647);
+            this.labelAnimaux.Location = new System.Drawing.Point(236, 1768);
+            this.labelAnimaux.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelAnimaux.Name = "labelAnimaux";
-            this.labelAnimaux.Size = new System.Drawing.Size(61, 15);
+            this.labelAnimaux.Size = new System.Drawing.Size(148, 41);
             this.labelAnimaux.TabIndex = 39;
             this.labelAnimaux.Text = "Animaux :";
             // 
             // buttonEnregistrer
             // 
-            this.buttonEnregistrer.Location = new System.Drawing.Point(577, 1042);
+            this.buttonEnregistrer.Location = new System.Drawing.Point(1401, 2867);
+            this.buttonEnregistrer.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.buttonEnregistrer.Name = "buttonEnregistrer";
-            this.buttonEnregistrer.Size = new System.Drawing.Size(139, 35);
+            this.buttonEnregistrer.Size = new System.Drawing.Size(338, 96);
             this.buttonEnregistrer.TabIndex = 1;
             this.buttonEnregistrer.Text = "Enregistrer";
             this.buttonEnregistrer.UseVisualStyleBackColor = true;
@@ -326,253 +512,284 @@ namespace SPA
             // labelMotif
             // 
             this.labelMotif.AutoSize = true;
-            this.labelMotif.Location = new System.Drawing.Point(96, 491);
+            this.labelMotif.Location = new System.Drawing.Point(233, 1342);
+            this.labelMotif.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelMotif.Name = "labelMotif";
-            this.labelMotif.Size = new System.Drawing.Size(42, 15);
+            this.labelMotif.Size = new System.Drawing.Size(104, 41);
             this.labelMotif.TabIndex = 37;
             this.labelMotif.Text = "Motif :";
             // 
             // textBoxEmailInfracteur
             // 
-            this.textBoxEmailInfracteur.Location = new System.Drawing.Point(790, 418);
+            this.textBoxEmailInfracteur.Location = new System.Drawing.Point(1919, 1143);
+            this.textBoxEmailInfracteur.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.textBoxEmailInfracteur.Name = "textBoxEmailInfracteur";
-            this.textBoxEmailInfracteur.Size = new System.Drawing.Size(259, 23);
+            this.textBoxEmailInfracteur.Size = new System.Drawing.Size(623, 47);
             this.textBoxEmailInfracteur.TabIndex = 36;
             // 
             // labelEmailInfracteur
             // 
             this.labelEmailInfracteur.AutoSize = true;
-            this.labelEmailInfracteur.Location = new System.Drawing.Point(660, 421);
+            this.labelEmailInfracteur.Location = new System.Drawing.Point(1603, 1151);
+            this.labelEmailInfracteur.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelEmailInfracteur.Name = "labelEmailInfracteur";
-            this.labelEmailInfracteur.Size = new System.Drawing.Size(47, 15);
+            this.labelEmailInfracteur.Size = new System.Drawing.Size(115, 41);
             this.labelEmailInfracteur.TabIndex = 35;
             this.labelEmailInfracteur.Text = "E-mail :";
             // 
             // textBoxCodePostalInfracteur
             // 
-            this.textBoxCodePostalInfracteur.Location = new System.Drawing.Point(789, 371);
+            this.textBoxCodePostalInfracteur.Location = new System.Drawing.Point(1916, 1014);
+            this.textBoxCodePostalInfracteur.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.textBoxCodePostalInfracteur.Name = "textBoxCodePostalInfracteur";
-            this.textBoxCodePostalInfracteur.Size = new System.Drawing.Size(259, 23);
+            this.textBoxCodePostalInfracteur.Size = new System.Drawing.Size(623, 47);
             this.textBoxCodePostalInfracteur.TabIndex = 34;
             // 
             // labelCodePostalInfracteur
             // 
             this.labelCodePostalInfracteur.AutoSize = true;
-            this.labelCodePostalInfracteur.Location = new System.Drawing.Point(660, 374);
+            this.labelCodePostalInfracteur.Location = new System.Drawing.Point(1603, 1022);
+            this.labelCodePostalInfracteur.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelCodePostalInfracteur.Name = "labelCodePostalInfracteur";
-            this.labelCodePostalInfracteur.Size = new System.Drawing.Size(79, 15);
+            this.labelCodePostalInfracteur.Size = new System.Drawing.Size(201, 41);
             this.labelCodePostalInfracteur.TabIndex = 33;
             this.labelCodePostalInfracteur.Text = "Code postal : ";
             // 
             // textBoxVilleInfracteur
             // 
-            this.textBoxVilleInfracteur.Location = new System.Drawing.Point(790, 315);
+            this.textBoxVilleInfracteur.Location = new System.Drawing.Point(1919, 861);
+            this.textBoxVilleInfracteur.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.textBoxVilleInfracteur.Name = "textBoxVilleInfracteur";
-            this.textBoxVilleInfracteur.Size = new System.Drawing.Size(259, 23);
+            this.textBoxVilleInfracteur.Size = new System.Drawing.Size(623, 47);
             this.textBoxVilleInfracteur.TabIndex = 32;
             // 
             // labelVilleInfracteur
             // 
             this.labelVilleInfracteur.AutoSize = true;
-            this.labelVilleInfracteur.Location = new System.Drawing.Point(660, 318);
+            this.labelVilleInfracteur.Location = new System.Drawing.Point(1603, 869);
+            this.labelVilleInfracteur.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelVilleInfracteur.Name = "labelVilleInfracteur";
-            this.labelVilleInfracteur.Size = new System.Drawing.Size(35, 15);
+            this.labelVilleInfracteur.Size = new System.Drawing.Size(89, 41);
             this.labelVilleInfracteur.TabIndex = 31;
             this.labelVilleInfracteur.Text = "Ville :";
             // 
             // textBoxAdresseInfracteur
             // 
-            this.textBoxAdresseInfracteur.Location = new System.Drawing.Point(790, 267);
+            this.textBoxAdresseInfracteur.Location = new System.Drawing.Point(1919, 730);
+            this.textBoxAdresseInfracteur.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.textBoxAdresseInfracteur.Name = "textBoxAdresseInfracteur";
-            this.textBoxAdresseInfracteur.Size = new System.Drawing.Size(259, 23);
+            this.textBoxAdresseInfracteur.Size = new System.Drawing.Size(623, 47);
             this.textBoxAdresseInfracteur.TabIndex = 30;
             // 
             // labelAdresseInfracteur
             // 
             this.labelAdresseInfracteur.AutoSize = true;
-            this.labelAdresseInfracteur.Location = new System.Drawing.Point(660, 270);
+            this.labelAdresseInfracteur.Location = new System.Drawing.Point(1603, 738);
+            this.labelAdresseInfracteur.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelAdresseInfracteur.Name = "labelAdresseInfracteur";
-            this.labelAdresseInfracteur.Size = new System.Drawing.Size(54, 15);
+            this.labelAdresseInfracteur.Size = new System.Drawing.Size(138, 41);
             this.labelAdresseInfracteur.TabIndex = 29;
             this.labelAdresseInfracteur.Text = "Adresse :";
             // 
             // textBoxEmailPlaignant
             // 
-            this.textBoxEmailPlaignant.Location = new System.Drawing.Point(226, 418);
+            this.textBoxEmailPlaignant.Location = new System.Drawing.Point(549, 1143);
+            this.textBoxEmailPlaignant.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.textBoxEmailPlaignant.Name = "textBoxEmailPlaignant";
-            this.textBoxEmailPlaignant.Size = new System.Drawing.Size(259, 23);
+            this.textBoxEmailPlaignant.Size = new System.Drawing.Size(623, 47);
             this.textBoxEmailPlaignant.TabIndex = 27;
             // 
             // labelEmailPlaignant
             // 
             this.labelEmailPlaignant.AutoSize = true;
-            this.labelEmailPlaignant.Location = new System.Drawing.Point(96, 421);
+            this.labelEmailPlaignant.Location = new System.Drawing.Point(233, 1151);
+            this.labelEmailPlaignant.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelEmailPlaignant.Name = "labelEmailPlaignant";
-            this.labelEmailPlaignant.Size = new System.Drawing.Size(47, 15);
+            this.labelEmailPlaignant.Size = new System.Drawing.Size(115, 41);
             this.labelEmailPlaignant.TabIndex = 26;
             this.labelEmailPlaignant.Text = "E-mail :";
             // 
             // textBoxCodePostalPlaignant
             // 
-            this.textBoxCodePostalPlaignant.Location = new System.Drawing.Point(225, 371);
+            this.textBoxCodePostalPlaignant.Location = new System.Drawing.Point(546, 1014);
+            this.textBoxCodePostalPlaignant.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.textBoxCodePostalPlaignant.Name = "textBoxCodePostalPlaignant";
-            this.textBoxCodePostalPlaignant.Size = new System.Drawing.Size(259, 23);
+            this.textBoxCodePostalPlaignant.Size = new System.Drawing.Size(623, 47);
             this.textBoxCodePostalPlaignant.TabIndex = 25;
             // 
             // labelCodePostalPlaignant
             // 
             this.labelCodePostalPlaignant.AutoSize = true;
-            this.labelCodePostalPlaignant.Location = new System.Drawing.Point(96, 374);
+            this.labelCodePostalPlaignant.Location = new System.Drawing.Point(233, 1022);
+            this.labelCodePostalPlaignant.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelCodePostalPlaignant.Name = "labelCodePostalPlaignant";
-            this.labelCodePostalPlaignant.Size = new System.Drawing.Size(79, 15);
+            this.labelCodePostalPlaignant.Size = new System.Drawing.Size(201, 41);
             this.labelCodePostalPlaignant.TabIndex = 24;
             this.labelCodePostalPlaignant.Text = "Code postal : ";
             // 
             // textBoxVillePlaignant
             // 
-            this.textBoxVillePlaignant.Location = new System.Drawing.Point(226, 315);
+            this.textBoxVillePlaignant.Location = new System.Drawing.Point(549, 861);
+            this.textBoxVillePlaignant.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.textBoxVillePlaignant.Name = "textBoxVillePlaignant";
-            this.textBoxVillePlaignant.Size = new System.Drawing.Size(259, 23);
+            this.textBoxVillePlaignant.Size = new System.Drawing.Size(623, 47);
             this.textBoxVillePlaignant.TabIndex = 23;
             // 
             // labelVillePlaignant
             // 
             this.labelVillePlaignant.AutoSize = true;
-            this.labelVillePlaignant.Location = new System.Drawing.Point(96, 318);
+            this.labelVillePlaignant.Location = new System.Drawing.Point(233, 869);
+            this.labelVillePlaignant.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelVillePlaignant.Name = "labelVillePlaignant";
-            this.labelVillePlaignant.Size = new System.Drawing.Size(35, 15);
+            this.labelVillePlaignant.Size = new System.Drawing.Size(89, 41);
             this.labelVillePlaignant.TabIndex = 22;
             this.labelVillePlaignant.Text = "Ville :";
             // 
             // textBoxAdressePlaignant
             // 
-            this.textBoxAdressePlaignant.Location = new System.Drawing.Point(226, 267);
+            this.textBoxAdressePlaignant.Location = new System.Drawing.Point(546, 730);
+            this.textBoxAdressePlaignant.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.textBoxAdressePlaignant.Name = "textBoxAdressePlaignant";
-            this.textBoxAdressePlaignant.Size = new System.Drawing.Size(259, 23);
+            this.textBoxAdressePlaignant.Size = new System.Drawing.Size(623, 47);
             this.textBoxAdressePlaignant.TabIndex = 21;
             // 
             // labelAdressePlaignant
             // 
             this.labelAdressePlaignant.AutoSize = true;
-            this.labelAdressePlaignant.Location = new System.Drawing.Point(96, 270);
+            this.labelAdressePlaignant.Location = new System.Drawing.Point(233, 738);
+            this.labelAdressePlaignant.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelAdressePlaignant.Name = "labelAdressePlaignant";
-            this.labelAdressePlaignant.Size = new System.Drawing.Size(54, 15);
+            this.labelAdressePlaignant.Size = new System.Drawing.Size(138, 41);
             this.labelAdressePlaignant.TabIndex = 20;
             this.labelAdressePlaignant.Text = "Adresse :";
             // 
             // textBoxPrenomInfracteur
             // 
-            this.textBoxPrenomInfracteur.Location = new System.Drawing.Point(791, 189);
+            this.textBoxPrenomInfracteur.Location = new System.Drawing.Point(1921, 517);
+            this.textBoxPrenomInfracteur.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.textBoxPrenomInfracteur.Name = "textBoxPrenomInfracteur";
-            this.textBoxPrenomInfracteur.Size = new System.Drawing.Size(259, 23);
+            this.textBoxPrenomInfracteur.Size = new System.Drawing.Size(623, 47);
             this.textBoxPrenomInfracteur.TabIndex = 19;
             // 
             // labelPrenomInfracteur
             // 
             this.labelPrenomInfracteur.AutoSize = true;
-            this.labelPrenomInfracteur.Location = new System.Drawing.Point(662, 192);
+            this.labelPrenomInfracteur.Location = new System.Drawing.Point(1608, 525);
+            this.labelPrenomInfracteur.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelPrenomInfracteur.Name = "labelPrenomInfracteur";
-            this.labelPrenomInfracteur.Size = new System.Drawing.Size(109, 15);
+            this.labelPrenomInfracteur.Size = new System.Drawing.Size(271, 41);
             this.labelPrenomInfracteur.TabIndex = 18;
             this.labelPrenomInfracteur.Text = "Prenom Infracteur :";
             // 
             // textBoxNomInfracteur
             // 
-            this.textBoxNomInfracteur.Location = new System.Drawing.Point(790, 156);
+            this.textBoxNomInfracteur.Location = new System.Drawing.Point(1919, 426);
+            this.textBoxNomInfracteur.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.textBoxNomInfracteur.Name = "textBoxNomInfracteur";
-            this.textBoxNomInfracteur.Size = new System.Drawing.Size(259, 23);
+            this.textBoxNomInfracteur.Size = new System.Drawing.Size(623, 47);
             this.textBoxNomInfracteur.TabIndex = 17;
             // 
             // labelNomInfracteur
             // 
             this.labelNomInfracteur.AutoSize = true;
-            this.labelNomInfracteur.Location = new System.Drawing.Point(662, 156);
+            this.labelNomInfracteur.Location = new System.Drawing.Point(1608, 426);
+            this.labelNomInfracteur.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelNomInfracteur.Name = "labelNomInfracteur";
-            this.labelNomInfracteur.Size = new System.Drawing.Size(97, 15);
+            this.labelNomInfracteur.Size = new System.Drawing.Size(241, 41);
             this.labelNomInfracteur.TabIndex = 16;
             this.labelNomInfracteur.Text = "Nom Infracteur : ";
             // 
             // textBoxPrenomPlaignant
             // 
-            this.textBoxPrenomPlaignant.Location = new System.Drawing.Point(226, 189);
+            this.textBoxPrenomPlaignant.Location = new System.Drawing.Point(546, 517);
+            this.textBoxPrenomPlaignant.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.textBoxPrenomPlaignant.Name = "textBoxPrenomPlaignant";
-            this.textBoxPrenomPlaignant.Size = new System.Drawing.Size(259, 23);
+            this.textBoxPrenomPlaignant.Size = new System.Drawing.Size(623, 47);
             this.textBoxPrenomPlaignant.TabIndex = 14;
             // 
             // labelPrenomPlaignant
             // 
             this.labelPrenomPlaignant.AutoSize = true;
-            this.labelPrenomPlaignant.Location = new System.Drawing.Point(97, 192);
+            this.labelPrenomPlaignant.Location = new System.Drawing.Point(236, 525);
+            this.labelPrenomPlaignant.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelPrenomPlaignant.Name = "labelPrenomPlaignant";
-            this.labelPrenomPlaignant.Size = new System.Drawing.Size(108, 15);
+            this.labelPrenomPlaignant.Size = new System.Drawing.Size(269, 41);
             this.labelPrenomPlaignant.TabIndex = 13;
             this.labelPrenomPlaignant.Text = "Prenom plaignant :";
             // 
             // textBoxNomPlaignant
             // 
-            this.textBoxNomPlaignant.Location = new System.Drawing.Point(225, 156);
+            this.textBoxNomPlaignant.Location = new System.Drawing.Point(546, 426);
+            this.textBoxNomPlaignant.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.textBoxNomPlaignant.Name = "textBoxNomPlaignant";
-            this.textBoxNomPlaignant.Size = new System.Drawing.Size(259, 23);
+            this.textBoxNomPlaignant.Size = new System.Drawing.Size(623, 47);
             this.textBoxNomPlaignant.TabIndex = 12;
             // 
             // labelNomPlaignant
             // 
             this.labelNomPlaignant.AutoSize = true;
-            this.labelNomPlaignant.Location = new System.Drawing.Point(97, 156);
+            this.labelNomPlaignant.Location = new System.Drawing.Point(236, 426);
+            this.labelNomPlaignant.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelNomPlaignant.Name = "labelNomPlaignant";
-            this.labelNomPlaignant.Size = new System.Drawing.Size(96, 15);
+            this.labelNomPlaignant.Size = new System.Drawing.Size(239, 41);
             this.labelNomPlaignant.TabIndex = 11;
             this.labelNomPlaignant.Text = "Nom plaignant : ";
             // 
             // comboBoxDelegue
             // 
             this.comboBoxDelegue.FormattingEnabled = true;
-            this.comboBoxDelegue.Location = new System.Drawing.Point(226, 58);
+            this.comboBoxDelegue.Location = new System.Drawing.Point(549, 159);
+            this.comboBoxDelegue.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.comboBoxDelegue.Name = "comboBoxDelegue";
-            this.comboBoxDelegue.Size = new System.Drawing.Size(259, 23);
+            this.comboBoxDelegue.Size = new System.Drawing.Size(623, 49);
             this.comboBoxDelegue.TabIndex = 9;
             // 
             // comboBoxTitulaire
             // 
             this.comboBoxTitulaire.FormattingEnabled = true;
-            this.comboBoxTitulaire.Location = new System.Drawing.Point(226, 27);
+            this.comboBoxTitulaire.Location = new System.Drawing.Point(549, 74);
+            this.comboBoxTitulaire.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.comboBoxTitulaire.Name = "comboBoxTitulaire";
-            this.comboBoxTitulaire.Size = new System.Drawing.Size(259, 23);
+            this.comboBoxTitulaire.Size = new System.Drawing.Size(623, 49);
             this.comboBoxTitulaire.TabIndex = 7;
             // 
             // labelDelegue
             // 
             this.labelDelegue.AutoSize = true;
-            this.labelDelegue.Location = new System.Drawing.Point(98, 61);
+            this.labelDelegue.Location = new System.Drawing.Point(238, 167);
+            this.labelDelegue.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelDelegue.Name = "labelDelegue";
-            this.labelDelegue.Size = new System.Drawing.Size(56, 15);
+            this.labelDelegue.Size = new System.Drawing.Size(144, 41);
             this.labelDelegue.TabIndex = 5;
             this.labelDelegue.Text = "Delegue :";
             // 
             // labelTitulaireEnquete
             // 
             this.labelTitulaireEnquete.AutoSize = true;
-            this.labelTitulaireEnquete.Location = new System.Drawing.Point(97, 30);
+            this.labelTitulaireEnquete.Location = new System.Drawing.Point(236, 82);
+            this.labelTitulaireEnquete.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
             this.labelTitulaireEnquete.Name = "labelTitulaireEnquete";
-            this.labelTitulaireEnquete.Size = new System.Drawing.Size(123, 15);
+            this.labelTitulaireEnquete.Size = new System.Drawing.Size(312, 41);
             this.labelTitulaireEnquete.TabIndex = 4;
             this.labelTitulaireEnquete.Text = "Titulaire de l\'enquête :";
             // 
             // richTextBoxMotif
             // 
-            this.richTextBoxMotif.Location = new System.Drawing.Point(225, 491);
+            this.richTextBoxMotif.Location = new System.Drawing.Point(546, 1342);
+            this.richTextBoxMotif.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.richTextBoxMotif.Name = "richTextBoxMotif";
-            this.richTextBoxMotif.Size = new System.Drawing.Size(822, 100);
+            this.richTextBoxMotif.Size = new System.Drawing.Size(1991, 266);
             this.richTextBoxMotif.TabIndex = 38;
             this.richTextBoxMotif.Text = "";
             // 
             // OuvrirEnquete
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1236, 640);
+            this.ClientSize = new System.Drawing.Size(3002, 1748);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
+            this.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.Name = "OuvrirEnquete";
             this.Text = "OuvrirEnquete";
             this.Load += new System.EventHandler(this.OuvrirEnquete_Load);
@@ -639,5 +856,21 @@ namespace SPA
         private System.Windows.Forms.Button buttonAjouterFichier;
         private System.Windows.Forms.ColumnHeader columnHeaderEmplacement;
         private System.Windows.Forms.ListView listViewDocuments;
+        private System.Windows.Forms.Label labelErrorNomPrenomPlaignant;
+        private System.Windows.Forms.Label labelErrorEnquete;
+        private System.Windows.Forms.Label labelErrorNomPrenomInfracteur;
+        private System.Windows.Forms.Label labelErrorMotif;
+        private System.Windows.Forms.Label labelErrorVillePlaignant;
+        private System.Windows.Forms.Label labelErrorAdressePlaignant;
+        private System.Windows.Forms.Label labelErrorCodePostalPlaigant;
+        private System.Windows.Forms.Label labelErrorAdresseInfracteur;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelErrorVilleInfracteur;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelErrorCodePostalInfracteur;
+        private System.Windows.Forms.Label labelErrorEmailPlaignant;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelErrorEmailInfracteur;
+        private System.Windows.Forms.Label labelErrorAnimaux;
     }
 }

@@ -20,7 +20,7 @@ namespace SPA
         }
         private void OuvrirEnquete_Load(object sender, EventArgs e)
         {
-            foreach(Personne personne in Personne.GetSalarieBenvole())
+            foreach (Personne personne in Personne.GetSalarieBenvole())
             {
                 comboBoxDelegue.Items.Add(personne.Nom + " " + personne.Prenom);
                 comboBoxTitulaire.Items.Add(personne.Nom + " " + personne.Prenom);
@@ -28,7 +28,7 @@ namespace SPA
 
             foreach (Race_animal animal in Race_animal.GetRace_Animals())
             {
-                if (!comboBoxAnimaux.Items.Contains(animal.Animal)) 
+                if (!comboBoxAnimaux.Items.Contains(animal.Animal))
                 {
                     comboBoxAnimaux.Items.Add(animal.Animal);
                 }
@@ -36,13 +36,32 @@ namespace SPA
         }
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {
-            String valuePrenomPlaignant = textBoxPrenomPlaignant.Text;
-            // Enquete enquete1 = new Enquete { Id = "test", Plaignant = new Personne { Id = 1 } };
+            bool enquete_complete = true;
+            foreach (Control element in this.Controls)
+            {
+                if (element is Label && ((Label)element).ForeColor == Color.Red)
+                {
+                    element.Visible = false;
+                }
+            }
+            if(textBoxPrenomPlaignant.Text == "" || textBoxNomPlaignant.Text == "")
+            {
+                labelErrorNomPrenomPlaignant.Visible = true;
+                enquete_complete = false;
+            }
+            if(!enquete_complete)
+            {
+                labelErrorEnquete.Visible = true;
+            }
+            else
+            {
+                // Enquete enquete1 = new Enquete { Id = "test", Plaignant = new Personne { Id = 1 } };
+            }
         }
 
         private void buttonAjouter_Click(object sender, EventArgs e)
         {
-            if(!string.IsNullOrEmpty((string)comboBoxAnimaux.SelectedItem) && 
+            if (!string.IsNullOrEmpty((string)comboBoxAnimaux.SelectedItem) &&
                !string.IsNullOrEmpty((string)comboBoxRace.SelectedItem) &&
                numericUpDownNombre.Value > 0)
             {
@@ -50,7 +69,12 @@ namespace SPA
                 item.SubItems.Add((string)comboBoxRace.SelectedItem);
                 item.SubItems.Add(numericUpDownNombre.Value.ToString());
                 listViewAnimaux.Items.Add(item);
+                labelErrorAnimaux.Visible = false;
             }
+            else
+            {
+                labelErrorAnimaux.Visible = true;
+            } 
         }
         private void buttonSupprimer_Click(object sender, EventArgs e)
         {
