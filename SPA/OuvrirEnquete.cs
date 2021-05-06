@@ -38,9 +38,10 @@ namespace SPA
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {
             //Creation des regex
-            Regex lettres_uniquement_regex = new Regex("^[a-zA-Z]+$");
+            Regex lettres_regex = new Regex("^[a-zA-Z]+$");
             Regex adresse_email_regex = new Regex("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
-            Regex code_postal_regex = new Regex("^(([0-8][0-9])|(9[0-5]))[0-9]{3}$");
+            Regex code_postal_regex = new Regex("^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$");
+            Regex alphanumeriques_regex = new Regex("^[a-bA-B0-9,.;:?!+\\-=() ]+$");
 
             bool enquete_complete = true;
             foreach (Control element in this.Controls)
@@ -50,44 +51,44 @@ namespace SPA
                     element.Visible = false;
                 }
             }
-            if(!lettres_uniquement_regex.IsMatch(textBoxPrenomPlaignant.Text)||
-               !lettres_uniquement_regex.IsMatch(textBoxNomPlaignant.Text))
+            if(!lettres_regex.IsMatch(textBoxPrenomPlaignant.Text)||
+               !lettres_regex.IsMatch(textBoxNomPlaignant.Text))
             {
                 labelErrorNomPrenomPlaignant.Visible = true;
                 enquete_complete = false;
             }
-            if (!lettres_uniquement_regex.IsMatch(textBoxPrenomInfracteur.Text)||
-                !lettres_uniquement_regex.IsMatch(textBoxNomInfracteur.Text))
+            if (!lettres_regex.IsMatch(textBoxPrenomInfracteur.Text)||
+                !lettres_regex.IsMatch(textBoxNomInfracteur.Text))
             {
                 labelErrorNomPrenomInfracteur.Visible = true;
                 enquete_complete = false;
             }
-            if (textBoxAdressePlaignant.Text == "")
+            if (!alphanumeriques_regex.IsMatch(textBoxAdressePlaignant.Text))
             {
                 labelErrorAdressePlaignant.Visible = true;
                 enquete_complete = false;
             }
-            if (textBoxAdresseInfracteur.Text == "")
+            if (!alphanumeriques_regex.IsMatch(textBoxAdresseInfracteur.Text))
             {
                 labelErrorAdresseInfracteur.Visible = true;
                 enquete_complete = false;
             }
-            if (!lettres_uniquement_regex.IsMatch(textBoxVillePlaignant.Text))
+            if (!lettres_regex.IsMatch(textBoxVillePlaignant.Text))
             {
                 labelErrorVillePlaignant.Visible = true;
                 enquete_complete = false;
             }
-            if (!lettres_uniquement_regex.IsMatch(textBoxVilleInfracteur.Text))
+            if (!lettres_regex.IsMatch(textBoxVilleInfracteur.Text))
             {
                 labelErrorVilleInfracteur.Visible = true;
                 enquete_complete = false;
             }
-            if (textBoxCodePostalPlaignant.Text == "")
+            if (!code_postal_regex.IsMatch(textBoxCodePostalPlaignant.Text))
             {
                 labelErrorCodePostalPlaignant.Visible = true;
                 enquete_complete = false;
             }
-            if (textBoxCodePostalInfracteur.Text == "")
+            if (!code_postal_regex.IsMatch(textBoxCodePostalInfracteur.Text))
             {
                 labelErrorCodePostalInfracteur.Visible = true;
                 enquete_complete = false;
@@ -102,7 +103,7 @@ namespace SPA
                 labelErrorEmailInfracteur.Visible = true;
                 enquete_complete = false;
             }
-            if (richTextBoxMotif.Text == "")
+            if (!alphanumeriques_regex.IsMatch(richTextBoxMotif.Text))
             {
                 labelErrorMotif.Visible = true;
                 enquete_complete = false;
