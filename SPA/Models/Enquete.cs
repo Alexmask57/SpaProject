@@ -23,22 +23,25 @@ namespace SPA.Models
         {
 
             //Création des personnes en BDD (dans le cas ou elles n'existent pas)
-            if (!PersonneDAO.ExistPersonne(enquete.Titulaire_enquete))
-                enquete.Titulaire_enquete.Id = PersonneDAO.AddPersonne(enquete.Titulaire_enquete);
+            if (!Personne.ExistPersonneBdd(enquete.Titulaire_enquete))
+                enquete.Titulaire_enquete.Id = Personne.AddPersonneBdd(enquete.Titulaire_enquete);
             else
-                enquete.Titulaire_enquete = PersonneDAO.GetPersonne(enquete.Titulaire_enquete.Nom, enquete.Titulaire_enquete.Prenom);
-            if (!PersonneDAO.ExistPersonne(enquete.Delegue_enqueteur))
-                enquete.Delegue_enqueteur.Id =  PersonneDAO.AddPersonne(enquete.Delegue_enqueteur);
+                enquete.Titulaire_enquete = Personne.GetPersonne(enquete.Titulaire_enquete.Nom, enquete.Titulaire_enquete.Prenom);
+
+            if (!Personne.ExistPersonneBdd(enquete.Delegue_enqueteur))
+                enquete.Delegue_enqueteur.Id = Personne.AddPersonneBdd(enquete.Delegue_enqueteur);
             else
-                enquete.Delegue_enqueteur = PersonneDAO.GetPersonne(enquete.Delegue_enqueteur.Nom, enquete.Delegue_enqueteur.Prenom);
-            if (!PersonneDAO.ExistPersonne(enquete.Infracteur))
-                enquete.Infracteur.Id =  PersonneDAO.AddPersonne(enquete.Infracteur);
+                enquete.Delegue_enqueteur = Personne.GetPersonne(enquete.Delegue_enqueteur.Nom, enquete.Delegue_enqueteur.Prenom);
+
+            if (!Personne.ExistPersonneBdd(enquete.Infracteur))
+                enquete.Infracteur.Id = Personne.AddPersonneBdd(enquete.Infracteur);
             else
-                enquete.Infracteur = PersonneDAO.GetPersonne(enquete.Infracteur.Nom, enquete.Infracteur.Prenom);
-            if (!PersonneDAO.ExistPersonne(enquete.Plaignant))
-                enquete.Plaignant.Id = PersonneDAO.AddPersonne(enquete.Plaignant);
+                enquete.Infracteur = Personne.GetPersonne(enquete.Infracteur.Nom, enquete.Infracteur.Prenom);
+
+            if (!Personne.ExistPersonneBdd(enquete.Plaignant))
+                enquete.Plaignant.Id = Personne.AddPersonneBdd(enquete.Plaignant);
             else
-                enquete.Plaignant = PersonneDAO.GetPersonne(enquete.Plaignant.Nom, enquete.Plaignant.Prenom);
+                enquete.Plaignant = Personne.GetPersonne(enquete.Plaignant.Nom, enquete.Plaignant.Prenom);
 
             enquete.GenerateId();
 
@@ -49,8 +52,16 @@ namespace SPA.Models
             }
             EnqueteDAO.AddEnquete(enquete);
         }
-        
-        private void GenerateId()
+
+        public static void UpdateEnqueteBdd(Enquete enquete)
+        {
+            //TODO
+
+            //Update enquete uniquement
+            EnqueteDAO.UpdateEnquete(enquete);
+        }
+
+            private void GenerateId()
         {
             string departement = this.Titulaire_enquete.Refuge.Departement.ToString("00");
             string annee = DateTime.Now.ToString("yy");

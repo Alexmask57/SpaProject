@@ -46,3 +46,4 @@ C:\Users\admin\source\repos\SpaProject\SPA\obj\Debug\netcoreapp3.1\SPA.csproj.Co
 C:\Users\admin\source\repos\SpaProject\SPA\obj\Debug\netcoreapp3.1\SPA.dll
 C:\Users\admin\source\repos\SpaProject\SPA\obj\Debug\netcoreapp3.1\SPA.pdb
 C:\Users\admin\source\repos\SpaProject\SPA\obj\Debug\netcoreapp3.1\SPA.genruntimeconfig.cache
+C:\Users\admin\source\repos\SpaProject\SPA\obj\Debug\netcoreapp3.1\SPA.ModifierEnquete.resources

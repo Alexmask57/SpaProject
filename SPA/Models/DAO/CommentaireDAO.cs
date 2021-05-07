@@ -92,5 +92,41 @@ namespace SPA.Models.DAO
                 throw;
             }
         }
+
+        public static bool UpdateCommentaire(Commentaire commentaire)
+        {
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"UPDATE Commentaire SET Date = @Date, Detail = @Detail;";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Date", commentaire.Date);
+                    cmd.Parameters.AddWithValue("@Detail", commentaire.Detail);
+
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

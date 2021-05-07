@@ -22,6 +22,11 @@ namespace SPA.Models
             return PersonneDAO.GetPersonne(id);
         }
 
+        public static Personne GetPersonne(string nom, string prenom)
+        {
+            return PersonneDAO.GetPersonne(nom, prenom);
+        }
+
         /// <summary>
         /// recupere les salaries et les benevoles
         /// </summary>
@@ -29,6 +34,21 @@ namespace SPA.Models
         public static List<Personne> GetSalarieBenvole()
         {
             return PersonneDAO.GetAllSalarieBenevole();
+        }
+
+        public static int AddPersonneBdd(Personne personne)
+        {
+            return PersonneDAO.AddPersonne(personne);
+        }
+
+        public static bool ExistPersonneBdd(Personne personne)
+        {
+            return PersonneDAO.ExistPersonne(personne);
+        }
+
+        public static bool UpdatePersonneBdd(Personne personne)
+        {
+            return PersonneDAO.UpdatePersonne(personne);
         }
 
         /// <summary>

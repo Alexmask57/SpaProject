@@ -60,44 +60,45 @@ namespace SPA.Models
             this.panel1.Controls.Add(this.buttonDeleteEnquete);
             this.panel1.Controls.Add(this.buttonModifyEnquetes);
             this.panel1.Controls.Add(this.buttonCreateEnquete);
-            this.panel1.Location = new System.Drawing.Point(2, 3);
-            this.panel1.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(2973, 293);
+            this.panel1.Size = new System.Drawing.Size(1224, 107);
             this.panel1.TabIndex = 1;
             // 
             // textBoxRecherche
             // 
-            this.textBoxRecherche.Location = new System.Drawing.Point(1576, 213);
+            this.textBoxRecherche.Location = new System.Drawing.Point(649, 78);
+            this.textBoxRecherche.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.textBoxRecherche.Name = "textBoxRecherche";
-            this.textBoxRecherche.Size = new System.Drawing.Size(576, 47);
+            this.textBoxRecherche.Size = new System.Drawing.Size(240, 23);
             this.textBoxRecherche.TabIndex = 5;
             // 
             // labelRecherche
             // 
             this.labelRecherche.AutoSize = true;
-            this.labelRecherche.Location = new System.Drawing.Point(1390, 213);
+            this.labelRecherche.Location = new System.Drawing.Point(572, 78);
+            this.labelRecherche.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.labelRecherche.Name = "labelRecherche";
-            this.labelRecherche.Size = new System.Drawing.Size(170, 41);
+            this.labelRecherche.Size = new System.Drawing.Size(68, 15);
             this.labelRecherche.TabIndex = 4;
             this.labelRecherche.Text = "Recherche :";
             // 
             // labelTitre
             // 
             this.labelTitre.AutoSize = true;
-            this.labelTitre.Location = new System.Drawing.Point(140, 42);
+            this.labelTitre.Location = new System.Drawing.Point(58, 15);
+            this.labelTitre.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.labelTitre.Name = "labelTitre";
-            this.labelTitre.Size = new System.Drawing.Size(140, 41);
+            this.labelTitre.Size = new System.Drawing.Size(55, 15);
             this.labelTitre.TabIndex = 3;
             this.labelTitre.Text = "labelTitre";
             // 
             // buttonDeleteEnquete
             // 
             this.buttonDeleteEnquete.Enabled = false;
-            this.buttonDeleteEnquete.Location = new System.Drawing.Point(795, 120);
-            this.buttonDeleteEnquete.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.buttonDeleteEnquete.Location = new System.Drawing.Point(327, 44);
             this.buttonDeleteEnquete.Name = "buttonDeleteEnquete";
-            this.buttonDeleteEnquete.Size = new System.Drawing.Size(282, 134);
+            this.buttonDeleteEnquete.Size = new System.Drawing.Size(116, 49);
             this.buttonDeleteEnquete.TabIndex = 2;
             this.buttonDeleteEnquete.Text = "Supprimer une enquête";
             this.buttonDeleteEnquete.UseVisualStyleBackColor = true;
@@ -106,10 +107,9 @@ namespace SPA.Models
             // buttonModifyEnquetes
             // 
             this.buttonModifyEnquetes.Enabled = false;
-            this.buttonModifyEnquetes.Location = new System.Drawing.Point(472, 120);
-            this.buttonModifyEnquetes.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.buttonModifyEnquetes.Location = new System.Drawing.Point(194, 44);
             this.buttonModifyEnquetes.Name = "buttonModifyEnquetes";
-            this.buttonModifyEnquetes.Size = new System.Drawing.Size(279, 134);
+            this.buttonModifyEnquetes.Size = new System.Drawing.Size(115, 49);
             this.buttonModifyEnquetes.TabIndex = 0;
             this.buttonModifyEnquetes.Text = "Modifier une enquête";
             this.buttonModifyEnquetes.UseVisualStyleBackColor = true;
@@ -117,10 +117,9 @@ namespace SPA.Models
             // 
             // buttonCreateEnquete
             // 
-            this.buttonCreateEnquete.Location = new System.Drawing.Point(140, 120);
-            this.buttonCreateEnquete.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.buttonCreateEnquete.Location = new System.Drawing.Point(58, 44);
             this.buttonCreateEnquete.Name = "buttonCreateEnquete";
-            this.buttonCreateEnquete.Size = new System.Drawing.Size(282, 134);
+            this.buttonCreateEnquete.Size = new System.Drawing.Size(116, 49);
             this.buttonCreateEnquete.TabIndex = 1;
             this.buttonCreateEnquete.Text = "Ajouter une enquête";
             this.buttonCreateEnquete.UseVisualStyleBackColor = true;
@@ -133,10 +132,9 @@ namespace SPA.Models
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelAccueil.AutoSize = true;
             this.panelAccueil.Controls.Add(this.listViewEnquetes);
-            this.panelAccueil.Location = new System.Drawing.Point(2, 295);
-            this.panelAccueil.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
+            this.panelAccueil.Location = new System.Drawing.Point(1, 108);
             this.panelAccueil.Name = "panelAccueil";
-            this.panelAccueil.Size = new System.Drawing.Size(2979, 1422);
+            this.panelAccueil.Size = new System.Drawing.Size(1724, 779);
             this.panelAccueil.TabIndex = 2;
             // 
             // listViewEnquetes
@@ -157,10 +155,11 @@ namespace SPA.Models
             this.columnHeaderNbAnimaux});
             this.listViewEnquetes.FullRowSelect = true;
             this.listViewEnquetes.HideSelection = false;
-            this.listViewEnquetes.Location = new System.Drawing.Point(140, 0);
+            this.listViewEnquetes.Location = new System.Drawing.Point(58, 0);
+            this.listViewEnquetes.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.listViewEnquetes.MultiSelect = false;
             this.listViewEnquetes.Name = "listViewEnquetes";
-            this.listViewEnquetes.Size = new System.Drawing.Size(2708, 1343);
+            this.listViewEnquetes.Size = new System.Drawing.Size(1614, 753);
             this.listViewEnquetes.TabIndex = 0;
             this.listViewEnquetes.UseCompatibleStateImageBehavior = false;
             this.listViewEnquetes.View = System.Windows.Forms.View.Details;
@@ -213,12 +212,11 @@ namespace SPA.Models
             // 
             // Accueil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2977, 1719);
+            this.ClientSize = new System.Drawing.Size(1248, 630);
             this.Controls.Add(this.panelAccueil);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.Name = "Accueil";
             this.Text = "Accueil";
             this.Load += new System.EventHandler(this.Accueil_Load);

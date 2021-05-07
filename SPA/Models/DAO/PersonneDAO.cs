@@ -105,6 +105,49 @@ namespace SPA.Models
             }
         }
 
+        public static bool UpdatePersonne(Personne personne)
+        {
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"UPDATE Document SET Nom = @Nom, Prenom = @Prenom, Adresse = @Adresse, Code_postal = @Code_postal, Ville = @Ville, Email = @Email, Salarie = @Salarie, Benevole = @Benevole, Id_refuge = @IdRefuge;";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Nom", personne.Nom);
+                    cmd.Parameters.AddWithValue("@Prenom", personne.Prenom);
+                    cmd.Parameters.AddWithValue("@Adresse", personne.Adresse);
+                    cmd.Parameters.AddWithValue("@Code_postal", personne.Code_postal);
+                    cmd.Parameters.AddWithValue("@Ville", personne.Ville);
+                    cmd.Parameters.AddWithValue("@Email", personne.Email);
+                    cmd.Parameters.AddWithValue("@Salarie", BoolToInt(personne.Salarie));
+                    cmd.Parameters.AddWithValue("@Benevole", BoolToInt(personne.Benevole));
+                    cmd.Parameters.AddWithValue("@IdRefuge", personne.Refuge.Id);
+
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public static bool ExistPersonne(Personne personne)
         {
             string nom = personne.Nom;

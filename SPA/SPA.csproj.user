@@ -7,9 +7,6 @@
     <Compile Update="Accueil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="ModifierEnquete.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="OuvrirEnquete.cs">
       <SubType>Form</SubType>
     </Compile>

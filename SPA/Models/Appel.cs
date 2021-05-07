@@ -30,5 +30,10 @@ namespace SPA.Models
         {
             return AppelDAO.AddAppel(appel);
         }
+
+        public static bool UpdateAppelBdd(Appel appel)
+        {
+            return AppelDAO.UpdateAppel(appel);
+        }
     }
 }

@@ -90,7 +90,47 @@ namespace SPA.Models
             }
         }
 
-        
+        public static bool UpdateEnquete(Enquete enquete)
+        {
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"UPDATE Enquete SET Titulaire_enquete = @Titulaire_enquete, Delegue_enqueteur = @Delegue_enqueteur, Infracteur = @Infracteur, Plaignant = @Plaignant, Etat = @Etat, Avis = @Avis ;";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Titulaire_enquete", enquete.Titulaire_enquete.Id);
+                    cmd.Parameters.AddWithValue("@Delegue_enqueteur", enquete.Delegue_enqueteur.Id);
+                    cmd.Parameters.AddWithValue("@Infracteur", enquete.Infracteur.Id);
+                    cmd.Parameters.AddWithValue("@Plaignant", enquete.Plaignant);
+                    cmd.Parameters.AddWithValue("@Etat", enquete.Etat);
+                    cmd.Parameters.AddWithValue("@Avis", enquete.Avis);
+
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+
         public static string GenerateId(string departement, string mois, string annee)
         {
             try

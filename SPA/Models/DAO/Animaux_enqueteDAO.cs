@@ -93,5 +93,41 @@ namespace SPA.Models.DAO
                 throw;
             }
         }
+
+        public static bool UpdateAnimalEnquete(Animaux_enquete animal)
+        {
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"UPDATE Animaux_enquete SET Race = @Race, Nombre = @Nombre;";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Race", animal.Race.Id);
+                    cmd.Parameters.AddWithValue("@Nombre", animal.Nombre);
+
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

@@ -30,5 +30,10 @@ namespace SPA.Models
         {
             return CommentaireDAO.AddCommentaire(commentaire);
         }
+
+        public static bool UpdateCommentaireBdd(Commentaire commentaire)
+        {
+            return CommentaireDAO.UpdateCommentaire(commentaire);
+        }
     }
 }

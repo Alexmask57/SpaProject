@@ -30,5 +30,10 @@ namespace SPA.Models
         {
             return DocumentDAO.AddDocument(document);
         }
+
+        public static bool UpdateDocumentBdd(Document document)
+        {
+            return DocumentDAO.UpdateDocument(document);
+        }
     }
 }

@@ -30,5 +30,10 @@ namespace SPA.Models
         {
             return Animaux_enqueteDAO.AddAnimalEnquete(animal);
         }
+
+        public static bool UpdateAnimalEnqueteBdd(Animaux_enquete animal)
+        {
+            return Animaux_enqueteDAO.UpdateAnimalEnquete(animal);
+        }
     }
 }
