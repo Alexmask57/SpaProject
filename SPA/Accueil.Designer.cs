@@ -38,6 +38,15 @@ namespace SPA.Models
             this.buttonCreateEnquete = new System.Windows.Forms.Button();
             this.panelAccueil = new System.Windows.Forms.Panel();
             this.listViewEnquetes = new System.Windows.Forms.ListView();
+            this.columnHeaderID = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderTitulaire = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderDelegue = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderInfracteur = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderPlaignant = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderEtat = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderAvis = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderNbCommentaire = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderNbAnimaux = new System.Windows.Forms.ColumnHeader();
             this.panel1.SuspendLayout();
             this.panelAccueil.SuspendLayout();
             this.SuspendLayout();
@@ -136,6 +145,16 @@ namespace SPA.Models
             this.listViewEnquetes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.listViewEnquetes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderID,
+            this.columnHeaderTitulaire,
+            this.columnHeaderDelegue,
+            this.columnHeaderInfracteur,
+            this.columnHeaderPlaignant,
+            this.columnHeaderEtat,
+            this.columnHeaderAvis,
+            this.columnHeaderNbCommentaire,
+            this.columnHeaderNbAnimaux});
             this.listViewEnquetes.FullRowSelect = true;
             this.listViewEnquetes.HideSelection = false;
             this.listViewEnquetes.Location = new System.Drawing.Point(140, 0);
@@ -144,6 +163,52 @@ namespace SPA.Models
             this.listViewEnquetes.Size = new System.Drawing.Size(2708, 1343);
             this.listViewEnquetes.TabIndex = 0;
             this.listViewEnquetes.UseCompatibleStateImageBehavior = false;
+            this.listViewEnquetes.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderID
+            // 
+            this.columnHeaderID.Text = "ID";
+            this.columnHeaderID.Width = 150;
+            // 
+            // columnHeaderTitulaire
+            // 
+            this.columnHeaderTitulaire.Text = "Titulaire";
+            this.columnHeaderTitulaire.Width = 300;
+            // 
+            // columnHeaderDelegue
+            // 
+            this.columnHeaderDelegue.Text = "Delegue";
+            this.columnHeaderDelegue.Width = 300;
+            // 
+            // columnHeaderInfracteur
+            // 
+            this.columnHeaderInfracteur.Text = "Infracteur";
+            this.columnHeaderInfracteur.Width = 300;
+            // 
+            // columnHeaderPlaignant
+            // 
+            this.columnHeaderPlaignant.Text = "Plaignant";
+            this.columnHeaderPlaignant.Width = 300;
+            // 
+            // columnHeaderEtat
+            // 
+            this.columnHeaderEtat.Text = "Etat";
+            this.columnHeaderEtat.Width = 300;
+            // 
+            // columnHeaderAvis
+            // 
+            this.columnHeaderAvis.Text = "Avis";
+            this.columnHeaderAvis.Width = 300;
+            // 
+            // columnHeaderNbCommentaire
+            // 
+            this.columnHeaderNbCommentaire.Text = "Nbre Commentaires";
+            this.columnHeaderNbCommentaire.Width = 300;
+            // 
+            // columnHeaderNbAnimaux
+            // 
+            this.columnHeaderNbAnimaux.Text = "Nbre Animaux";
+            this.columnHeaderNbAnimaux.Width = 300;
             // 
             // Accueil
             // 
@@ -176,5 +241,14 @@ namespace SPA.Models
         private System.Windows.Forms.TextBox textBoxRecherche;
         private System.Windows.Forms.Label labelRecherche;
         private System.Windows.Forms.ListView listViewEnquetes;
+        private System.Windows.Forms.ColumnHeader columnHeaderID;
+        private System.Windows.Forms.ColumnHeader columnHeaderTitulaire;
+        private System.Windows.Forms.ColumnHeader columnHeaderDelegue;
+        private System.Windows.Forms.ColumnHeader columnHeaderInfracteur;
+        private System.Windows.Forms.ColumnHeader columnHeaderPlaignant;
+        private System.Windows.Forms.ColumnHeader columnHeaderEtat;
+        private System.Windows.Forms.ColumnHeader columnHeaderAvis;
+        private System.Windows.Forms.ColumnHeader columnHeaderNbCommentaire;
+        private System.Windows.Forms.ColumnHeader columnHeaderNbAnimaux;
     }
 }
