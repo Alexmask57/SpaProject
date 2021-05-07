@@ -164,6 +164,7 @@ namespace SPA.Models
             this.listViewEnquetes.TabIndex = 0;
             this.listViewEnquetes.UseCompatibleStateImageBehavior = false;
             this.listViewEnquetes.View = System.Windows.Forms.View.Details;
+            this.listViewEnquetes.SelectedIndexChanged += new System.EventHandler(this.listViewEnquetes_SelectedIndexChanged);
             // 
             // columnHeaderID
             // 

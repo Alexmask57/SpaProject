@@ -35,7 +35,22 @@ namespace SPA.Models
 
         private void buttonModifyEnquetes_Click(object sender, EventArgs e)
         {
+           //ModifierEnquete modifierEnquete = new ModifierEnquete();
+           //modifierEnquete.Show();
+        }
 
+        private void listViewEnquetes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listViewEnquetes.SelectedItems.Count > 0)
+            {
+                buttonModifyEnquetes.Enabled = true;
+                buttonDeleteEnquete.Enabled = true;
+            }
+            else
+            {
+                buttonModifyEnquetes.Enabled = false;
+                buttonDeleteEnquete.Enabled = false;
+            }
         }
     }
 }

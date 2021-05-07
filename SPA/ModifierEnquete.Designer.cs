@@ -33,11 +33,13 @@ namespace SPA
             // 
             // ModifierEnquete
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 41F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1174, 632);
+            this.ClientSize = new System.Drawing.Size(2851, 1727);
+            this.Margin = new System.Windows.Forms.Padding(7, 8, 7, 8);
             this.Name = "ModifierEnquete";
             this.Text = "ModifierEnquete";
+            this.Load += new System.EventHandler(this.ModifierEnquete_Load);
             this.ResumeLayout(false);
 
         }

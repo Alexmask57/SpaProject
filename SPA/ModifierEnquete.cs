@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SPA.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,9 +11,16 @@ namespace SPA
 {
     public partial class ModifierEnquete : Form
     {
-        public ModifierEnquete()
+        //public Enquete enquete;
+        public ModifierEnquete(Enquete enqt)
         {
+            //enquete = enqt;
             InitializeComponent();
+        }
+
+        private void ModifierEnquete_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
