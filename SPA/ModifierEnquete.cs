@@ -15,8 +15,10 @@ namespace SPA
     {
         public static Personne utilisateur = new Personne();
         public static Enquete enquete = new Enquete();
-        public ModifierEnquete(Personne utilisateurConnecte, Enquete enqueteAModifier)
+        public static Accueil accueil;
+        public ModifierEnquete(Accueil accueilMenu, Personne utilisateurConnecte, Enquete enqueteAModifier)
         {
+            accueil = accueilMenu;
             utilisateur = utilisateurConnecte;
             enquete = enqueteAModifier;
             InitializeComponent();
@@ -94,6 +96,8 @@ namespace SPA
             else
             {
                 EnvoiDonnees();
+                accueil.RefreshPage();
+                this.Close();
             }
         }
         private void buttonAjouter_Click(object sender, EventArgs e)
@@ -102,10 +106,34 @@ namespace SPA
                !string.IsNullOrEmpty((string)comboBoxRace.SelectedItem) &&
                numericUpDownNombre.Value > 0)
             {
+                /*
                 ListViewItem item = new ListViewItem((string)comboBoxAnimaux.SelectedItem);
                 item.SubItems.Add((string)comboBoxRace.SelectedItem);
                 item.SubItems.Add(numericUpDownNombre.Value.ToString());
                 listViewAnimaux.Items.Add(item);
+                labelErrorAnimaux.Visible = false;
+                */
+
+                string Race = (string)comboBoxRace.SelectedItem;
+                int nombre = Int32.Parse(numericUpDownNombre.Value.ToString());
+                string animal = (string)comboBoxAnimaux.SelectedItem;
+                bool exist = false;
+                foreach (ListViewItem item in listViewAnimaux.Items)
+                {
+                    if (animal == item.SubItems[0].Text && Race == item.SubItems[1].Text)
+                    {
+                        exist = true;
+                        int nb = nombre + Int32.Parse(item.SubItems[2].Text);
+                        item.SubItems[2].Text = nb.ToString();
+                    }
+                }
+                if (!exist)
+                {
+                    ListViewItem item = new ListViewItem((string)comboBoxAnimaux.SelectedItem);
+                    item.SubItems.Add((string)comboBoxRace.SelectedItem);
+                    item.SubItems.Add(numericUpDownNombre.Value.ToString());
+                    listViewAnimaux.Items.Add(item);
+                }
                 labelErrorAnimaux.Visible = false;
             }
             else
@@ -295,13 +323,30 @@ namespace SPA
             {
                 Animaux_enquete animal = new Animaux_enquete
                 {
+                    Enquete = new Enquete { Id = enquete.Id },
                     Race = Race_animal.GetRace_AnimalBdd(item.SubItems[0].Text, item.SubItems[1].Text),
                     Nombre = Int32.Parse(item.SubItems[2].Text)
                 };
                 list_animaux.Add(animal);
             }
-            Enquete enquete = new Enquete
+            /*
+            List<Document> documents = new List<Document>();
+            foreach (ListViewItem item in listViewDocuments.Items)
             {
+                string filename = @Path.GetFileNameWithoutExtension(item.SubItems[0].Text);
+                string extension = @Path.GetExtension(item.SubItems[0].Text);
+                string file = @filename + DateTime.Now.ToString("ddMMyyHHmm") + extension;
+                string sourceFile = @item.SubItems[1].Text;
+                string destFile = @System.IO.Path.Combine(Variables.pathUploadFile, file);
+                System.IO.File.Copy(sourceFile, destFile, true);
+                Document doc = new Document { Chemin = file, Date = DateTime.Now };
+                documents.Add(doc);
+                Path.Combine(Variables.pathUploadFile, file);
+            };
+            */
+            Enquete enquete2 = new Enquete
+            {
+                Id = enquete.Id,
                 Plaignant = new Personne
                 {
                     Nom = textBoxNomPlaignant.Text,
@@ -330,14 +375,10 @@ namespace SPA
                     Nom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[0],
                     Prenom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[1]
                 },
+                Motif = richTextBoxMotif.Text,
                 Animaux = list_animaux
             };
-            Enquete.CreerEnqueteBdd(enquete);
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
+            Enquete.UpdateEnqueteBdd(enquete2);
         }
 
 

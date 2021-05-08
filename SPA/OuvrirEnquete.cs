@@ -42,6 +42,10 @@ namespace SPA
                 }
             }
         }
+        private void OuvrirEnquete_FormClossing(object sender, FormClosingEventArgs e)
+        {
+            accueil.Show();
+        }
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {
             
@@ -63,10 +67,26 @@ namespace SPA
                !string.IsNullOrEmpty((string)comboBoxRace.SelectedItem) &&
                numericUpDownNombre.Value > 0)
             {
-                ListViewItem item = new ListViewItem((string)comboBoxAnimaux.SelectedItem);
-                item.SubItems.Add((string)comboBoxRace.SelectedItem);
-                item.SubItems.Add(numericUpDownNombre.Value.ToString());
-                listViewAnimaux.Items.Add(item);
+                string Race = (string)comboBoxRace.SelectedItem;
+                int nombre = Int32.Parse(numericUpDownNombre.Value.ToString());
+                string animal = (string)comboBoxAnimaux.SelectedItem;
+                bool exist = false;
+                foreach (ListViewItem item in listViewAnimaux.Items)
+                {
+                    if (animal == item.SubItems[0].Text && Race == item.SubItems[1].Text)
+                    {
+                        exist = true;
+                        int nb = nombre + Int32.Parse(item.SubItems[2].Text);
+                        item.SubItems[2].Text = nb.ToString();
+                    }
+                }
+                if (!exist)
+                {
+                    ListViewItem item = new ListViewItem((string)comboBoxAnimaux.SelectedItem);
+                    item.SubItems.Add((string)comboBoxRace.SelectedItem);
+                    item.SubItems.Add(numericUpDownNombre.Value.ToString());
+                    listViewAnimaux.Items.Add(item);
+                }
                 labelErrorAnimaux.Visible = false;
             }
             else
@@ -287,6 +307,7 @@ namespace SPA
 
             Enquete enquete = new Enquete
             {
+                Id = checkBoxSiege.Checked ? textBoxIdEnquete.Text : null,
                 Plaignant = new Personne
                 {
                     Nom = textBoxNomPlaignant.Text,
@@ -320,6 +341,27 @@ namespace SPA
                 Document = documents
             };
             Enquete.CreerEnqueteBdd(enquete);
+        }
+
+        private void checkBoxSiege_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxSiege.Checked)
+            {
+                labelIdEnquete.Visible = true;
+                textBoxIdEnquete.Visible = true;
+            }
+            else
+            {
+                labelIdEnquete.Visible = false;
+                textBoxIdEnquete.Visible = false;
+                textBoxIdEnquete.Text = "";
+            }
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

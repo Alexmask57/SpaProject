@@ -32,6 +32,9 @@ namespace SPA
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTitre = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelIdEnquete = new System.Windows.Forms.Label();
+            this.textBoxIdEnquete = new System.Windows.Forms.TextBox();
+            this.checkBoxSiege = new System.Windows.Forms.CheckBox();
             this.labelErrorTitulaireDelegue = new System.Windows.Forms.Label();
             this.labelErrorAnimaux = new System.Windows.Forms.Label();
             this.labelErrorEmailInfracteur = new System.Windows.Forms.Label();
@@ -120,6 +123,9 @@ namespace SPA
             // panel2
             // 
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.labelIdEnquete);
+            this.panel2.Controls.Add(this.textBoxIdEnquete);
+            this.panel2.Controls.Add(this.checkBoxSiege);
             this.panel2.Controls.Add(this.labelErrorTitulaireDelegue);
             this.panel2.Controls.Add(this.labelErrorAnimaux);
             this.panel2.Controls.Add(this.labelErrorEmailInfracteur);
@@ -183,6 +189,36 @@ namespace SPA
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1236, 638);
             this.panel2.TabIndex = 1;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // labelIdEnquete
+            // 
+            this.labelIdEnquete.AutoSize = true;
+            this.labelIdEnquete.Location = new System.Drawing.Point(662, 82);
+            this.labelIdEnquete.Name = "labelIdEnquete";
+            this.labelIdEnquete.Size = new System.Drawing.Size(85, 15);
+            this.labelIdEnquete.TabIndex = 74;
+            this.labelIdEnquete.Text = "Id de l\'enquête";
+            this.labelIdEnquete.Visible = false;
+            // 
+            // textBoxIdEnquete
+            // 
+            this.textBoxIdEnquete.Location = new System.Drawing.Point(788, 79);
+            this.textBoxIdEnquete.Name = "textBoxIdEnquete";
+            this.textBoxIdEnquete.Size = new System.Drawing.Size(259, 23);
+            this.textBoxIdEnquete.TabIndex = 73;
+            this.textBoxIdEnquete.Visible = false;
+            // 
+            // checkBoxSiege
+            // 
+            this.checkBoxSiege.AutoSize = true;
+            this.checkBoxSiege.Location = new System.Drawing.Point(662, 41);
+            this.checkBoxSiege.Name = "checkBoxSiege";
+            this.checkBoxSiege.Size = new System.Drawing.Size(173, 19);
+            this.checkBoxSiege.TabIndex = 70;
+            this.checkBoxSiege.Text = "Enquête provenant du siège";
+            this.checkBoxSiege.UseVisualStyleBackColor = true;
+            this.checkBoxSiege.CheckedChanged += new System.EventHandler(this.checkBoxSiege_CheckedChanged);
             // 
             // labelErrorTitulaireDelegue
             // 
@@ -778,6 +814,7 @@ namespace SPA
             this.Name = "OuvrirEnquete";
             this.Text = "OuvrirEnquete";
             this.Load += new System.EventHandler(this.OuvrirEnquete_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OuvrirEnquete_FormClossing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -855,5 +892,8 @@ namespace SPA
         private System.Windows.Forms.Label labelErrorEmailInfracteur;
         private System.Windows.Forms.Label labelErrorAnimaux;
         private System.Windows.Forms.Label labelErrorTitulaireDelegue;
+        private System.Windows.Forms.Label labelIdEnquete;
+        private System.Windows.Forms.TextBox textBoxIdEnquete;
+        private System.Windows.Forms.CheckBox checkBoxSiege;
     }
 }

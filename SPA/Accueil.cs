@@ -27,10 +27,7 @@ namespace SPA.Models
 
         private void Accueil_FormClossing(object sender, FormClosingEventArgs e)
         {
-                pageConnexion.Close();
-            // Do something proper to CloseButton.
-            //else
-                        // Then assume that X has been clicked and act accordingly.
+            pageConnexion.Close();
         }
 
         public void RefreshPage()
@@ -76,7 +73,7 @@ namespace SPA.Models
 
         private void buttonModifyEnquetes_Click(object sender, EventArgs e)
         {
-            ModifierEnquete modifierEnquete = new ModifierEnquete(utilisateur, Enquete.GetEnquete(listViewEnquetes.SelectedItems[0].Text));
+            ModifierEnquete modifierEnquete = new ModifierEnquete(this, utilisateur, Enquete.GetEnquete(listViewEnquetes.SelectedItems[0].Text));
             modifierEnquete.Show();
         }
 

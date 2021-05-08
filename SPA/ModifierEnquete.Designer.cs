@@ -195,7 +195,6 @@ namespace SPA
             this.labelErrorTitulaireDelegue.TabIndex = 69;
             this.labelErrorTitulaireDelegue.Text = "* Le Titulaire ne peut être aussi le délégué";
             this.labelErrorTitulaireDelegue.Visible = false;
-            this.labelErrorTitulaireDelegue.Click += new System.EventHandler(this.label4_Click);
             // 
             // labelErrorAnimaux
             // 

@@ -167,7 +167,7 @@ namespace SPA.Models
                     cmd.Parameters.AddWithValue("@Titulaire_enquete", enquete.Titulaire_enquete.Id);
                     cmd.Parameters.AddWithValue("@Delegue_enqueteur", enquete.Delegue_enqueteur.Id);
                     cmd.Parameters.AddWithValue("@Infracteur", enquete.Infracteur.Id);
-                    cmd.Parameters.AddWithValue("@Plaignant", enquete.Plaignant);
+                    cmd.Parameters.AddWithValue("@Plaignant", enquete.Plaignant.Id);
                     cmd.Parameters.AddWithValue("@Etat", enquete.Etat);
                     cmd.Parameters.AddWithValue("@Avis", enquete.Avis);
                     cmd.Parameters.AddWithValue("@Siege", BoolToInt(enquete.OuvertParLeSiege));

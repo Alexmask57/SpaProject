@@ -165,6 +165,43 @@ namespace SPA.Models.DAO
             }
         }
 
+        public static bool DeleteAnimal(Animaux_enquete animal)
+        {
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"DELETE FROM Animaux_enquete WHERE Id = @Id AND Race = @Race AND Nombre = @Nombre";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Id", animal.Enquete.Id);
+                    cmd.Parameters.AddWithValue("@Race", animal.Race.Id);
+                    cmd.Parameters.AddWithValue("@Nombre", animal.Nombre);
+
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public static int GetNombreAnimaux(string Id)
         {
             try
@@ -187,7 +224,7 @@ namespace SPA.Models.DAO
                     {
                         if (dr.Read())
                         {
-                            return dr.GetInt32(0);
+                            return !dr.IsDBNull(0) ? dr.GetInt32(0) : 0;
                         }
                     }
                     else
