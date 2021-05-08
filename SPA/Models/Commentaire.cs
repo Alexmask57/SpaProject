@@ -38,7 +38,7 @@ namespace SPA.Models
 
         public static int NombreCommentaireEnquete(Enquete enquete)
         {
-            return Animaux_enqueteDAO.GetNombreAnimaux(enquete.Id);
+            return CommentaireDAO.GetNombreCommentaire(enquete.Id);
         }
     }
 }

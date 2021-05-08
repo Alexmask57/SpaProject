@@ -13,7 +13,7 @@ namespace SPA.Models
         public Personne Plaignant { get; set; } = new Personne();
         public string Avis { get; set; }
         public int Etat { get; set; }
-        public bool OuvertParLeSiege { get; set; }
+        public bool OuvertParLeSiege { get; set; } = false;
         public List<Animaux_enquete> Animaux { get; set; } = new List<Animaux_enquete>();
         
         /// <summary>

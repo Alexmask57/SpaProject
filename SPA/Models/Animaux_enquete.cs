@@ -40,5 +40,10 @@ namespace SPA.Models
         {
             return Animaux_enqueteDAO.GetNombreAnimaux(enquete.Id);
         }
+
+        public static bool DeleteAnimauxEnquete(Enquete enquete)
+        {
+            return Animaux_enqueteDAO.DeleteAnimauxEnquete(enquete);
+        }
     }
 }

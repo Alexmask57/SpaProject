@@ -109,7 +109,7 @@ namespace SPA.Models
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"INSERT INTO Enquete (Id, Titulaire_enquete, Delegue_enqueteur, Infracteur, Plaignant, Etat, Avis) VALUES (@Id, @Titulaire_enquete, @Delegue_enquete, @Infracteur, @Plaignant, 0, '');";
+                    string query = @"INSERT INTO Enquete (Id, Titulaire_enquete, Delegue_enqueteur, Infracteur, Plaignant, Etat, Avis, OuvertParLeSiege) VALUES (@Id, @Titulaire_enquete, @Delegue_enquete, @Infracteur, @Plaignant, 0, '', @Siege);";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -118,6 +118,7 @@ namespace SPA.Models
                     cmd.Parameters.AddWithValue("@Delegue_enquete", enquete.Delegue_enqueteur.Id);
                     cmd.Parameters.AddWithValue("@Infracteur", enquete.Infracteur.Id);
                     cmd.Parameters.AddWithValue("@Plaignant", enquete.Plaignant.Id);
+                    cmd.Parameters.AddWithValue("@Siege", BoolToInt(enquete.OuvertParLeSiege));
 
                     //open connection
                     conn.Open();
@@ -158,6 +159,7 @@ namespace SPA.Models
                     cmd.Parameters.AddWithValue("@Plaignant", enquete.Plaignant);
                     cmd.Parameters.AddWithValue("@Etat", enquete.Etat);
                     cmd.Parameters.AddWithValue("@Avis", enquete.Avis);
+                    cmd.Parameters.AddWithValue("@Siege", BoolToInt(enquete.OuvertParLeSiege));
 
                     //open connection
                     conn.Open();
