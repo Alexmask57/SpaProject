@@ -62,13 +62,13 @@ namespace SPA.Models
             this.panel1.Controls.Add(this.buttonCreateEnquete);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1224, 107);
+            this.panel1.Size = new System.Drawing.Size(1247, 107);
             this.panel1.TabIndex = 1;
             // 
             // textBoxRecherche
             // 
-            this.textBoxRecherche.Location = new System.Drawing.Point(649, 78);
-            this.textBoxRecherche.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxRecherche.Location = new System.Drawing.Point(661, 55);
+            this.textBoxRecherche.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxRecherche.Name = "textBoxRecherche";
             this.textBoxRecherche.Size = new System.Drawing.Size(240, 23);
             this.textBoxRecherche.TabIndex = 5;
@@ -76,7 +76,7 @@ namespace SPA.Models
             // labelRecherche
             // 
             this.labelRecherche.AutoSize = true;
-            this.labelRecherche.Location = new System.Drawing.Point(572, 78);
+            this.labelRecherche.Location = new System.Drawing.Point(591, 58);
             this.labelRecherche.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.labelRecherche.Name = "labelRecherche";
             this.labelRecherche.Size = new System.Drawing.Size(68, 15);
@@ -132,17 +132,14 @@ namespace SPA.Models
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelAccueil.AutoSize = true;
             this.panelAccueil.Controls.Add(this.listViewEnquetes);
-            this.panelAccueil.Location = new System.Drawing.Point(1, 108);
+            this.panelAccueil.Location = new System.Drawing.Point(1, 114);
             this.panelAccueil.Name = "panelAccueil";
-            this.panelAccueil.Size = new System.Drawing.Size(1724, 779);
+            this.panelAccueil.Size = new System.Drawing.Size(1247, 514);
             this.panelAccueil.TabIndex = 2;
             // 
             // listViewEnquetes
             // 
             this.listViewEnquetes.Activation = System.Windows.Forms.ItemActivation.OneClick;
-            this.listViewEnquetes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.listViewEnquetes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderID,
             this.columnHeaderTitulaire,
@@ -153,13 +150,14 @@ namespace SPA.Models
             this.columnHeaderAvis,
             this.columnHeaderNbCommentaire,
             this.columnHeaderNbAnimaux});
+            this.listViewEnquetes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewEnquetes.FullRowSelect = true;
             this.listViewEnquetes.HideSelection = false;
-            this.listViewEnquetes.Location = new System.Drawing.Point(58, 0);
-            this.listViewEnquetes.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.listViewEnquetes.Location = new System.Drawing.Point(0, 0);
+            this.listViewEnquetes.Margin = new System.Windows.Forms.Padding(1);
             this.listViewEnquetes.MultiSelect = false;
             this.listViewEnquetes.Name = "listViewEnquetes";
-            this.listViewEnquetes.Size = new System.Drawing.Size(1614, 753);
+            this.listViewEnquetes.Size = new System.Drawing.Size(1247, 514);
             this.listViewEnquetes.TabIndex = 0;
             this.listViewEnquetes.UseCompatibleStateImageBehavior = false;
             this.listViewEnquetes.View = System.Windows.Forms.View.Details;
@@ -168,47 +166,47 @@ namespace SPA.Models
             // columnHeaderID
             // 
             this.columnHeaderID.Text = "ID";
-            this.columnHeaderID.Width = 150;
+            this.columnHeaderID.Width = 70;
             // 
             // columnHeaderTitulaire
             // 
             this.columnHeaderTitulaire.Text = "Titulaire";
-            this.columnHeaderTitulaire.Width = 300;
+            this.columnHeaderTitulaire.Width = 100;
             // 
             // columnHeaderDelegue
             // 
             this.columnHeaderDelegue.Text = "Delegue";
-            this.columnHeaderDelegue.Width = 300;
+            this.columnHeaderDelegue.Width = 100;
             // 
             // columnHeaderInfracteur
             // 
             this.columnHeaderInfracteur.Text = "Infracteur";
-            this.columnHeaderInfracteur.Width = 300;
+            this.columnHeaderInfracteur.Width = 100;
             // 
             // columnHeaderPlaignant
             // 
             this.columnHeaderPlaignant.Text = "Plaignant";
-            this.columnHeaderPlaignant.Width = 300;
+            this.columnHeaderPlaignant.Width = 100;
             // 
             // columnHeaderEtat
             // 
             this.columnHeaderEtat.Text = "Etat";
-            this.columnHeaderEtat.Width = 300;
+            this.columnHeaderEtat.Width = 100;
             // 
             // columnHeaderAvis
             // 
             this.columnHeaderAvis.Text = "Avis";
-            this.columnHeaderAvis.Width = 300;
+            this.columnHeaderAvis.Width = 100;
             // 
             // columnHeaderNbCommentaire
             // 
             this.columnHeaderNbCommentaire.Text = "Nbre Commentaires";
-            this.columnHeaderNbCommentaire.Width = 300;
+            this.columnHeaderNbCommentaire.Width = 150;
             // 
             // columnHeaderNbAnimaux
             // 
             this.columnHeaderNbAnimaux.Text = "Nbre Animaux";
-            this.columnHeaderNbAnimaux.Width = 300;
+            this.columnHeaderNbAnimaux.Width = 150;
             // 
             // Accueil
             // 
