@@ -466,6 +466,11 @@ namespace SPA
             this.numericUpDownNombre.Name = "numericUpDownNombre";
             this.numericUpDownNombre.Size = new System.Drawing.Size(127, 23);
             this.numericUpDownNombre.TabIndex = 44;
+            this.numericUpDownNombre.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // labelNombre
             // 

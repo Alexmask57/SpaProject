@@ -51,8 +51,8 @@ namespace SPA.Models
 
         private void buttonModifyEnquetes_Click(object sender, EventArgs e)
         {
-           //ModifierEnquete modifierEnquete = new ModifierEnquete();
-           //modifierEnquete.Show();
+           ModifierEnquete modifierEnquete = new ModifierEnquete(utilisateur, Enquete.GetEnquete(listViewEnquetes.SelectedItems[0].Text));
+           modifierEnquete.Show();
         }
 
         private void listViewEnquetes_SelectedIndexChanged(object sender, EventArgs e)
