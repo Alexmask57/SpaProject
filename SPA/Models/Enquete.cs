@@ -67,7 +67,7 @@ namespace SPA.Models
         }
         public static void DeleteEnquete(Enquete enquete)
         {
-            EnqueteDAO.DeleteEnquete
+            EnqueteDAO.DeleteEnquete(enquete);
         }
 
         public static List<Enquete> GetEnquetes()

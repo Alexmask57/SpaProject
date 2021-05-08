@@ -44,10 +44,12 @@ namespace SPA.Models
             this.columnHeaderInfracteur = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderPlaignant = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderEtat = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderAvis = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderNbCommentaire = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderNbAnimaux = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderOuvert = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderAvis = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderNbCommentaires = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderNbAnimaux = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderNbFichiers = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderNbAppels = new System.Windows.Forms.ColumnHeader();
             this.panel1.SuspendLayout();
             this.panelAccueil.SuspendLayout();
             this.SuspendLayout();
@@ -149,9 +151,11 @@ namespace SPA.Models
             this.columnHeaderPlaignant,
             this.columnHeaderEtat,
             this.columnHeaderOuvert,
-            this.columnHeaderAvis,
-            this.columnHeaderNbCommentaire,
-            this.columnHeaderNbAnimaux});
+            this.columnHeaderNbCommentaires,
+            this.columnHeaderNbAnimaux,
+            this.columnHeaderNbFichiers,
+            this.columnHeaderNbAppels,
+            this.columnHeaderAvis});
             this.listViewEnquetes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewEnquetes.FullRowSelect = true;
             this.listViewEnquetes.HideSelection = false;
@@ -195,25 +199,35 @@ namespace SPA.Models
             this.columnHeaderEtat.Text = "Etat";
             this.columnHeaderEtat.Width = 100;
             // 
+            // columnHeaderOuvert
+            // 
+            this.columnHeaderOuvert.Text = "Ouvert";
+            this.columnHeaderOuvert.Width = 100;
+            // 
             // columnHeaderAvis
             // 
             this.columnHeaderAvis.Text = "Avis";
             this.columnHeaderAvis.Width = 100;
             // 
-            // columnHeaderNbCommentaire
+            // columnHeaderNbCommentaires
             // 
-            this.columnHeaderNbCommentaire.Text = "Nbre Commentaires";
-            this.columnHeaderNbCommentaire.Width = 150;
+            this.columnHeaderNbCommentaires.Text = "Nbre Commentaires";
+            this.columnHeaderNbCommentaires.Width = 120;
             // 
             // columnHeaderNbAnimaux
             // 
             this.columnHeaderNbAnimaux.Text = "Nbre Animaux";
-            this.columnHeaderNbAnimaux.Width = 150;
+            this.columnHeaderNbAnimaux.Width = 120;
             // 
-            // columnHeaderOuvert
+            // columnHeaderNbFichiers
             // 
-            this.columnHeaderOuvert.Text = "Ouvert";
-            this.columnHeaderOuvert.Width = 100;
+            this.columnHeaderNbFichiers.Text = "Nbre Fichiers";
+            this.columnHeaderNbFichiers.Width = 120;
+            // 
+            // columnHeaderNbAppels
+            // 
+            this.columnHeaderNbAppels.Text = "Nbre Appels";
+            this.columnHeaderNbAppels.Width = 120;
             // 
             // Accueil
             // 
@@ -255,5 +269,8 @@ namespace SPA.Models
         private System.Windows.Forms.ColumnHeader columnHeaderNbCommentaire;
         private System.Windows.Forms.ColumnHeader columnHeaderNbAnimaux;
         private System.Windows.Forms.ColumnHeader columnHeaderOuvert;
+        private System.Windows.Forms.ColumnHeader columnHeaderNbCommentaires;
+        private System.Windows.Forms.ColumnHeader columnHeaderNbFichiers;
+        private System.Windows.Forms.ColumnHeader columnHeaderNbAppels;
     }
 }

@@ -32,6 +32,10 @@ namespace SPA.Models
                     item.SubItems.Add(enquete.Plaignant.Nom + " " + enquete.Plaignant.Prenom);
                     item.SubItems.Add(enquete.Etat.ToString());
                     item.SubItems.Add(enquete.OuvertParLeSiege.ToString());
+                    item.SubItems.Add(Commentaire.NombreCommentaireEnquete(enquete).ToString());
+                    item.SubItems.Add(Animaux_enquete.NombreAnimauxEnquete(enquete).ToString());
+                    item.SubItems.Add(Document.NombreDocumentEnquete(enquete).ToString());
+                    item.SubItems.Add(Appel.NombreAppelEnquete(enquete).ToString());
                     item.SubItems.Add(enquete.Avis);
                     listViewEnquetes.Items.Add(item);
                 }
