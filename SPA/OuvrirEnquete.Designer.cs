@@ -195,7 +195,6 @@ namespace SPA
             this.labelErrorTitulaireDelegue.TabIndex = 69;
             this.labelErrorTitulaireDelegue.Text = "* Le Titulaire ne peut être aussi le délégué";
             this.labelErrorTitulaireDelegue.Visible = false;
-            this.labelErrorTitulaireDelegue.Click += new System.EventHandler(this.label4_Click);
             // 
             // labelErrorAnimaux
             // 
@@ -850,12 +849,9 @@ namespace SPA
         private System.Windows.Forms.Label labelErrorAdressePlaignant;
         private System.Windows.Forms.Label labelErrorCodePostalPlaignant;
         private System.Windows.Forms.Label labelErrorAdresseInfracteur;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelErrorVilleInfracteur;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelErrorCodePostalInfracteur;
         private System.Windows.Forms.Label labelErrorEmailPlaignant;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelErrorEmailInfracteur;
         private System.Windows.Forms.Label labelErrorAnimaux;
         private System.Windows.Forms.Label labelErrorTitulaireDelegue;

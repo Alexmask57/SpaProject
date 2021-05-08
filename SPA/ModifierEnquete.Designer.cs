@@ -105,7 +105,7 @@ namespace SPA
             this.panel1.Controls.Add(this.labelTitre);
             this.panel1.Location = new System.Drawing.Point(3, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1215, 22);
+            this.panel1.Size = new System.Drawing.Size(1162, 22);
             this.panel1.TabIndex = 0;
             // 
             // labelTitre
@@ -466,6 +466,11 @@ namespace SPA
             this.numericUpDownNombre.Name = "numericUpDownNombre";
             this.numericUpDownNombre.Size = new System.Drawing.Size(127, 23);
             this.numericUpDownNombre.TabIndex = 44;
+            this.numericUpDownNombre.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // labelNombre
             // 
@@ -845,7 +850,6 @@ namespace SPA
         private System.Windows.Forms.Label labelErrorAdressePlaignant;
         private System.Windows.Forms.Label labelErrorCodePostalPlaignant;
         private System.Windows.Forms.Label labelErrorAdresseInfracteur;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelErrorVilleInfracteur;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelErrorCodePostalInfracteur;

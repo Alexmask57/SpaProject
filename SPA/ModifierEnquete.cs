@@ -65,6 +65,9 @@ namespace SPA
             textBoxCodePostalPlaignant.Text = enquete.Plaignant.Code_postal.ToString();
             textBoxEmailPlaignant.Text = enquete.Plaignant.Email;
             textBoxVillePlaignant.Text = enquete.Plaignant.Ville;
+
+            //Motif
+            textBoxNomPlaignant.Text = enquete.Motif;
         }
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {
