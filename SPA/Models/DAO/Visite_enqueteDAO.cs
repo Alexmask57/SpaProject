@@ -118,6 +118,45 @@ namespace SPA.Models.DAO
             }
         }
 
+        public static bool UpdateVisiteEnquete(Visite_enquete visite_enquete)
+        {
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"UPDATE Visite_enquete SET Titulaire_enquete = @Titulaire_enquete, Delegue_enquete = @Delegue_enquete, Date_visite = @Date_visite, Avis_passage = @Avis_passage WHERE Id_enquete = @Id;";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Id", visite_enquete.Id);
+                    cmd.Parameters.AddWithValue("@Id_enquete", visite_enquete.Enquete.Id);
+                    cmd.Parameters.AddWithValue("@Titulaire_enquete", visite_enquete.Titulaire_enquete.Id);
+                    cmd.Parameters.AddWithValue("@Delegue_enquete", visite_enquete.Delegue_enqueteur.Id);
+                    cmd.Parameters.AddWithValue("@Date_visite", visite_enquete.Date_visite);
+                    cmd.Parameters.AddWithValue("@Avis_passage", BoolToInt(visite_enquete.Avis_passage));
+
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
         private static bool IntToBool(int entier)
         {
             if (entier == 1)

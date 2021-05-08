@@ -160,10 +160,11 @@ namespace SPA.Models
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"UPDATE Enquete SET Titulaire_enquete = @Titulaire_enquete, Delegue_enqueteur = @Delegue_enqueteur, Infracteur = @Infracteur, Plaignant = @Plaignant, Etat = @Etat, Avis = @Avis, Motif = @Motif ;";
+                    string query = @"UPDATE Enquete SET Titulaire_enquete = @Titulaire_enquete, Delegue_enqueteur = @Delegue_enqueteur, Infracteur = @Infracteur, Plaignant = @Plaignant, Etat = @Etat, Avis = @Avis, Motif = @Motif WHERE Id = @Id;";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
+                    cmd.Parameters.AddWithValue("@Id", enquete.Id);
                     cmd.Parameters.AddWithValue("@Titulaire_enquete", enquete.Titulaire_enquete.Id);
                     cmd.Parameters.AddWithValue("@Delegue_enqueteur", enquete.Delegue_enqueteur.Id);
                     cmd.Parameters.AddWithValue("@Infracteur", enquete.Infracteur.Id);

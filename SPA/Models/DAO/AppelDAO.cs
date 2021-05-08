@@ -91,10 +91,11 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"UPDATE Appel SET Date = @Date, Commentaire = @Commentaire;";
+                    string query = @"UPDATE Appel SET Date = @Date, Commentaire = @Commentaire WHERE Id_enquete = @Id;";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
+                    cmd.Parameters.AddWithValue("@Id", appel.Enquete.Id);
                     cmd.Parameters.AddWithValue("@Date", appel.Date);
                     cmd.Parameters.AddWithValue("@Commentaire", appel.Commentaire);
 

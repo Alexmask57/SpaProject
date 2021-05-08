@@ -101,10 +101,11 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"UPDATE Document SET Date = @Date, Chemin = @Chemin;";
+                    string query = @"UPDATE Document SET Date = @Date, Chemin = @Chemin WHERE Id_enquete = @Id;";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
+                    cmd.Parameters.AddWithValue("@Id", document.Enquete.Id);
                     cmd.Parameters.AddWithValue("@Date", document.Date);
                     cmd.Parameters.AddWithValue("@Chemin", document.Chemin);
 
