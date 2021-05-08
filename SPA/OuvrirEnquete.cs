@@ -315,12 +315,5 @@ namespace SPA
             };
             Enquete.CreerEnqueteBdd(enquete);
         }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }

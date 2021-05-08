@@ -34,9 +34,9 @@ namespace SPA
                 comboBoxDelegue.Items.Add(personne.Nom + " " + personne.Prenom);
                 comboBoxTitulaire.Items.Add(personne.Nom + " " + personne.Prenom);
 
-                if (enquete.Titulaire_enquete == personne)
+                if (enquete.Titulaire_enquete.Nom == personne.Nom && enquete.Titulaire_enquete.Prenom == personne.Prenom)
                     comboBoxTitulaire.SelectedIndex = comboBoxTitulaire.FindStringExact(personne.Nom + " " + personne.Prenom);
-                if (enquete.Delegue_enqueteur == personne)
+                if (enquete.Delegue_enqueteur.Nom == personne.Nom && enquete.Delegue_enqueteur.Prenom == personne.Prenom)
                     comboBoxDelegue.SelectedIndex = comboBoxDelegue.FindStringExact(personne.Nom + " " + personne.Prenom);
             }
 
@@ -47,7 +47,6 @@ namespace SPA
                     comboBoxAnimaux.Items.Add(animal.Animal);
                 }
             }
-            //TODO
             //REMPLIR CHAQUE ELEMENT
 
             //Infracteur
@@ -67,7 +66,24 @@ namespace SPA
             textBoxVillePlaignant.Text = enquete.Plaignant.Ville;
 
             //Motif
-            textBoxNomPlaignant.Text = enquete.Motif;
+            richTextBoxMotif.Text = enquete.Motif;
+
+            //Animaux
+            foreach(Animaux_enquete animal in enquete.Animaux)
+            {
+                ListViewItem item = new ListViewItem(animal.Race.Animal);
+                item.SubItems.Add(animal.Race.Nom_race);
+                item.SubItems.Add(animal.Nombre.ToString());
+                listViewAnimaux.Items.Add(item);
+            }
+
+            //Documents
+            foreach (Document document in enquete.Document)
+            {
+                //ListViewItem item = new ListViewItem(document.);
+                //item.SubItems.Add(animal.Race.Nom_race);
+                //listViewAnimaux.Items.Add(item);
+            }
         }
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {

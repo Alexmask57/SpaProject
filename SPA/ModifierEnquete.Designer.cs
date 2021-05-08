@@ -113,9 +113,9 @@ namespace SPA
             this.labelTitre.AutoSize = true;
             this.labelTitre.Location = new System.Drawing.Point(576, 4);
             this.labelTitre.Name = "labelTitre";
-            this.labelTitre.Size = new System.Drawing.Size(139, 15);
+            this.labelTitre.Size = new System.Drawing.Size(154, 15);
             this.labelTitre.TabIndex = 0;
-            this.labelTitre.Text = "Ouverture d\'une enquête";
+            this.labelTitre.Text = "Modification d\'une enquête";
             // 
             // panel2
             // 
@@ -777,7 +777,7 @@ namespace SPA
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "ModifierEnquete";
-            this.Text = "OuvrirEnquete";
+            this.Text = "ModifierEnquete";
             this.Load += new System.EventHandler(this.ModifierEnquete_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -851,10 +851,8 @@ namespace SPA
         private System.Windows.Forms.Label labelErrorCodePostalPlaignant;
         private System.Windows.Forms.Label labelErrorAdresseInfracteur;
         private System.Windows.Forms.Label labelErrorVilleInfracteur;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelErrorCodePostalInfracteur;
         private System.Windows.Forms.Label labelErrorEmailPlaignant;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label labelErrorEmailInfracteur;
         private System.Windows.Forms.Label labelErrorAnimaux;
         private System.Windows.Forms.Label labelErrorTitulaireDelegue;
