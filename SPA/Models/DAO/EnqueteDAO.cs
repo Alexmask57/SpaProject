@@ -7,9 +7,9 @@ namespace SPA.Models
 {
     public static class EnqueteDAO
     {
-        public static Session GetEnquete(string id)
+        public static Enquete GetEnquete(string id)
         {
-            Session session = new Session();
+            Enquete enquete = new Enquete();
             try
             {
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
@@ -31,9 +31,15 @@ namespace SPA.Models
                         while (dr.Read())
                         {
                             //display retrieved record (first column only/string value)
-                            session.Id = dr.GetInt32(0);
-                            session.Login = dr.GetString(1);
-                            session.Password = dr.GetString(2);
+                            enquete.Id = dr.GetString(0);
+                            enquete.Titulaire_enquete = Personne.GetPersonneById(dr.GetInt32(1));
+                            enquete.Delegue_enqueteur = Personne.GetPersonneById(dr.GetInt32(2));
+                            enquete.Plaignant = Personne.GetPersonneById(dr.GetInt32(3));
+                            enquete.Infracteur = Personne.GetPersonneById(dr.GetInt32(4));
+                            enquete.Etat = dr.GetInt32(5);
+                            enquete.Etat = dr.GetInt32(5);
+                            enquete.OuvertParLeSiege = IntToBool(dr.GetInt32(6));
+                            enquete.Animaux = Animaux_enquete.GetAnimaux_EnquetesBdd(enquete.Id);
                         }
                     }
                     else
@@ -42,7 +48,51 @@ namespace SPA.Models
                     }
                     dr.Close();
                 }
-                return session;
+                return enquete;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public static List<Enquete> GetAllEnquete()
+        {
+            List<Enquete> listEnquetes = new List<Enquete>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    string query = @"SELECT * FROM Enquete";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    conn.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            Enquete enquete = new Enquete();
+                            //display retrieved record (first column only/string value)
+                            enquete.Id = dr.GetString(0);
+                            enquete.Titulaire_enquete = Personne.GetPersonneById(dr.GetInt32(1));
+                            enquete.Delegue_enqueteur = Personne.GetPersonneById(dr.GetInt32(2));
+                            enquete.Plaignant = Personne.GetPersonneById(dr.GetInt32(3));
+                            enquete.Infracteur = Personne.GetPersonneById(dr.GetInt32(4));
+                            enquete.Etat = dr.GetInt32(5);
+                            enquete.Etat = dr.GetInt32(5);
+                            enquete.OuvertParLeSiege = IntToBool(dr.GetInt32(6));
+                            enquete.Animaux = Animaux_enquete.GetAnimaux_EnquetesBdd(enquete.Id);
+                            listEnquetes.Add(enquete);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found.");
+                    }
+                    dr.Close();
+                }
+                return listEnquetes;
             }
             catch (Exception ex)
             {
@@ -181,6 +231,20 @@ namespace SPA.Models
                 throw;
             }
         }
-        
+
+        private static bool IntToBool(int entier)
+        {
+            if (entier == 1)
+                return true;
+            else
+                return false;
+        }
+
+        private static int BoolToInt(bool booleen)
+        {
+            if (booleen)
+                return 1;
+            return 0;
+        }
     }
 }

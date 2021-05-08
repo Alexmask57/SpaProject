@@ -13,6 +13,7 @@ namespace SPA.Models
         public Personne Plaignant { get; set; } = new Personne();
         public string Avis { get; set; }
         public int Etat { get; set; }
+        public bool OuvertParLeSiege { get; set; }
         public List<Animaux_enquete> Animaux { get; set; } = new List<Animaux_enquete>();
         
         /// <summary>
@@ -61,7 +62,17 @@ namespace SPA.Models
             EnqueteDAO.UpdateEnquete(enquete);
         }
 
-            private void GenerateId()
+        public static List<Enquete> GetEnquetes()
+        {
+            return EnqueteDAO.GetAllEnquete();
+        }
+
+        public static Enquete GetEnquete(string id)
+        {
+            return EnqueteDAO.GetEnquete(id);
+        }
+
+        private void GenerateId()
         {
             string departement = this.Titulaire_enquete.Refuge.Departement.ToString("00");
             string annee = DateTime.Now.ToString("yy");
