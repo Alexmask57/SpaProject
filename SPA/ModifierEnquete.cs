@@ -80,9 +80,9 @@ namespace SPA
             //Documents
             foreach (Document document in enquete.Document)
             {
-                //ListViewItem item = new ListViewItem(document.);
-                //item.SubItems.Add(animal.Race.Nom_race);
-                //listViewAnimaux.Items.Add(item);
+                ListViewItem item = new ListViewItem(document.Chemin);
+                item.SubItems.Add(Path.Combine(Variables.pathUploadFile, document.Chemin));
+                listViewDocuments.Items.Add(item);
             }
         }
         private void buttonEnregistrer_Click(object sender, EventArgs e)
