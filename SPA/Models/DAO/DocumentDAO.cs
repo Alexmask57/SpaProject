@@ -137,7 +137,7 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"DELETE FROM Document WHERE Id = @Id";
+                    string query = @"DELETE FROM Document WHERE Id_enquete = @Id";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 

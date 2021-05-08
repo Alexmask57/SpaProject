@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SPA.Models.DAO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -11,6 +12,7 @@ namespace SPA.Models
         public Personne Delegue_enqueteur { get; set; } = new Personne();
         public Personne Infracteur { get; set; } = new Personne();
         public Personne Plaignant { get; set; } = new Personne();
+        public string Motif { get; set; }
         public string Avis { get; set; }
         public int Etat { get; set; }
         public bool OuvertParLeSiege { get; set; } = false;
@@ -68,6 +70,11 @@ namespace SPA.Models
         public static void DeleteEnquete(Enquete enquete)
         {
             EnqueteDAO.DeleteEnquete(enquete);
+            Animaux_enquete.DeleteAnimauxEnquete(enquete);
+            Models.Appel.DeleteAppelEnquete(enquete);
+            Models.Commentaire.DeleteCommentaire(enquete);
+            Models.Document.DeleteDocument(enquete);
+            Models.Visite_enquete.DeleteVisitesEnquete(enquete);
         }
 
         public static List<Enquete> GetEnquetes()

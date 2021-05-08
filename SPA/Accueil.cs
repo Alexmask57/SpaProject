@@ -50,7 +50,8 @@ namespace SPA.Models
 
         private void buttonDeleteEnquete_Click(object sender, EventArgs e)
         {
-
+            Enquete.DeleteEnquete(Enquete.GetEnquete(listViewEnquetes.SelectedItems[0].Text));
+            listViewEnquetes.Items.Remove(listViewEnquetes.SelectedItems[0]);
         }
 
         private void buttonModifyEnquetes_Click(object sender, EventArgs e)
