@@ -90,12 +90,16 @@ namespace SPA.Models
                 buttonDeleteEnquete.Enabled = false;
             }
         }
-        private void textBoxRecherche_TextChanged(object sender, EventArgs e)
+        private void textBoxRecherche_KeyDown(object sender, KeyEventArgs e)
         {
-            ListViewItem foundItem = listViewEnquetes.FindItemWithText(textBoxRecherche.Text, true, 0, true);
-            if (foundItem != null)
+            if (e.KeyCode == Keys.Enter)
             {
-                listViewEnquetes.TopItem = foundItem;
+                ListViewItem foundItem = listViewEnquetes.FindItemWithText(textBoxRecherche.Text, true, 0, true);
+                if (foundItem != null)
+                {
+                    listViewEnquetes.TopItem = foundItem;
+                }
+                textBoxRecherche.Text = "";
             }
         }
     }

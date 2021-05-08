@@ -75,7 +75,7 @@ namespace SPA.Models
             this.textBoxRecherche.Name = "textBoxRecherche";
             this.textBoxRecherche.Size = new System.Drawing.Size(240, 23);
             this.textBoxRecherche.TabIndex = 5;
-            this.textBoxRecherche.TextChanged += new System.EventHandler(this.textBoxRecherche_TextChanged);
+            this.textBoxRecherche.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxRecherche_KeyDown);
             // 
             // labelRecherche
             // 
