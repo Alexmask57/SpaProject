@@ -42,6 +42,7 @@ namespace SPA
         }
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {
+            
             if (!ValiderFormulaire())
             {
                 labelErrorEnquete.Visible = true;
@@ -245,6 +246,16 @@ namespace SPA
 
         private void EnvoiDonnees()
         {
+            foreach (ListViewItem item in listViewDocuments.Items)
+            {
+                string filename = Path.GetFileNameWithoutExtension(item.SubItems[0].Text);
+                string extension = Path.GetExtension(item.SubItems[0].Text);
+                string file = filename + DateTime.Now.ToString("ddMMyyHHmm") + extension;
+                string sourceFile = item.SubItems[1].Text;
+                string destFile = System.IO.Path.Combine(Variables.pathUploadFile, file);
+                System.IO.File.Copy(sourceFile, destFile, true);
+            };
+
             List<Animaux_enquete> list_animaux = new List<Animaux_enquete>();
             foreach (ListViewItem item in listViewAnimaux.Items)
             {
@@ -255,6 +266,20 @@ namespace SPA
                 };
                 list_animaux.Add(animal);
             }
+            List<Document> documents = new List<Document>();
+            foreach (ListViewItem item in listViewDocuments.Items)
+            {
+                string filename = @Path.GetFileNameWithoutExtension(item.SubItems[0].Text);
+                string extension = @Path.GetExtension(item.SubItems[0].Text);
+                string file = @filename + DateTime.Now.ToString("ddMMyyHHmm") + extension;
+                string sourceFile = @item.SubItems[1].Text;
+                string destFile = @System.IO.Path.Combine(Variables.pathUploadFile, file);
+                System.IO.File.Copy(sourceFile, destFile, true);
+                Document doc = new Document { Chemin = file, Date = DateTime.Now };
+                documents.Add(doc);
+                Path.Combine(Variables.pathUploadFile, file);
+            };
+
             Enquete enquete = new Enquete
             {
                 Plaignant = new Personne
@@ -285,7 +310,8 @@ namespace SPA
                     Nom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[0],
                     Prenom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[1]
                 },
-                Animaux = list_animaux
+                Animaux = list_animaux,
+                Document = documents
             };
             Enquete.CreerEnqueteBdd(enquete);
         }

@@ -9,6 +9,6 @@ namespace SPA.Models
     {
         public static readonly string connectionSql = "Server = localhost\\SQLEXPRESS; Database = SPA; Trusted_Connection = True;";
 
-        public static readonly string pathUploadFile = AppDomain.CurrentDomain.BaseDirectory; //"~\\FichiersUpload\\"
+        public static readonly string pathUploadFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "FichiersUpload");
     }
 }

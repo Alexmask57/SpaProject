@@ -57,6 +57,11 @@ namespace SPA.Models
                 animal.Enquete.Id = enquete.Id;
                 Animaux_enquete.AddAnimalEnqueteBdd(animal);
             }
+            foreach (Document document in enquete.Document)
+            {
+                document.Enquete.Id = enquete.Id;
+                Models.Document.CreerDocumentBdd(document);
+            }
             EnqueteDAO.AddEnquete(enquete);
         }
 
