@@ -45,11 +45,11 @@ namespace SPA.Models
             this.columnHeaderPlaignant = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderEtat = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderOuvert = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderAvis = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderNbCommentaires = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderNbAnimaux = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderNbFichiers = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderNbAppels = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderAvis = new System.Windows.Forms.ColumnHeader();
             this.panel1.SuspendLayout();
             this.panelAccueil.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +75,7 @@ namespace SPA.Models
             this.textBoxRecherche.Name = "textBoxRecherche";
             this.textBoxRecherche.Size = new System.Drawing.Size(240, 23);
             this.textBoxRecherche.TabIndex = 5;
+            this.textBoxRecherche.TextChanged += new System.EventHandler(this.textBoxRecherche_TextChanged);
             // 
             // labelRecherche
             // 
@@ -204,11 +205,6 @@ namespace SPA.Models
             this.columnHeaderOuvert.Text = "Ouvert";
             this.columnHeaderOuvert.Width = 100;
             // 
-            // columnHeaderAvis
-            // 
-            this.columnHeaderAvis.Text = "Avis";
-            this.columnHeaderAvis.Width = 100;
-            // 
             // columnHeaderNbCommentaires
             // 
             this.columnHeaderNbCommentaires.Text = "Nbre Commentaires";
@@ -229,6 +225,11 @@ namespace SPA.Models
             this.columnHeaderNbAppels.Text = "Nbre Appels";
             this.columnHeaderNbAppels.Width = 120;
             // 
+            // columnHeaderAvis
+            // 
+            this.columnHeaderAvis.Text = "Avis";
+            this.columnHeaderAvis.Width = 100;
+            // 
             // Accueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -238,8 +239,8 @@ namespace SPA.Models
             this.Controls.Add(this.panel1);
             this.Name = "Accueil";
             this.Text = "Accueil";
-            this.Load += new System.EventHandler(this.Accueil_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Accueil_FormClossing);
+            this.Load += new System.EventHandler(this.Accueil_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelAccueil.ResumeLayout(false);
@@ -253,9 +254,7 @@ namespace SPA.Models
         private System.Windows.Forms.Panel panelAccueil;
         private System.Windows.Forms.Button buttonCreateEnquete;
         private System.Windows.Forms.Button buttonModifyEnquetes;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonDeleteEnquete;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelTitre;
         private System.Windows.Forms.TextBox textBoxRecherche;
         private System.Windows.Forms.Label labelRecherche;
@@ -267,7 +266,6 @@ namespace SPA.Models
         private System.Windows.Forms.ColumnHeader columnHeaderPlaignant;
         private System.Windows.Forms.ColumnHeader columnHeaderEtat;
         private System.Windows.Forms.ColumnHeader columnHeaderAvis;
-        private System.Windows.Forms.ColumnHeader columnHeaderNbCommentaire;
         private System.Windows.Forms.ColumnHeader columnHeaderNbAnimaux;
         private System.Windows.Forms.ColumnHeader columnHeaderOuvert;
         private System.Windows.Forms.ColumnHeader columnHeaderNbCommentaires;

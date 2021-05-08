@@ -90,5 +90,13 @@ namespace SPA.Models
                 buttonDeleteEnquete.Enabled = false;
             }
         }
+        private void textBoxRecherche_TextChanged(object sender, EventArgs e)
+        {
+            ListViewItem foundItem = listViewEnquetes.FindItemWithText(textBoxRecherche.Text, true, 0, true);
+            if (foundItem != null)
+            {
+                listViewEnquetes.TopItem = foundItem;
+            }
+        }
     }
 }

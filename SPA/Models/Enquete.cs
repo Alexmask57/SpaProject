@@ -85,17 +85,19 @@ namespace SPA.Models
             enquete.Plaignant = Personne.GetPersonne(enquete.Plaignant.Nom, enquete.Plaignant.Prenom);
 
             List<Animaux_enquete> listAnimauxBdd = Animaux_enquete.GetAnimaux_EnquetesBdd(enquete.Id);
-            List<Animaux_enquete> animauxASupprimer = listAnimauxBdd;
+            List<Animaux_enquete> animauxASupprimer = Animaux_enquete.GetAnimaux_EnquetesBdd(enquete.Id);
             foreach (Animaux_enquete animal in enquete.Animaux)
             {
                 animal.Enquete.Id = enquete.Id;
                 bool exist = false;
                 foreach (Animaux_enquete animalBdd in listAnimauxBdd)
                 {
-                    if (animalBdd.Race == animal.Race && animalBdd.Nombre == animal.Nombre)
+                    if (animalBdd.Race.Animal == animal.Race.Animal &&
+                        animalBdd.Nombre == animal.Nombre && 
+                        animalBdd.Race.Nom_race == animal.Race.Nom_race)
                     {
                         exist = true;
-                        animauxASupprimer.Remove(animal);
+                        animauxASupprimer.Remove(animauxASupprimer.Find(x => x.Race.Id == animalBdd.Race.Id));
                     }
                 }
                 if (!exist)
