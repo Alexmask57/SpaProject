@@ -15,6 +15,10 @@ namespace SPA.Models
         public int Etat { get; set; }
         public bool OuvertParLeSiege { get; set; } = false;
         public List<Animaux_enquete> Animaux { get; set; } = new List<Animaux_enquete>();
+        public List<Appel> Appel { get; set; } = new List<Appel>();
+        public List<Commentaire> Commentaire { get; set; } = new List<Commentaire>();
+        public List<Document> Document { get; set; } = new List<Document>();
+        public List<Visite_enquete> Visite_enquete { get; set; } = new List<Visite_enquete>();
         
         /// <summary>
         /// Creer une enquete en base de données
@@ -60,6 +64,10 @@ namespace SPA.Models
 
             //Update enquete uniquement
             EnqueteDAO.UpdateEnquete(enquete);
+        }
+        public static void DeleteEnquete(Enquete enquete)
+        {
+            EnqueteDAO.DeleteEnquete
         }
 
         public static List<Enquete> GetEnquetes()

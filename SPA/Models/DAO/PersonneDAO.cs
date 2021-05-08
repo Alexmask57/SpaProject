@@ -329,6 +329,41 @@ namespace SPA.Models
             }
         }
 
+        public static bool DeletePersonne(Personne personne)
+        {
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"DELETE FROM Personne WHERE Id = @Id";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Id", personne.Id);
+
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         private static bool IntToBool(int entier)
         {
             if (entier == 1)

@@ -129,6 +129,41 @@ namespace SPA.Models.DAO
             }
         }
 
+        public static bool DeleteCommentaire(Enquete enquete)
+        {
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"DELETE FROM Commentaire WHERE Id = @Id";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Id", enquete.Id);
+
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public static int GetNombreCommentaire(string Id)
         {
             try

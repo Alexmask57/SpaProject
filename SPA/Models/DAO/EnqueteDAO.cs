@@ -40,6 +40,10 @@ namespace SPA.Models
                             enquete.Etat = dr.GetInt32(6);
                             enquete.OuvertParLeSiege = IntToBool(dr.GetInt32(7));
                             enquete.Animaux = Animaux_enquete.GetAnimaux_EnquetesBdd(enquete.Id);
+                            enquete.Document = Document.GetListDocument(enquete.Id);
+                            enquete.Commentaire = Commentaire.GetListCommentaire(enquete.Id);
+                            enquete.Visite_enquete = Visite_enquete.GetVisiteEnquete(enquete.Id);
+                            enquete.Appel = Appel.GetListAppel(enquete.Id);
                         }
                     }
                     else
@@ -83,6 +87,10 @@ namespace SPA.Models
                             enquete.Etat = dr.GetInt32(6);
                             enquete.OuvertParLeSiege = IntToBool(dr.GetInt32(7));
                             enquete.Animaux = Animaux_enquete.GetAnimaux_EnquetesBdd(enquete.Id);
+                            enquete.Document = Document.GetListDocument(enquete.Id);
+                            enquete.Commentaire = Commentaire.GetListCommentaire(enquete.Id);
+                            enquete.Visite_enquete = Visite_enquete.GetVisiteEnquete(enquete.Id);
+                            enquete.Appel = Appel.GetListAppel(enquete.Id);
                             listEnquetes.Add(enquete);
                         }
                     }

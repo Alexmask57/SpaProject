@@ -51,6 +51,11 @@ namespace SPA.Models
             return PersonneDAO.UpdatePersonne(personne);
         }
 
+        public static bool DeletePersonne(Personne personne)
+        {
+            return PersonneDAO.DeletePersonne(personne);
+        }
+
         /// <summary>
         /// Récûpère le departement 
         /// </summary>

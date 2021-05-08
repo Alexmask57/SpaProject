@@ -28,5 +28,10 @@ namespace SPA.Models
         {
             return Visite_enqueteDAO.AddVisiteEnquete(visite_enquete); ;
         }
+
+        public static bool DeleteVisitesEnquete(Enquete enquete)
+        {
+            return Visite_enqueteDAO.DeleteVisiteEnquete(enquete);
+        }
     }
 }

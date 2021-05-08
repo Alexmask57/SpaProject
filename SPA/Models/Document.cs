@@ -35,5 +35,15 @@ namespace SPA.Models
         {
             return DocumentDAO.UpdateDocument(document);
         }
+
+        public static bool DeleteDocument(Enquete enquete)
+        {
+            return DocumentDAO.DeleteDocument(enquete);
+        }
+
+        public static int NombreDocumentEnquete(Enquete enquete)
+        {
+            return DocumentDAO.GetNombreDocument(enquete.Id);
+        }
     }
 }

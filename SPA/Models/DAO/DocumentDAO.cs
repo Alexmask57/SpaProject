@@ -128,5 +128,79 @@ namespace SPA.Models.DAO
                 throw;
             }
         }
+
+        public static bool DeleteDocument(Enquete enquete)
+        {
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"DELETE FROM Document WHERE Id = @Id";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Id", enquete.Id);
+
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public static int GetNombreDocument(string Id)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"SELECT count(*) FROM Document WHERE Id = @Id";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Id", Id);
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        if (dr.Read())
+                        {
+                            return dr.GetInt32(0);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found.");
+                    }
+                    dr.Close();
+                }
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }
