@@ -47,6 +47,7 @@ namespace SPA.Models
             this.columnHeaderAvis = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderNbCommentaire = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderNbAnimaux = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderOuvert = new System.Windows.Forms.ColumnHeader();
             this.panel1.SuspendLayout();
             this.panelAccueil.SuspendLayout();
             this.SuspendLayout();
@@ -147,6 +148,7 @@ namespace SPA.Models
             this.columnHeaderInfracteur,
             this.columnHeaderPlaignant,
             this.columnHeaderEtat,
+            this.columnHeaderOuvert,
             this.columnHeaderAvis,
             this.columnHeaderNbCommentaire,
             this.columnHeaderNbAnimaux});
@@ -208,6 +210,11 @@ namespace SPA.Models
             this.columnHeaderNbAnimaux.Text = "Nbre Animaux";
             this.columnHeaderNbAnimaux.Width = 150;
             // 
+            // columnHeaderOuvert
+            // 
+            this.columnHeaderOuvert.Text = "Ouvert";
+            this.columnHeaderOuvert.Width = 100;
+            // 
             // Accueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -247,5 +254,6 @@ namespace SPA.Models
         private System.Windows.Forms.ColumnHeader columnHeaderAvis;
         private System.Windows.Forms.ColumnHeader columnHeaderNbCommentaire;
         private System.Windows.Forms.ColumnHeader columnHeaderNbAnimaux;
+        private System.Windows.Forms.ColumnHeader columnHeaderOuvert;
     }
 }

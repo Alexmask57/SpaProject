@@ -27,10 +27,11 @@ namespace SPA.Models
                 {
                     ListViewItem item = new ListViewItem(enquete.Id);
                     item.SubItems.Add(enquete.Titulaire_enquete.Nom + " " + enquete.Titulaire_enquete.Prenom);
-                    item.SubItems.Add(enquete.Delegue_enqueteur + " " + enquete.Delegue_enqueteur.Prenom);
+                    item.SubItems.Add(enquete.Delegue_enqueteur.Nom + " " + enquete.Delegue_enqueteur.Prenom);
                     item.SubItems.Add(enquete.Infracteur.Nom + " " + enquete.Infracteur.Prenom);
                     item.SubItems.Add(enquete.Plaignant.Nom + " " + enquete.Plaignant.Prenom);
                     item.SubItems.Add(enquete.Etat.ToString());
+                    item.SubItems.Add(enquete.OuvertParLeSiege.ToString());
                     item.SubItems.Add(enquete.Avis);
                     listViewEnquetes.Items.Add(item);
                 }
