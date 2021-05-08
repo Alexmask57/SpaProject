@@ -35,5 +35,10 @@ namespace SPA.Models
         {
             return CommentaireDAO.UpdateCommentaire(commentaire);
         }
+
+        public static int NombreCommentaireEnquete(Enquete enquete)
+        {
+            return Animaux_enqueteDAO.GetNombreAnimaux(enquete.Id);
+        }
     }
 }

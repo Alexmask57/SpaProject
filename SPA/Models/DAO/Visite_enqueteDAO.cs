@@ -8,15 +8,15 @@ namespace SPA.Models.DAO
     public static class Visite_enqueteDAO
     {
 
-        public static bool AddVisiteEnquete(Visite_enquete visite_enquete)
+        public static int AddVisiteEnquete(Visite_enquete visite_enquete)
         {
-            bool res = false;
+            int res = -1;
             try
             {
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"INSERT INTO Visite_enquete (Id, Id_enquete, Titulaire_enquete, Delegue_enqueteur, Date_visite, Avis_passage) VALUES (@Id, @Titulaire_enquete, @Delegue_enquete, @Infracteur, @Plaignant, 0, '');";
+                    string query = @"INSERT INTO Visite_enquete (Id, Id_enquete, Titulaire_enquete, Delegue_enqueteur, Date_visite, Avis_passage) output INSERTED.Id VALUES (@Id, @Titulaire_enquete, @Delegue_enquete, @Infracteur, @Plaignant, 0, '');";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -29,16 +29,9 @@ namespace SPA.Models.DAO
 
                     //open connection
                     conn.Open();
-
-                    //execute the SQLCommand
-                    SqlDataReader dr = cmd.ExecuteReader();
-
-                    //check if there are records
-                    if (dr.HasRows)
-                    {
-                        res = true;
-                    }
-                    dr.Close();
+                    res = (int)cmd.ExecuteScalar();
+                    if (conn.State == System.Data.ConnectionState.Open)
+                        conn.Close();
                 }
                 return res;
             }
@@ -47,7 +40,7 @@ namespace SPA.Models.DAO
                 throw;
             }
         }
-        /*
+
         public static List<Visite_enquete> GetAllVisiteEnquete(string id)
         {
             List<Visite_enquete> listeVisiteEnquete = new List<Visite_enquete>();
@@ -55,27 +48,25 @@ namespace SPA.Models.DAO
             {
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
-                    string query = @"SELECT * FROM Enquete";
+                    string query = @"SELECT * FROM Visite_enquete WHERE Id_enquete = @Id";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Id", id);
                     conn.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
                     if (dr.HasRows)
                     {
                         while (dr.Read())
                         {
-                            Enquete enquete = new Enquete();
+                            Visite_enquete visite_enquete = new Visite_enquete();
                             //display retrieved record (first column only/string value)
-                            enquete.Id = dr.GetString(0);
-                            enquete.Titulaire_enquete = Personne.GetPersonneById(dr.GetInt32(1));
-                            enquete.Delegue_enqueteur = Personne.GetPersonneById(dr.GetInt32(2));
-                            enquete.Plaignant = Personne.GetPersonneById(dr.GetInt32(3));
-                            enquete.Infracteur = Personne.GetPersonneById(dr.GetInt32(4));
-                            enquete.Etat = dr.GetInt32(5);
-                            enquete.Etat = dr.GetInt32(5);
-                            enquete.OuvertParLeSiege = IntToBool(dr.GetInt32(6));
-                            enquete.Animaux = Animaux_enquete.GetAnimaux_EnquetesBdd(enquete.Id);
-                            listeVisiteEnquete.Add(enquete);
+                            visite_enquete.Id = dr.GetInt32(0);
+                            visite_enquete.Enquete.Id = id;
+                            visite_enquete.Titulaire_enquete = Personne.GetPersonneById(dr.GetInt32(1));
+                            visite_enquete.Delegue_enqueteur = Personne.GetPersonneById(dr.GetInt32(2));
+                            visite_enquete.Date_visite = dr.GetDateTime(3);
+                            visite_enquete.Avis_passage = IntToBool(dr.GetInt32(4));
+                            listeVisiteEnquete.Add(visite_enquete);
                         }
                     }
                     else
@@ -91,7 +82,7 @@ namespace SPA.Models.DAO
                 throw;
             }
         }
-        */
+        
         private static bool IntToBool(int entier)
         {
             if (entier == 1)

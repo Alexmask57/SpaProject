@@ -79,8 +79,8 @@ namespace SPA.Models
                             enquete.Delegue_enqueteur = Personne.GetPersonneById(dr.GetInt32(2));
                             enquete.Plaignant = Personne.GetPersonneById(dr.GetInt32(3));
                             enquete.Infracteur = Personne.GetPersonneById(dr.GetInt32(4));
-                            enquete.Etat = dr.GetInt32(5);
-                            enquete.Etat = dr.GetInt32(5);
+                            enquete.Avis = dr.GetString(5);
+                            enquete.Etat = dr.GetInt32(6);
                             enquete.OuvertParLeSiege = IntToBool(dr.GetInt32(6));
                             enquete.Animaux = Animaux_enquete.GetAnimaux_EnquetesBdd(enquete.Id);
                             listEnquetes.Add(enquete);
@@ -225,6 +225,41 @@ namespace SPA.Models
                     dr.Close();
                 }
                 return "000";
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public static bool DeleteEnquete(Enquete enquete)
+        {
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"DELETE FROM Enquete WHERE Id = @Id";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Id", enquete.Id);
+
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
             }
             catch (Exception ex)
             {
