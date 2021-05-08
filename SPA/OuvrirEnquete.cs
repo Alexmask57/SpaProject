@@ -14,8 +14,10 @@ namespace SPA
     public partial class OuvrirEnquete : Form
     {
         public static Personne utilisateur = new Personne();
-        public OuvrirEnquete(Personne utilisateurConnecte)
+        public static Accueil accueil;
+        public OuvrirEnquete(Accueil accueilMenu, Personne utilisateurConnecte)
         {
+            accueil = accueilMenu;
             utilisateur = utilisateurConnecte;
             InitializeComponent();
         }
@@ -50,6 +52,9 @@ namespace SPA
             else
             {
                 EnvoiDonnees();
+                accueil.RefreshPage();
+                accueil.Show();
+                this.Close();
             }
         }
         private void buttonAjouter_Click(object sender, EventArgs e)
@@ -310,6 +315,7 @@ namespace SPA
                     Nom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[0],
                     Prenom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[1]
                 },
+                Motif = richTextBoxMotif.Text,
                 Animaux = list_animaux,
                 Document = documents
             };

@@ -20,8 +20,17 @@ namespace SPA.Models
         private void Accueil_Load(object sender, EventArgs e)
         {
             labelTitre.Text = "Bienvenue " + utilisateur.Prenom +" " + utilisateur.Nom;
+            RefreshPage();
+        }
+
+        public void RefreshPage()
+        {
+            foreach(ListViewItem item in listViewEnquetes.Items)
+            {
+                item.Remove();
+            }
             List<Enquete> list_enquetes = Enquete.GetEnquetes();
-            if(list_enquetes.Count > 0)
+            if (list_enquetes.Count > 0)
             {
                 foreach (Enquete enquete in list_enquetes)
                 {
@@ -44,8 +53,9 @@ namespace SPA.Models
 
         private void buttonCreateEnquete_Click(object sender, EventArgs e)
         {
-            OuvrirEnquete ouvrirEnquete = new OuvrirEnquete(utilisateur);
+            OuvrirEnquete ouvrirEnquete = new OuvrirEnquete(this, utilisateur);
             ouvrirEnquete.Show();
+            this.Hide();
         }
 
         private void buttonDeleteEnquete_Click(object sender, EventArgs e)
