@@ -20,7 +20,7 @@ namespace SPA.Models.DAO
             {
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
-                    string query = @"SELECT * FROM Commentaire WHERE Id_enquete = @Id";
+                    string query = @"SELECT * FROM Commentaires WHERE Id_enquete = @Id";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@Id", id);
@@ -64,7 +64,7 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"INSERT INTO Commentaire (Id_enquete, Date, Detail) VALUES (@Id, @Date, @Detail);";
+                    string query = @"INSERT INTO Commentaires (Id_enquete, Date, Detail) VALUES (@Id, @Date, @Detail);";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -101,7 +101,7 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"UPDATE Commentaire SET Date = @Date, Detail = @Detail;";
+                    string query = @"UPDATE Commentaires SET Date = @Date, Detail = @Detail;";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -137,7 +137,7 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"DELETE FROM Commentaire WHERE Id = @Id";
+                    string query = @"DELETE FROM Commentaires WHERE Id = @Id";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -171,7 +171,7 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"SELECT count(*) FROM Commentaire WHERE Id = @Id";
+                    string query = @"SELECT count(*) FROM Commentaires WHERE Id_enquete = @Id";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@Id", Id);
