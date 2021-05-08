@@ -21,7 +21,7 @@ namespace SPA.Models
         public List<Commentaire> Commentaire { get; set; } = new List<Commentaire>();
         public List<Document> Document { get; set; } = new List<Document>();
         public List<Visite_enquete> Visite_enquete { get; set; } = new List<Visite_enquete>();
-        
+
         /// <summary>
         /// Creer une enquete en base de données
         /// </summary>
@@ -68,7 +68,22 @@ namespace SPA.Models
 
         public static void UpdateEnqueteBdd(Enquete enquete)
         {
-            
+            Enquete enqueteBdd = Enquete.GetEnquete(enquete.Id);
+            enquete.Titulaire_enquete = Personne.GetPersonne(enquete.Titulaire_enquete.Nom, enquete.Titulaire_enquete.Prenom);
+            enquete.Delegue_enqueteur = Personne.GetPersonne(enquete.Delegue_enqueteur.Nom, enquete.Delegue_enqueteur.Prenom);
+            enquete.Plaignant.Id = enqueteBdd.Plaignant.Id;
+            enquete.Infracteur.Id = enqueteBdd.Infracteur.Id;
+
+            Personne.UpdatePersonneBdd(enquete.Titulaire_enquete);
+
+            Personne.UpdatePersonneBdd(enquete.Delegue_enqueteur);
+
+            Personne.UpdatePersonneBdd(enquete.Infracteur);
+            enquete.Infracteur = Personne.GetPersonne(enquete.Infracteur.Nom, enquete.Infracteur.Prenom);
+
+            Personne.UpdatePersonneBdd(enquete.Plaignant);
+            enquete.Plaignant = Personne.GetPersonne(enquete.Plaignant.Nom, enquete.Plaignant.Prenom);
+
             List<Animaux_enquete> listAnimauxBdd = Animaux_enquete.GetAnimaux_EnquetesBdd(enquete.Id);
             List<Animaux_enquete> animauxASupprimer = listAnimauxBdd;
             foreach (Animaux_enquete animal in enquete.Animaux)
@@ -81,7 +96,7 @@ namespace SPA.Models
                     {
                         exist = true;
                         animauxASupprimer.Remove(animal);
-                    } 
+                    }
                 }
                 if (!exist)
                     Animaux_enquete.AddAnimalEnqueteBdd(animal);
@@ -139,6 +154,6 @@ namespace SPA.Models
             string mois = DateTime.Now.ToString("MM");
             this.Id = departement + "/" + annee + "/" + mois + "/" + EnqueteDAO.GenerateId(departement, mois, annee);
         }
-        
+
     }
 }

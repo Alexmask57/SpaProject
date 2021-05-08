@@ -113,7 +113,7 @@ namespace SPA.Models
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"UPDATE Document SET Nom = @Nom, Prenom = @Prenom, Adresse = @Adresse, Code_postal = @Code_postal, Ville = @Ville, Email = @Email, Salarie = @Salarie, Benevole = @Benevole, Id_refuge = @IdRefuge;";
+                    string query = @"UPDATE Personne SET Nom = @Nom, Prenom = @Prenom, Adresse = @Adresse, Code_postal = @Code_postal, Ville = @Ville, Email = @Email, Salarie = @Salarie, Benevole = @Benevole, Id_refuge = @IdRefuge;";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
