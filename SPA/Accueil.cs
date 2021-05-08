@@ -11,21 +11,31 @@ namespace SPA.Models
     public partial class Accueil : Form
     {
         public static Personne utilisateur = new Personne();
-        public Accueil(Personne utilisateurConnecte)
+        public static ApplicationSPAConnexion pageConnexion;
+        public Accueil(ApplicationSPAConnexion connexionMenu, Personne utilisateurConnecte)
         {
+            pageConnexion = connexionMenu;
             utilisateur = utilisateurConnecte;
             InitializeComponent();
         }
 
         private void Accueil_Load(object sender, EventArgs e)
         {
-            labelTitre.Text = "Bienvenue " + utilisateur.Prenom +" " + utilisateur.Nom;
+            labelTitre.Text = "Bienvenue " + utilisateur.Prenom + " " + utilisateur.Nom;
             RefreshPage();
+        }
+
+        private void Accueil_FormClossing(object sender, FormClosingEventArgs e)
+        {
+                pageConnexion.Close();
+            // Do something proper to CloseButton.
+            //else
+                        // Then assume that X has been clicked and act accordingly.
         }
 
         public void RefreshPage()
         {
-            foreach(ListViewItem item in listViewEnquetes.Items)
+            foreach (ListViewItem item in listViewEnquetes.Items)
             {
                 item.Remove();
             }
@@ -66,13 +76,13 @@ namespace SPA.Models
 
         private void buttonModifyEnquetes_Click(object sender, EventArgs e)
         {
-           ModifierEnquete modifierEnquete = new ModifierEnquete(utilisateur, Enquete.GetEnquete(listViewEnquetes.SelectedItems[0].Text));
-           modifierEnquete.Show();
+            ModifierEnquete modifierEnquete = new ModifierEnquete(utilisateur, Enquete.GetEnquete(listViewEnquetes.SelectedItems[0].Text));
+            modifierEnquete.Show();
         }
 
         private void listViewEnquetes_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(listViewEnquetes.SelectedItems.Count > 0)
+            if (listViewEnquetes.SelectedItems.Count > 0)
             {
                 buttonModifyEnquetes.Enabled = true;
                 buttonDeleteEnquete.Enabled = true;

@@ -239,6 +239,7 @@ namespace SPA.Models
             this.Name = "Accueil";
             this.Text = "Accueil";
             this.Load += new System.EventHandler(this.Accueil_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Accueil_FormClossing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelAccueil.ResumeLayout(false);

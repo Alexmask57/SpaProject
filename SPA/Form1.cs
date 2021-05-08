@@ -35,7 +35,7 @@ namespace SPA
                 {
                     Personne utilisateur = Personne.GetPersonneById(res);
                     labelConnexionError.Visible = false;
-                    Accueil accueil = new Accueil(utilisateur);
+                    Accueil accueil = new Accueil(this, utilisateur);
                     accueil.Show();
                     this.Hide();
                 }
