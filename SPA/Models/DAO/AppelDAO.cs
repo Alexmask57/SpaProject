@@ -161,7 +161,7 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"SELECT count(*) FROM Appel WHERE Id = @Id";
+                    string query = @"SELECT sum(*) FROM Appel WHERE Id = @Id";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@Id", Id);
