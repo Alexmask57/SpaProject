@@ -41,6 +41,11 @@ namespace SPA.Models
             return AppelDAO.DeleteAppelsEnquete(enquete);
         }
 
+        public static bool DeleteAppel(Appel appel)
+        {
+            return AppelDAO.DeleteAppel(appel);
+        }
+
         public static int NombreAppelEnquete(Enquete enquete)
         {
             return AppelDAO.GetNombreAppel(enquete.Id);

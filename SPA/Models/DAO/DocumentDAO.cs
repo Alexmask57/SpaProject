@@ -51,15 +51,15 @@ namespace SPA.Models.DAO
             }
         }
 
-        public static int ExistDocument(string nom)
+        public static string ExistDocument(string nom)
         {
-            int res = -1;
+            string res = "-1";
             try
             {
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"SELECT Id FROM Document WHERE Chemin = @fichier";
+                    string query = @"SELECT Id_enquete FROM Document WHERE Chemin = @fichier";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@fichier", nom);
@@ -73,7 +73,7 @@ namespace SPA.Models.DAO
                     if (dr.HasRows)
                     {
                         if (dr.Read())
-                            res = dr.GetInt32(0);
+                            res = dr.GetString(0);
                     }
                     dr.Close();
                 }

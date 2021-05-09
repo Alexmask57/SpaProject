@@ -131,7 +131,7 @@ namespace SPA.Models
             foreach (Visite_enquete visiteAsupprimer in visitesAsupprimer)
                 Models.Visite_enquete.DeleteVisite(visiteAsupprimer);
 
-            //update animaux
+            //update commentaire
             List<Commentaire> listCommentairesBdd = Models.Commentaire.GetListCommentaire(enquete.Id);
             List<Commentaire> commentairesASupprimer = Models.Commentaire.GetListCommentaire(enquete.Id);
             foreach (Commentaire commentaire in enquete.Commentaire)
@@ -141,10 +141,11 @@ namespace SPA.Models
                 foreach (Commentaire commentaireBdd in listCommentairesBdd)
                 {
                     if (commentaireBdd.Enquete.Id == commentaire.Enquete.Id &&
-                        commentaireBdd.Date == commentaire.Date)
+                        commentaireBdd.Date == commentaire.Date &&
+                        commentaireBdd.Detail == commentaire.Detail)
                     {
                         exist = true;
-                        commentairesASupprimer.Remove(commentairesASupprimer.Find(x => x.Date == commentaireBdd.Date));
+                        commentairesASupprimer.Remove(commentairesASupprimer.Find(x => (x.Date == commentaireBdd.Date) && (x.Detail == commentaireBdd.Detail) && (x.Enquete.Id == commentaireBdd.Enquete.Id)));
                     }
                 }
                 if (!exist)
@@ -152,6 +153,29 @@ namespace SPA.Models
             }
             foreach (Commentaire commentaireASupprimer in commentairesASupprimer)
                 Models.Commentaire.DeleteCommentaire(commentaireASupprimer);
+
+            //update appel
+            List<Appel> listAppelsBdd = Models.Appel.GetListAppel(enquete.Id);
+            List<Appel> appelsASupprimer = Models.Appel.GetListAppel(enquete.Id);
+            foreach (Appel appel in enquete.Appel)
+            {
+                appel.Enquete.Id = enquete.Id;
+                bool exist = false;
+                foreach (Appel appelBdd in listAppelsBdd)
+                {
+                    if (appelBdd.Enquete.Id == appel.Enquete.Id &&
+                        appelBdd.Date == appel.Date &&
+                        appelBdd.Commentaire == appel.Commentaire)
+                    {
+                        exist = true;
+                        appelsASupprimer.Remove(appelsASupprimer.Find(x => (x.Date == appelBdd.Date) && (x.Commentaire == appelBdd.Commentaire) && (x.Enquete.Id == appelBdd.Enquete.Id)));
+                    }
+                }
+                if (!exist)
+                    Models.Appel.CreerAppelBdd(appel);
+            }
+            foreach (Appel appelASupprimer in appelsASupprimer)
+                Models.Appel.DeleteAppel(appelASupprimer);
 
             //update doc
             foreach (Document document in enquete.Document)

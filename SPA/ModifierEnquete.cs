@@ -402,7 +402,7 @@ namespace SPA
             List<Document> documents = new List<Document>();
             foreach (ListViewItem item in listViewDocuments.Items)
             {
-                if (Document.ExistDocument(item.SubItems[0].Text) == -1)
+                if (Document.ExistDocument(item.SubItems[0].Text) == "-1")
                 {
                     string filename = @Path.GetFileNameWithoutExtension(item.SubItems[0].Text);
                     string extension = @Path.GetExtension(item.SubItems[0].Text);

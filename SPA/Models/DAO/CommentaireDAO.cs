@@ -173,12 +173,13 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"DELETE FROM Commentaires WHERE Id_enquete = @Id AND Date = @Date";
+                    string query = @"DELETE FROM Commentaires WHERE Id_enquete = @Id AND Date = @Date And Commentaire = @Detail";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
                     cmd.Parameters.AddWithValue("@Id", commentaire.Enquete.Id);
                     cmd.Parameters.AddWithValue("@Date", commentaire.Date);
+                    cmd.Parameters.AddWithValue("@Detail", commentaire.Detail);
 
                     //open connection
                     conn.Open();
