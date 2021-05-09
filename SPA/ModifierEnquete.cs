@@ -174,10 +174,10 @@ namespace SPA
             //Visites
             foreach (Visite_enquete visite in enquete.Visite_enquete)
             {
-                string check = checkBoxAvisDePassage.Checked ? "Oui" : "Non";
+                string check = visite.Avis_passage ? "Oui" : "Non";
                 ListViewItem item = new ListViewItem(comboBoxTitulaire.SelectedItem.ToString());
                 item.SubItems.Add(comboBoxDelegue.SelectedItem.ToString());
-                item.SubItems.Add(dateTimePickerVisite.Value.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(visite.Date_visite.ToString("dd/MM/yyyy"));
                 item.SubItems.Add(check);
                 listViewVisites.Items.Add(item);
             }
