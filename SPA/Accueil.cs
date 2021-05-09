@@ -49,13 +49,14 @@ namespace SPA.Models
             {
                 foreach (Enquete enquete in list_enquetes)
                 {
+                    string ouvertSiege = enquete.OuvertParLeSiege ? "Oui" : "Non";
                     ListViewItem item = new ListViewItem(enquete.Id);
                     item.SubItems.Add(enquete.Titulaire_enquete.Nom + " " + enquete.Titulaire_enquete.Prenom);
                     item.SubItems.Add(enquete.Delegue_enqueteur.Nom + " " + enquete.Delegue_enqueteur.Prenom);
                     item.SubItems.Add(enquete.Infracteur.Nom + " " + enquete.Infracteur.Prenom);
                     item.SubItems.Add(enquete.Plaignant.Nom + " " + enquete.Plaignant.Prenom);
                     item.SubItems.Add(etat[enquete.Etat]);
-                    item.SubItems.Add(enquete.OuvertParLeSiege.ToString());
+                    item.SubItems.Add(ouvertSiege);
                     item.SubItems.Add(Commentaire.NombreCommentaireEnquete(enquete).ToString());
                     item.SubItems.Add(Animaux_enquete.NombreAnimauxEnquete(enquete).ToString());
                     item.SubItems.Add(Document.NombreDocumentEnquete(enquete).ToString());

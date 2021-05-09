@@ -30,6 +30,7 @@ namespace SPA.Models
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonDeconnexion = new System.Windows.Forms.Button();
             this.buttonAdmin = new System.Windows.Forms.Button();
             this.textBoxRecherche = new System.Windows.Forms.TextBox();
             this.labelRecherche = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@ namespace SPA.Models
             this.columnHeaderNbFichiers = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderNbAppels = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderAvis = new System.Windows.Forms.ColumnHeader();
-            this.buttonDeconnexion = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelAccueil.SuspendLayout();
             this.SuspendLayout();
@@ -71,6 +71,18 @@ namespace SPA.Models
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1247, 107);
             this.panel1.TabIndex = 1;
+            // 
+            // buttonDeconnexion
+            // 
+            this.buttonDeconnexion.BackColor = System.Drawing.Color.Red;
+            this.buttonDeconnexion.ForeColor = System.Drawing.Color.White;
+            this.buttonDeconnexion.Location = new System.Drawing.Point(1111, 40);
+            this.buttonDeconnexion.Name = "buttonDeconnexion";
+            this.buttonDeconnexion.Size = new System.Drawing.Size(102, 50);
+            this.buttonDeconnexion.TabIndex = 7;
+            this.buttonDeconnexion.Text = "Deconnexion";
+            this.buttonDeconnexion.UseVisualStyleBackColor = false;
+            this.buttonDeconnexion.Click += new System.EventHandler(this.buttonDeconnexion_Click);
             // 
             // buttonAdmin
             // 
@@ -217,7 +229,7 @@ namespace SPA.Models
             // 
             // columnHeaderOuvert
             // 
-            this.columnHeaderOuvert.Text = "Ouvert";
+            this.columnHeaderOuvert.Text = "Siège";
             this.columnHeaderOuvert.Width = 100;
             // 
             // columnHeaderNbCommentaires
@@ -244,18 +256,6 @@ namespace SPA.Models
             // 
             this.columnHeaderAvis.Text = "Avis";
             this.columnHeaderAvis.Width = 100;
-            // 
-            // buttonDeconnexion
-            // 
-            this.buttonDeconnexion.BackColor = System.Drawing.Color.Red;
-            this.buttonDeconnexion.ForeColor = System.Drawing.Color.White;
-            this.buttonDeconnexion.Location = new System.Drawing.Point(1111, 40);
-            this.buttonDeconnexion.Name = "buttonDeconnexion";
-            this.buttonDeconnexion.Size = new System.Drawing.Size(102, 50);
-            this.buttonDeconnexion.TabIndex = 7;
-            this.buttonDeconnexion.Text = "Deconnexion";
-            this.buttonDeconnexion.UseVisualStyleBackColor = false;
-            this.buttonDeconnexion.Click += new System.EventHandler(this.buttonDeconnexion_Click);
             // 
             // Accueil
             // 

@@ -561,6 +561,19 @@ namespace SPA
                     comboBoxEtat.Text = etat[1];
                 }
             }
+            if (enquete.Etat == 0 && comboBoxEtat.SelectedIndex == 2)
+            {
+                string message = "Vous ne pouvez pas passer de \"En cours\" à \"Terminée\"";
+                string caption = "Erreur";
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+
+                }
+                comboBoxEtat.Text = etat[0];
+            }
         }
 
         private void buttonouvrirFichier_Click(object sender, EventArgs e)
@@ -711,7 +724,7 @@ namespace SPA
                 if (enquete.OuvertParLeSiege)
                 {
                     GmailSender gmail = new GmailSender(Credentials.GetCredential());
-                    string body = "Voici l'avis de l'enquêteur : " + réponse;
+                    string body = "Voici l'avis de l'enqueteur : " + réponse;
                     gmail.SendEmail("alexismaskio@gmail.com", "alexismaskio@gmail.com", "L'enquete : " + enquete.Id + " a été rendue", body);
 
                 }
