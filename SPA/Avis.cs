@@ -33,6 +33,8 @@ namespace SPA
                 buttonAnnuler.Visible = false;
                 buttonEnregistrer.Visible = false;
                 label1.Text = "Avis du titulaire de l'enquête sur l'enquête";
+                richTextBox1.Enabled = false;
+                richTextBox1.Text = enquete.Avis;
             }
             else
             {

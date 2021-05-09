@@ -34,8 +34,8 @@ namespace SPA.Models
                             enquete.Id = dr.GetString(0);
                             enquete.Titulaire_enquete = Personne.GetPersonneById(dr.GetInt32(1));
                             enquete.Delegue_enqueteur = Personne.GetPersonneById(dr.GetInt32(2));
-                            enquete.Plaignant = Personne.GetPersonneById(dr.GetInt32(3));
-                            enquete.Infracteur = Personne.GetPersonneById(dr.GetInt32(4));
+                            enquete.Infracteur = Personne.GetPersonneById(dr.GetInt32(3));
+                            enquete.Plaignant = Personne.GetPersonneById(dr.GetInt32(4));
                             enquete.Avis = dr.GetString(5);
                             enquete.Etat = dr.GetInt32(6);
                             enquete.OuvertParLeSiege = IntToBool(dr.GetInt32(7));
@@ -82,8 +82,8 @@ namespace SPA.Models
                             enquete.Id = dr.GetString(0);
                             enquete.Titulaire_enquete = Personne.GetPersonneById(dr.GetInt32(1));
                             enquete.Delegue_enqueteur = Personne.GetPersonneById(dr.GetInt32(2));
-                            enquete.Plaignant = Personne.GetPersonneById(dr.GetInt32(3));
-                            enquete.Infracteur = Personne.GetPersonneById(dr.GetInt32(4));
+                            enquete.Infracteur = Personne.GetPersonneById(dr.GetInt32(3));
+                            enquete.Plaignant = Personne.GetPersonneById(dr.GetInt32(4));
                             enquete.Avis = dr.GetString(5);
                             enquete.Etat = dr.GetInt32(6);
                             enquete.OuvertParLeSiege = IntToBool(dr.GetInt32(7));

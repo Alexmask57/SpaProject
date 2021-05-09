@@ -60,7 +60,6 @@ namespace SPA
 
         private void Admin_Load(object sender, EventArgs e)
         {
-
         }
 
         private void buttonAjouter_Click(object sender, EventArgs e)
