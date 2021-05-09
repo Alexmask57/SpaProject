@@ -32,6 +32,25 @@ namespace SPA
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTitre = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonSupprimeVisite = new System.Windows.Forms.Button();
+            this.checkBoxAvisDePassage = new System.Windows.Forms.CheckBox();
+            this.dateTimePickerVisite = new System.Windows.Forms.DateTimePicker();
+            this.buttonAjoutVisite = new System.Windows.Forms.Button();
+            this.listViewVisites = new System.Windows.Forms.ListView();
+            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader6 = new System.Windows.Forms.ColumnHeader();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePickerAppels = new System.Windows.Forms.DateTimePicker();
+            this.richTextBoxAppel = new System.Windows.Forms.RichTextBox();
+            this.buttonModifierAppel = new System.Windows.Forms.Button();
+            this.buttonSupprimeAppel = new System.Windows.Forms.Button();
+            this.buttonAjoutAppel = new System.Windows.Forms.Button();
+            this.listViewAppels = new System.Windows.Forms.ListView();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.richTextBoxCommentaire = new System.Windows.Forms.RichTextBox();
             this.buttonModifierCommentaire = new System.Windows.Forms.Button();
             this.buttonDeletecommentaire = new System.Windows.Forms.Button();
@@ -133,6 +152,19 @@ namespace SPA
             // panel2
             // 
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.buttonSupprimeVisite);
+            this.panel2.Controls.Add(this.checkBoxAvisDePassage);
+            this.panel2.Controls.Add(this.dateTimePickerVisite);
+            this.panel2.Controls.Add(this.buttonAjoutVisite);
+            this.panel2.Controls.Add(this.listViewVisites);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.dateTimePickerAppels);
+            this.panel2.Controls.Add(this.richTextBoxAppel);
+            this.panel2.Controls.Add(this.buttonModifierAppel);
+            this.panel2.Controls.Add(this.buttonSupprimeAppel);
+            this.panel2.Controls.Add(this.buttonAjoutAppel);
+            this.panel2.Controls.Add(this.listViewAppels);
             this.panel2.Controls.Add(this.richTextBoxCommentaire);
             this.panel2.Controls.Add(this.buttonModifierCommentaire);
             this.panel2.Controls.Add(this.buttonDeletecommentaire);
@@ -207,6 +239,175 @@ namespace SPA
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1187, 626);
             this.panel2.TabIndex = 1;
+            // 
+            // buttonSupprimeVisite
+            // 
+            this.buttonSupprimeVisite.Enabled = false;
+            this.buttonSupprimeVisite.Location = new System.Drawing.Point(351, 1597);
+            this.buttonSupprimeVisite.Name = "buttonSupprimeVisite";
+            this.buttonSupprimeVisite.Size = new System.Drawing.Size(135, 33);
+            this.buttonSupprimeVisite.TabIndex = 93;
+            this.buttonSupprimeVisite.Text = "Supprimer une visite";
+            this.buttonSupprimeVisite.UseVisualStyleBackColor = true;
+            this.buttonSupprimeVisite.Click += new System.EventHandler(this.buttonSupprimeVisite_Click);
+            // 
+            // checkBoxAvisDePassage
+            // 
+            this.checkBoxAvisDePassage.AutoSize = true;
+            this.checkBoxAvisDePassage.Location = new System.Drawing.Point(924, 1604);
+            this.checkBoxAvisDePassage.Name = "checkBoxAvisDePassage";
+            this.checkBoxAvisDePassage.Size = new System.Drawing.Size(109, 19);
+            this.checkBoxAvisDePassage.TabIndex = 92;
+            this.checkBoxAvisDePassage.Text = "Avis de passage";
+            this.checkBoxAvisDePassage.UseVisualStyleBackColor = true;
+            // 
+            // dateTimePickerVisite
+            // 
+            this.dateTimePickerVisite.Location = new System.Drawing.Point(687, 1600);
+            this.dateTimePickerVisite.Name = "dateTimePickerVisite";
+            this.dateTimePickerVisite.Size = new System.Drawing.Size(198, 23);
+            this.dateTimePickerVisite.TabIndex = 91;
+            // 
+            // buttonAjoutVisite
+            // 
+            this.buttonAjoutVisite.Location = new System.Drawing.Point(228, 1597);
+            this.buttonAjoutVisite.Name = "buttonAjoutVisite";
+            this.buttonAjoutVisite.Size = new System.Drawing.Size(117, 33);
+            this.buttonAjoutVisite.TabIndex = 90;
+            this.buttonAjoutVisite.Text = "Ajouter une visite";
+            this.buttonAjoutVisite.UseVisualStyleBackColor = true;
+            this.buttonAjoutVisite.Click += new System.EventHandler(this.buttonAjoutVisite_Click);
+            // 
+            // listViewVisites
+            // 
+            this.listViewVisites.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader4,
+            this.columnHeader3,
+            this.columnHeader5,
+            this.columnHeader6});
+            this.listViewVisites.FullRowSelect = true;
+            this.listViewVisites.GridLines = true;
+            this.listViewVisites.HideSelection = false;
+            this.listViewVisites.Location = new System.Drawing.Point(228, 1646);
+            this.listViewVisites.MultiSelect = false;
+            this.listViewVisites.Name = "listViewVisites";
+            this.listViewVisites.Size = new System.Drawing.Size(828, 114);
+            this.listViewVisites.TabIndex = 89;
+            this.listViewVisites.UseCompatibleStateImageBehavior = false;
+            this.listViewVisites.View = System.Windows.Forms.View.Details;
+            this.listViewVisites.SelectedIndexChanged += new System.EventHandler(this.listViewVisites_SelectedIndexChanged);
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Titulaire delegue";
+            this.columnHeader4.Width = 200;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Delegue enqueteur";
+            this.columnHeader3.Width = 200;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Date de la visite";
+            this.columnHeader5.Width = 200;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "Avis de passage";
+            this.columnHeader6.Width = 222;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(227, 1036);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 15);
+            this.label2.TabIndex = 88;
+            this.label2.Text = "Commentaires à ajouter :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(227, 1334);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 15);
+            this.label1.TabIndex = 87;
+            this.label1.Text = "Appels effectués :";
+            // 
+            // dateTimePickerAppels
+            // 
+            this.dateTimePickerAppels.Location = new System.Drawing.Point(516, 1334);
+            this.dateTimePickerAppels.Name = "dateTimePickerAppels";
+            this.dateTimePickerAppels.Size = new System.Drawing.Size(198, 23);
+            this.dateTimePickerAppels.TabIndex = 86;
+            // 
+            // richTextBoxAppel
+            // 
+            this.richTextBoxAppel.Location = new System.Drawing.Point(734, 1334);
+            this.richTextBoxAppel.Name = "richTextBoxAppel";
+            this.richTextBoxAppel.Size = new System.Drawing.Size(320, 77);
+            this.richTextBoxAppel.TabIndex = 85;
+            this.richTextBoxAppel.Text = "";
+            // 
+            // buttonModifierAppel
+            // 
+            this.buttonModifierAppel.Enabled = false;
+            this.buttonModifierAppel.Location = new System.Drawing.Point(493, 1381);
+            this.buttonModifierAppel.Name = "buttonModifierAppel";
+            this.buttonModifierAppel.Size = new System.Drawing.Size(113, 36);
+            this.buttonModifierAppel.TabIndex = 84;
+            this.buttonModifierAppel.Text = "Modifier appel";
+            this.buttonModifierAppel.UseVisualStyleBackColor = true;
+            this.buttonModifierAppel.Click += new System.EventHandler(this.buttonModifierAppel_Click);
+            // 
+            // buttonSupprimeAppel
+            // 
+            this.buttonSupprimeAppel.Enabled = false;
+            this.buttonSupprimeAppel.Location = new System.Drawing.Point(367, 1383);
+            this.buttonSupprimeAppel.Name = "buttonSupprimeAppel";
+            this.buttonSupprimeAppel.Size = new System.Drawing.Size(120, 32);
+            this.buttonSupprimeAppel.TabIndex = 83;
+            this.buttonSupprimeAppel.Text = "Supprimer appel";
+            this.buttonSupprimeAppel.UseVisualStyleBackColor = true;
+            this.buttonSupprimeAppel.Click += new System.EventHandler(this.buttonSupprimeAppel_Click);
+            // 
+            // buttonAjoutAppel
+            // 
+            this.buttonAjoutAppel.Location = new System.Drawing.Point(229, 1383);
+            this.buttonAjoutAppel.Name = "buttonAjoutAppel";
+            this.buttonAjoutAppel.Size = new System.Drawing.Size(125, 30);
+            this.buttonAjoutAppel.TabIndex = 82;
+            this.buttonAjoutAppel.Text = "Ajouter appel";
+            this.buttonAjoutAppel.UseVisualStyleBackColor = true;
+            this.buttonAjoutAppel.Click += new System.EventHandler(this.buttonAjoutAppel_Click);
+            // 
+            // listViewAppels
+            // 
+            this.listViewAppels.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listViewAppels.FullRowSelect = true;
+            this.listViewAppels.GridLines = true;
+            this.listViewAppels.HideSelection = false;
+            this.listViewAppels.Location = new System.Drawing.Point(227, 1427);
+            this.listViewAppels.MultiSelect = false;
+            this.listViewAppels.Name = "listViewAppels";
+            this.listViewAppels.Size = new System.Drawing.Size(828, 114);
+            this.listViewAppels.TabIndex = 81;
+            this.listViewAppels.UseCompatibleStateImageBehavior = false;
+            this.listViewAppels.View = System.Windows.Forms.View.Details;
+            this.listViewAppels.SelectedIndexChanged += new System.EventHandler(this.listViewAppels_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Date";
+            this.columnHeader1.Width = 300;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Commentaire";
+            this.columnHeader2.Width = 522;
             // 
             // richTextBoxCommentaire
             // 
@@ -420,7 +621,7 @@ namespace SPA
             // 
             this.labelErrorEnquete.AutoSize = true;
             this.labelErrorEnquete.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorEnquete.Location = new System.Drawing.Point(691, 1397);
+            this.labelErrorEnquete.Location = new System.Drawing.Point(687, 1789);
             this.labelErrorEnquete.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.labelErrorEnquete.Name = "labelErrorEnquete";
             this.labelErrorEnquete.Size = new System.Drawing.Size(121, 15);
@@ -667,12 +868,14 @@ namespace SPA
             // 
             // buttonEnregistrer
             // 
-            this.buttonEnregistrer.Location = new System.Drawing.Point(528, 1387);
+            this.buttonEnregistrer.BackColor = System.Drawing.Color.Green;
+            this.buttonEnregistrer.ForeColor = System.Drawing.SystemColors.Control;
+            this.buttonEnregistrer.Location = new System.Drawing.Point(524, 1779);
             this.buttonEnregistrer.Name = "buttonEnregistrer";
             this.buttonEnregistrer.Size = new System.Drawing.Size(145, 35);
             this.buttonEnregistrer.TabIndex = 1;
             this.buttonEnregistrer.Text = "Enregistrer";
-            this.buttonEnregistrer.UseVisualStyleBackColor = true;
+            this.buttonEnregistrer.UseVisualStyleBackColor = false;
             this.buttonEnregistrer.Click += new System.EventHandler(this.buttonEnregistrer_Click);
             // 
             // labelMotif
@@ -1019,5 +1222,25 @@ namespace SPA
         private System.Windows.Forms.ColumnHeader columnDate;
         private System.Windows.Forms.ColumnHeader columnDetails;
         private System.Windows.Forms.RichTextBox richTextBoxCommentaire;
+        private System.Windows.Forms.Button buttonModifierAppel;
+        private System.Windows.Forms.Button buttonSupprimeAppel;
+        private System.Windows.Forms.Button buttonAjoutAppel;
+        private System.Windows.Forms.ListView listViewAppels;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.RichTextBox richTextBoxAppel;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerAppels;
+        private System.Windows.Forms.Button buttonAjoutVisite;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ListView listViewVisites;
+        private System.Windows.Forms.DateTimePicker dateTimePickerVisite;
+        private System.Windows.Forms.CheckBox checkBoxAvisDePassage;
+        private System.Windows.Forms.Button buttonSupprimeVisite;
+        private System.Windows.Forms.ColumnHeader columnHeader5;
+        private System.Windows.Forms.ColumnHeader columnHeader6;
     }
 }

@@ -39,6 +39,8 @@ namespace SPA
                     Accueil accueil = new Accueil(this, utilisateur);
                     accueil.Show();
                     this.Hide();
+                    textBoxIdentifiant.Text = "";
+                    textBoxPassword.Text = "";
                 }
                 else
                 {

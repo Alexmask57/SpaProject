@@ -13,6 +13,7 @@ namespace SPA
 {
     public partial class OuvrirEnquete : Form
     {
+        
         public static Personne utilisateur = new Personne();
         public static Accueil accueil;
         public OuvrirEnquete(Accueil accueilMenu, Personne utilisateurConnecte)
@@ -344,6 +345,7 @@ namespace SPA
                     Nom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[0],
                     Prenom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[1]
                 },
+                OuvertParLeSiege = checkBoxSiege.Checked,
                 Motif = richTextBoxMotif.Text,
                 Animaux = list_animaux,
                 Document = documents
@@ -364,7 +366,6 @@ namespace SPA
                 textBoxIdEnquete.Visible = false;
                 textBoxIdEnquete.Text = "";
             }
-
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

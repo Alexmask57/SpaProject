@@ -10,6 +10,8 @@ namespace SPA.Models
 {
     public partial class Accueil : Form
     {
+        private bool cliqueDeco = false;
+        private List<string> etat = new List<string> { "En cours", "Rendue", "Terminée" };
         public static Personne utilisateur = new Personne();
         public static ApplicationSPAConnexion pageConnexion;
         public Accueil(ApplicationSPAConnexion connexionMenu, Personne utilisateurConnecte)
@@ -31,7 +33,9 @@ namespace SPA.Models
 
         private void Accueil_FormClossing(object sender, FormClosingEventArgs e)
         {
-            pageConnexion.Close();
+            if (!cliqueDeco)
+                pageConnexion.Close();
+            cliqueDeco = false;
         }
 
         public void RefreshPage()
@@ -50,7 +54,7 @@ namespace SPA.Models
                     item.SubItems.Add(enquete.Delegue_enqueteur.Nom + " " + enquete.Delegue_enqueteur.Prenom);
                     item.SubItems.Add(enquete.Infracteur.Nom + " " + enquete.Infracteur.Prenom);
                     item.SubItems.Add(enquete.Plaignant.Nom + " " + enquete.Plaignant.Prenom);
-                    item.SubItems.Add(enquete.Etat.ToString());
+                    item.SubItems.Add(etat[enquete.Etat]);
                     item.SubItems.Add(enquete.OuvertParLeSiege.ToString());
                     item.SubItems.Add(Commentaire.NombreCommentaireEnquete(enquete).ToString());
                     item.SubItems.Add(Animaux_enquete.NombreAnimauxEnquete(enquete).ToString());
@@ -111,6 +115,13 @@ namespace SPA.Models
         {
             Admin admin = new Admin(this, utilisateur);
             admin.Show();
+        }
+
+        private void buttonDeconnexion_Click(object sender, EventArgs e)
+        {
+            cliqueDeco = true;
+            pageConnexion.Show();
+            this.Close();
         }
     }
 }

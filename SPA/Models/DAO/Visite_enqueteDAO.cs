@@ -16,16 +16,15 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"INSERT INTO Visite_enquete (Id, Id_enquete, Titulaire_enquete, Delegue_enqueteur, Date_visite, Avis_passage) output INSERTED.Id VALUES (@Id, @Titulaire_enquete, @Delegue_enquete, @Infracteur, @Plaignant, 0, '');";
+                    string query = @"INSERT INTO Visite_enquete (Id_enquete, Titulaire_enquete, Delegue_enqueteur, Date_visite, Avis_passage) output INSERTED.Id VALUES (@Id_enquete, @Titulaire_enquete, @Delegue_enquete, @Date_visite, @Avis_passage);";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
-                    cmd.Parameters.AddWithValue("@Id", visite_enquete.Id);
                     cmd.Parameters.AddWithValue("@Id_enquete", visite_enquete.Enquete.Id);
                     cmd.Parameters.AddWithValue("@Titulaire_enquete", visite_enquete.Titulaire_enquete.Id);
                     cmd.Parameters.AddWithValue("@Delegue_enquete", visite_enquete.Delegue_enqueteur.Id);
                     cmd.Parameters.AddWithValue("@Date_visite", visite_enquete.Date_visite);
-                    cmd.Parameters.AddWithValue("@Avis_passage", visite_enquete.Avis_passage);
+                    cmd.Parameters.AddWithValue("@Avis_passage", BoolToInt(visite_enquete.Avis_passage));
 
                     //open connection
                     conn.Open();
@@ -61,11 +60,11 @@ namespace SPA.Models.DAO
                             Visite_enquete visite_enquete = new Visite_enquete();
                             //display retrieved record (first column only/string value)
                             visite_enquete.Id = dr.GetInt32(0);
-                            visite_enquete.Enquete.Id = id;
-                            visite_enquete.Titulaire_enquete = Personne.GetPersonneById(dr.GetInt32(1));
-                            visite_enquete.Delegue_enqueteur = Personne.GetPersonneById(dr.GetInt32(2));
-                            visite_enquete.Date_visite = dr.GetDateTime(3);
-                            visite_enquete.Avis_passage = IntToBool(dr.GetInt32(4));
+                            visite_enquete.Enquete = new Enquete { Id= id };
+                            visite_enquete.Titulaire_enquete = Personne.GetPersonneById(dr.GetInt32(2));
+                            visite_enquete.Delegue_enqueteur = Personne.GetPersonneById(dr.GetInt32(3));
+                            visite_enquete.Date_visite = dr.GetDateTime(4);
+                            visite_enquete.Avis_passage = IntToBool(dr.GetInt32(5));
                             listeVisiteEnquete.Add(visite_enquete);
                         }
                     }
@@ -192,6 +191,8 @@ namespace SPA.Models.DAO
                 throw;
             }
         }
+
+
         private static bool IntToBool(int entier)
         {
             if (entier == 1)

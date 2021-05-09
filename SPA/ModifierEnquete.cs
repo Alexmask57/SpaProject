@@ -28,7 +28,7 @@ namespace SPA
         }
         private void ModifierEnquete_Load(object sender, EventArgs e)
         {
-            if (utilisateur == enquete.Delegue_enqueteur || utilisateur == enquete.Titulaire_enquete || utilisateur.Admin)
+            if (utilisateur.Id == enquete.Delegue_enqueteur.Id || utilisateur.Id == enquete.Titulaire_enquete.Id || utilisateur.Admin)
             {
                 buttonEnregistrer.Enabled = true;
             }
@@ -53,6 +53,11 @@ namespace SPA
                 textBoxVilleInfracteur.Enabled = false;
                 textBoxVillePlaignant.Enabled = false;
 
+
+                buttonAjoutCommentaire.Enabled = false;
+                buttonAjoutAppel.Enabled = false;
+                buttonAjoutVisite.Enabled = false;
+                buttonAjoutCommentaire.Enabled = false;
                 buttonAjouterFichier.Enabled = false;
                 buttonAjouter.Enabled = false;
                 buttonSupprimer.Enabled = false;
@@ -94,6 +99,9 @@ namespace SPA
                 }
             }
             //REMPLIR CHAQUE ELEMENT
+
+            textBoxIdEnquete.Text = enquete.Id;
+            checkBoxOuvertParLeSiege.Checked = enquete.OuvertParLeSiege;
 
             //Infracteur
             textBoxNomInfracteur.Text = enquete.Infracteur.Nom;
@@ -137,6 +145,25 @@ namespace SPA
                 ListViewItem item = new ListViewItem(commentaire.Date.ToString("dd/MM/yyyy HH:mm:ss"));
                 item.SubItems.Add(commentaire.Detail);
                 listViewCommentaires.Items.Add(item);
+            }
+
+            //Appels
+            foreach (Appel appel in enquete.Appel)
+            {
+                ListViewItem item = new ListViewItem(appel.Date.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(appel.Commentaire);
+                listViewAppels.Items.Add(item);
+            }
+
+            //Visites
+            foreach (Visite_enquete visite in enquete.Visite_enquete)
+            {
+                string check = checkBoxAvisDePassage.Checked ? "Oui" : "Non";
+                ListViewItem item = new ListViewItem(comboBoxTitulaire.SelectedItem.ToString());
+                item.SubItems.Add(comboBoxDelegue.SelectedItem.ToString());
+                item.SubItems.Add(dateTimePickerVisite.Value.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(check);
+                listViewVisites.Items.Add(item);
             }
         }
         private void buttonEnregistrer_Click(object sender, EventArgs e)
@@ -394,6 +421,35 @@ namespace SPA
                 list_commentaires.Add(commentaire);
             }
 
+            List<Appel> list_appels = new List<Appel>();
+            foreach (ListViewItem item in listViewAppels.Items)
+            {
+                Appel appel = new Appel
+                {
+                    Enquete = new Enquete { Id = enquete.Id },
+                    Date = DateTime.Parse(item.SubItems[0].Text),
+                    Commentaire = item.SubItems[1].Text
+                };
+                list_appels.Add(appel);
+            }
+
+            List<Visite_enquete> list_visites = new List<Visite_enquete>();
+            foreach (ListViewItem item in listViewVisites.Items)
+            {
+                bool check = false;
+                if (item.SubItems[3].Text == "Oui")
+                    check = true;
+                Visite_enquete visite = new Visite_enquete
+                {
+                    Enquete = new Enquete { Id = enquete.Id },
+                    Titulaire_enquete = Personne.GetPersonne(item.SubItems[0].Text.Split(new char[] { ' ' })[0], item.SubItems[0].Text.Split(new char[] { ' ' })[1]),
+                    Delegue_enqueteur = Personne.GetPersonne(item.SubItems[1].Text.Split(new char[] { ' ' })[0], item.SubItems[1].Text.Split(new char[] { ' ' })[1]),
+                    Date_visite = DateTime.Parse(item.SubItems[2].Text),
+                    Avis_passage = check
+                };
+                list_visites.Add(visite);
+            }
+
             bool exists = System.IO.Directory.Exists(Variables.pathUploadFile);
 
             if (!exists)
@@ -450,24 +506,27 @@ namespace SPA
                 Motif = richTextBoxMotif.Text,
                 Animaux = list_animaux,
                 Document = documents,
-                Commentaire = list_commentaires
+                Commentaire = list_commentaires,
+                Appel = list_appels,
+                Visite_enquete = list_visites
             };
             Enquete.UpdateEnqueteBdd(enquete2);
         }
 
         private void comboBoxEtat_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (enquete.Etat == 1 && comboBoxEtat.SelectedIndex.ToString() == etat[0])
+            if (enquete.Etat == 1 && comboBoxEtat.SelectedIndex == 0)
             {
                 string message = "Vous ne pouvez pas passer de \"Rendue\" à \"En cours\"";
                 string caption = "Erreur";
-                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                MessageBoxButtons buttons = MessageBoxButtons.OK;
                 DialogResult result;
                 result = MessageBox.Show(message, caption, buttons);
                 if (result == System.Windows.Forms.DialogResult.Yes)
                 {
-                    comboBoxEtat.Text = etat[0];
+                    
                 }
+                comboBoxEtat.Text = etat[1];
             }
         }
 
@@ -512,10 +571,19 @@ namespace SPA
 
         private void buttonAjoutCommentaire_Click(object sender, EventArgs e)
         {
-            ListViewItem item = new ListViewItem(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
-            item.SubItems.Add(richTextBoxCommentaire.Text);
-            listViewCommentaires.Items.Add(item);
-            richTextBoxCommentaire.Text = "";
+            if (!string.IsNullOrEmpty(richTextBoxCommentaire.Text))
+            {
+                richTextBoxCommentaire.BackColor = Color.White;
+                ListViewItem item = new ListViewItem(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+                item.SubItems.Add(richTextBoxCommentaire.Text);
+                listViewCommentaires.Items.Add(item);
+                richTextBoxCommentaire.Text = "";
+            }
+            else
+            {
+                richTextBoxCommentaire.BackColor = Color.IndianRed;
+            }
+                
         }
 
         private void buttonDeletecommentaire_Click(object sender, EventArgs e)
@@ -526,6 +594,75 @@ namespace SPA
         private void buttonModifierCommentaire_Click(object sender, EventArgs e)
         {
             listViewCommentaires.SelectedItems[0].SubItems[1].Text = richTextBoxCommentaire.Text;
+        }
+
+        private void buttonModifierAppel_Click(object sender, EventArgs e)
+        {
+            listViewAppels.SelectedItems[0].SubItems[1].Text = richTextBoxAppel.Text;
+        }
+
+        private void buttonSupprimeAppel_Click(object sender, EventArgs e)
+        {
+            listViewAppels.Items.Remove(listViewAppels.SelectedItems[0]);
+        }
+
+        private void buttonAjoutAppel_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(richTextBoxAppel.Text))
+            {
+                richTextBoxAppel.BackColor = Color.White;
+                ListViewItem item = new ListViewItem(dateTimePickerAppels.Value.ToString("dd/MM/yyyy"));
+                item.SubItems.Add(richTextBoxAppel.Text);
+                listViewAppels.Items.Add(item);
+                richTextBoxAppel.Text = "";
+            }
+            else
+            {
+                richTextBoxAppel.BackColor = Color.IndianRed;
+            }
+            
+        }
+
+        private void listViewAppels_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewAppels.SelectedItems.Count > 0)
+            {
+                buttonSupprimeAppel.Enabled = true;
+                buttonModifierAppel.Enabled = true;
+                richTextBoxAppel.Text = listViewAppels.SelectedItems[0].SubItems[1].Text;
+            }
+            else
+            {
+                buttonSupprimeAppel.Enabled = false;
+                buttonModifierAppel.Enabled = false;
+            }
+        }
+
+        private void buttonAjoutVisite_Click(object sender, EventArgs e)
+        {
+            string check = checkBoxAvisDePassage.Checked ? "Oui" : "Non";
+            ListViewItem item = new ListViewItem(comboBoxTitulaire.SelectedItem.ToString());
+            item.SubItems.Add(comboBoxDelegue.SelectedItem.ToString());
+            item.SubItems.Add(dateTimePickerVisite.Value.ToString("dd/MM/yyyy"));
+            item.SubItems.Add(check);
+            listViewVisites.Items.Add(item);
+        }
+
+        private void buttonSupprimeVisite_Click(object sender, EventArgs e)
+        {
+            listViewVisites.Items.Remove(listViewVisites.SelectedItems[0]);
+        }
+
+        private void listViewVisites_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewVisites.SelectedItems.Count > 0)
+            {
+                buttonSupprimeVisite.Enabled = true;
+            }
+            else
+            {
+                buttonSupprimeVisite.Enabled = false;
+            }
         }
     }
 }

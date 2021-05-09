@@ -30,6 +30,7 @@ namespace SPA.Models
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonAdmin = new System.Windows.Forms.Button();
             this.textBoxRecherche = new System.Windows.Forms.TextBox();
             this.labelRecherche = new System.Windows.Forms.Label();
             this.labelTitre = new System.Windows.Forms.Label();
@@ -50,7 +51,7 @@ namespace SPA.Models
             this.columnHeaderNbFichiers = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderNbAppels = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderAvis = new System.Windows.Forms.ColumnHeader();
-            this.buttonAdmin = new System.Windows.Forms.Button();
+            this.buttonDeconnexion = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelAccueil.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +59,7 @@ namespace SPA.Models
             // panel1
             // 
             this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.buttonDeconnexion);
             this.panel1.Controls.Add(this.buttonAdmin);
             this.panel1.Controls.Add(this.textBoxRecherche);
             this.panel1.Controls.Add(this.labelRecherche);
@@ -69,6 +71,17 @@ namespace SPA.Models
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1247, 107);
             this.panel1.TabIndex = 1;
+            // 
+            // buttonAdmin
+            // 
+            this.buttonAdmin.Location = new System.Drawing.Point(467, 45);
+            this.buttonAdmin.Name = "buttonAdmin";
+            this.buttonAdmin.Size = new System.Drawing.Size(102, 48);
+            this.buttonAdmin.TabIndex = 6;
+            this.buttonAdmin.Text = "Admin";
+            this.buttonAdmin.UseVisualStyleBackColor = true;
+            this.buttonAdmin.Visible = false;
+            this.buttonAdmin.Click += new System.EventHandler(this.buttonAdmin_Click);
             // 
             // textBoxRecherche
             // 
@@ -232,16 +245,17 @@ namespace SPA.Models
             this.columnHeaderAvis.Text = "Avis";
             this.columnHeaderAvis.Width = 100;
             // 
-            // buttonAdmin
+            // buttonDeconnexion
             // 
-            this.buttonAdmin.Location = new System.Drawing.Point(467, 45);
-            this.buttonAdmin.Name = "buttonAdmin";
-            this.buttonAdmin.Size = new System.Drawing.Size(102, 48);
-            this.buttonAdmin.TabIndex = 6;
-            this.buttonAdmin.Text = "Admin";
-            this.buttonAdmin.UseVisualStyleBackColor = true;
-            this.buttonAdmin.Visible = false;
-            this.buttonAdmin.Click += new System.EventHandler(this.buttonAdmin_Click);
+            this.buttonDeconnexion.BackColor = System.Drawing.Color.Red;
+            this.buttonDeconnexion.ForeColor = System.Drawing.Color.White;
+            this.buttonDeconnexion.Location = new System.Drawing.Point(1111, 40);
+            this.buttonDeconnexion.Name = "buttonDeconnexion";
+            this.buttonDeconnexion.Size = new System.Drawing.Size(102, 50);
+            this.buttonDeconnexion.TabIndex = 7;
+            this.buttonDeconnexion.Text = "Deconnexion";
+            this.buttonDeconnexion.UseVisualStyleBackColor = false;
+            this.buttonDeconnexion.Click += new System.EventHandler(this.buttonDeconnexion_Click);
             // 
             // Accueil
             // 
@@ -285,5 +299,6 @@ namespace SPA.Models
         private System.Windows.Forms.ColumnHeader columnHeaderNbFichiers;
         private System.Windows.Forms.ColumnHeader columnHeaderNbAppels;
         private System.Windows.Forms.Button buttonAdmin;
+        private System.Windows.Forms.Button buttonDeconnexion;
     }
 }
