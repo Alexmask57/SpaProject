@@ -292,6 +292,12 @@ namespace SPA
                 };
                 list_animaux.Add(animal);
             }
+
+            bool exists = System.IO.Directory.Exists(Variables.pathUploadFile);
+
+            if (!exists)
+                System.IO.Directory.CreateDirectory(Variables.pathUploadFile);
+
             List<Document> documents = new List<Document>();
             foreach (ListViewItem item in listViewDocuments.Items)
             {
@@ -300,6 +306,7 @@ namespace SPA
                 string file = @filename + DateTime.Now.ToString("ddMMyyHHmm") + extension;
                 string sourceFile = @item.SubItems[1].Text;
                 string destFile = @System.IO.Path.Combine(Variables.pathUploadFile, file);
+
                 System.IO.File.Copy(sourceFile, destFile, true);
                 Document doc = new Document { Chemin = file, Date = DateTime.Now };
                 documents.Add(doc);

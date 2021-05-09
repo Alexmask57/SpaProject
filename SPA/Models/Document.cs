@@ -45,5 +45,10 @@ namespace SPA.Models
         {
             return DocumentDAO.GetNombreDocument(enquete.Id);
         }
+
+        public static int ExistDocument(string nomFichier)
+        {
+            return DocumentDAO.ExistDocument(nomFichier);
+        }
     }
 }

@@ -51,6 +51,40 @@ namespace SPA.Models.DAO
             }
         }
 
+        public static int ExistDocument(string nom)
+        {
+            int res = -1;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"SELECT Id FROM Document WHERE Chemin = @fichier";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@fichier", nom);
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        if (dr.Read())
+                            res = dr.GetInt32(0);
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         /// <summary>
         /// Ajout un document pour une enquete
         /// </summary>

@@ -84,6 +84,7 @@ namespace SPA.Models
             Personne.UpdatePersonneBdd(enquete.Plaignant);
             enquete.Plaignant = Personne.GetPersonne(enquete.Plaignant.Nom, enquete.Plaignant.Prenom);
 
+            //update animaux
             List<Animaux_enquete> listAnimauxBdd = Animaux_enquete.GetAnimaux_EnquetesBdd(enquete.Id);
             List<Animaux_enquete> animauxASupprimer = Animaux_enquete.GetAnimaux_EnquetesBdd(enquete.Id);
             foreach (Animaux_enquete animal in enquete.Animaux)
@@ -106,6 +107,7 @@ namespace SPA.Models
             foreach (Animaux_enquete animalASupprimer in animauxASupprimer)
                 Animaux_enquete.DeleteAnimal(animalASupprimer);
 
+            //update visite
             List<Visite_enquete> listVisiteBdd = Models.Visite_enquete.GetVisiteEnquete(enquete.Id);
             List<Visite_enquete> visitesAsupprimer = Models.Visite_enquete.GetVisiteEnquete(enquete.Id);
             foreach (Visite_enquete visite in enquete.Visite_enquete)
@@ -129,28 +131,13 @@ namespace SPA.Models
             foreach (Visite_enquete visiteAsupprimer in visitesAsupprimer)
                 Models.Visite_enquete.DeleteVisite(visiteAsupprimer);
 
-
-            /*
-            List<Document> listDocumentBdd =  tAnimaux_EnquetesBdd(enquete.Id);
-            List<Document> animauxASupprimer = listAnimauxBdd;
-            foreach (Document animal in enquete.Animaux)
+            //update doc
+            foreach (Document document in enquete.Document)
             {
-                animal.Enquete.Id = enquete.Id;
-                bool exist = false;
-                foreach (Animaux_enquete animalBdd in listAnimauxBdd)
-                {
-                    if (animalBdd.Race == animal.Race && animalBdd.Nombre == animal.Nombre)
-                    {
-                        exist = true;
-                        animauxASupprimer.Remove(animal);
-                    }
-                }
-                if (!exist)
-                    Animaux_enquete.AddAnimalEnqueteBdd(animal);
+                document.Enquete.Id = enquete.Id;
+                Models.Document.CreerDocumentBdd(document);
             }
-            foreach (Animaux_enquete animalASupprimer in animauxASupprimer)
-                Animaux_enquete.DeleteAnimal(animalASupprimer);
-            */
+
             //Update enquete uniquement
             EnqueteDAO.UpdateEnquete(enquete);
         }

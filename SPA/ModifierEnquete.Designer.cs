@@ -32,6 +32,11 @@ namespace SPA
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTitre = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labeletatenquete = new System.Windows.Forms.Label();
+            this.comboBoxEtat = new System.Windows.Forms.ComboBox();
+            this.textBoxIdEnquete = new System.Windows.Forms.TextBox();
+            this.labelIdEnquete = new System.Windows.Forms.Label();
+            this.checkBoxOuvertParLeSiege = new System.Windows.Forms.CheckBox();
             this.labelErrorTitulaireDelegue = new System.Windows.Forms.Label();
             this.labelErrorAnimaux = new System.Windows.Forms.Label();
             this.labelErrorEmailInfracteur = new System.Windows.Forms.Label();
@@ -95,7 +100,7 @@ namespace SPA
             this.labelDelegue = new System.Windows.Forms.Label();
             this.labelTitulaireEnquete = new System.Windows.Forms.Label();
             this.richTextBoxMotif = new System.Windows.Forms.RichTextBox();
-            this.checkBoxOuvertParLeSiege = new System.Windows.Forms.CheckBox();
+            this.buttonouvrirFichier = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNombre)).BeginInit();
@@ -121,6 +126,11 @@ namespace SPA
             // panel2
             // 
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.buttonouvrirFichier);
+            this.panel2.Controls.Add(this.labeletatenquete);
+            this.panel2.Controls.Add(this.comboBoxEtat);
+            this.panel2.Controls.Add(this.textBoxIdEnquete);
+            this.panel2.Controls.Add(this.labelIdEnquete);
             this.panel2.Controls.Add(this.checkBoxOuvertParLeSiege);
             this.panel2.Controls.Add(this.labelErrorTitulaireDelegue);
             this.panel2.Controls.Add(this.labelErrorAnimaux);
@@ -185,6 +195,52 @@ namespace SPA
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1187, 626);
             this.panel2.TabIndex = 1;
+            // 
+            // labeletatenquete
+            // 
+            this.labeletatenquete.AutoSize = true;
+            this.labeletatenquete.Location = new System.Drawing.Point(661, 42);
+            this.labeletatenquete.Name = "labeletatenquete";
+            this.labeletatenquete.Size = new System.Drawing.Size(95, 15);
+            this.labeletatenquete.TabIndex = 74;
+            this.labeletatenquete.Text = "Etat de l\'enquête";
+            // 
+            // comboBoxEtat
+            // 
+            this.comboBoxEtat.FormattingEnabled = true;
+            this.comboBoxEtat.Location = new System.Drawing.Point(788, 35);
+            this.comboBoxEtat.Name = "comboBoxEtat";
+            this.comboBoxEtat.Size = new System.Drawing.Size(262, 23);
+            this.comboBoxEtat.TabIndex = 73;
+            this.comboBoxEtat.SelectedIndexChanged += new System.EventHandler(this.comboBoxEtat_SelectedIndexChanged);
+            // 
+            // textBoxIdEnquete
+            // 
+            this.textBoxIdEnquete.Enabled = false;
+            this.textBoxIdEnquete.Location = new System.Drawing.Point(788, 110);
+            this.textBoxIdEnquete.Name = "textBoxIdEnquete";
+            this.textBoxIdEnquete.Size = new System.Drawing.Size(261, 23);
+            this.textBoxIdEnquete.TabIndex = 72;
+            // 
+            // labelIdEnquete
+            // 
+            this.labelIdEnquete.AutoSize = true;
+            this.labelIdEnquete.Location = new System.Drawing.Point(660, 115);
+            this.labelIdEnquete.Name = "labelIdEnquete";
+            this.labelIdEnquete.Size = new System.Drawing.Size(91, 15);
+            this.labelIdEnquete.TabIndex = 71;
+            this.labelIdEnquete.Text = "Id de l\'enquête :";
+            // 
+            // checkBoxOuvertParLeSiege
+            // 
+            this.checkBoxOuvertParLeSiege.AutoSize = true;
+            this.checkBoxOuvertParLeSiege.Enabled = false;
+            this.checkBoxOuvertParLeSiege.Location = new System.Drawing.Point(920, 73);
+            this.checkBoxOuvertParLeSiege.Name = "checkBoxOuvertParLeSiege";
+            this.checkBoxOuvertParLeSiege.Size = new System.Drawing.Size(127, 19);
+            this.checkBoxOuvertParLeSiege.TabIndex = 70;
+            this.checkBoxOuvertParLeSiege.Text = "Ouvert par le siege ";
+            this.checkBoxOuvertParLeSiege.UseVisualStyleBackColor = true;
             // 
             // labelErrorTitulaireDelegue
             // 
@@ -364,11 +420,13 @@ namespace SPA
             this.listViewDocuments.GridLines = true;
             this.listViewDocuments.HideSelection = false;
             this.listViewDocuments.Location = new System.Drawing.Point(226, 918);
+            this.listViewDocuments.MultiSelect = false;
             this.listViewDocuments.Name = "listViewDocuments";
             this.listViewDocuments.Size = new System.Drawing.Size(825, 100);
             this.listViewDocuments.TabIndex = 51;
             this.listViewDocuments.UseCompatibleStateImageBehavior = false;
             this.listViewDocuments.View = System.Windows.Forms.View.Details;
+            this.listViewDocuments.SelectedIndexChanged += new System.EventHandler(this.listViewDocuments_SelectedIndexChanged);
             // 
             // columnHeaderNomFichier
             // 
@@ -770,16 +828,16 @@ namespace SPA
             this.richTextBoxMotif.TabIndex = 38;
             this.richTextBoxMotif.Text = "";
             // 
-            // checkBoxOuvertParLeSiege
+            // buttonouvrirFichier
             // 
-            this.checkBoxOuvertParLeSiege.AutoSize = true;
-            this.checkBoxOuvertParLeSiege.Enabled = false;
-            this.checkBoxOuvertParLeSiege.Location = new System.Drawing.Point(792, 41);
-            this.checkBoxOuvertParLeSiege.Name = "checkBoxOuvertParLeSiege";
-            this.checkBoxOuvertParLeSiege.Size = new System.Drawing.Size(127, 19);
-            this.checkBoxOuvertParLeSiege.TabIndex = 70;
-            this.checkBoxOuvertParLeSiege.Text = "Ouvert par le siege ";
-            this.checkBoxOuvertParLeSiege.UseVisualStyleBackColor = true;
+            this.buttonouvrirFichier.Enabled = false;
+            this.buttonouvrirFichier.Location = new System.Drawing.Point(496, 876);
+            this.buttonouvrirFichier.Name = "buttonouvrirFichier";
+            this.buttonouvrirFichier.Size = new System.Drawing.Size(163, 21);
+            this.buttonouvrirFichier.TabIndex = 75;
+            this.buttonouvrirFichier.Text = "Ouvrir fichier séléctionné";
+            this.buttonouvrirFichier.UseVisualStyleBackColor = true;
+            this.buttonouvrirFichier.Click += new System.EventHandler(this.buttonouvrirFichier_Click);
             // 
             // ModifierEnquete
             // 
@@ -869,5 +927,10 @@ namespace SPA
         private System.Windows.Forms.Label labelErrorAnimaux;
         private System.Windows.Forms.Label labelErrorTitulaireDelegue;
         private System.Windows.Forms.CheckBox checkBoxOuvertParLeSiege;
+        private System.Windows.Forms.TextBox textBoxIdEnquete;
+        private System.Windows.Forms.Label labelIdEnquete;
+        private System.Windows.Forms.Label labeletatenquete;
+        private System.Windows.Forms.ComboBox comboBoxEtat;
+        private System.Windows.Forms.Button buttonouvrirFichier;
     }
 }

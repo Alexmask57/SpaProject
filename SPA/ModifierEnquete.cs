@@ -8,11 +8,14 @@ using System.Drawing;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace SPA
 {
     public partial class ModifierEnquete : Form
     {
+
+        private List<string> etat = new List<string> { "En cours", "Rendue", "Terminée" };
         public static Personne utilisateur = new Personne();
         public static Enquete enquete = new Enquete();
         public static Accueil accueil;
@@ -31,6 +34,7 @@ namespace SPA
             }
             else
             {
+                comboBoxEtat.Enabled = false;
                 comboBoxAnimaux.Enabled = false;
                 comboBoxDelegue.Enabled = false;
                 comboBoxRace.Enabled = false;
@@ -58,6 +62,13 @@ namespace SPA
                 
                 buttonEnregistrer.Enabled = false;
             }
+
+            comboBoxEtat.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBoxEtat.Items.Add(etat[0].ToString());
+            comboBoxEtat.Items.Add(etat[1].ToString());
+            comboBoxEtat.Items.Add(etat[2].ToString());
+            comboBoxEtat.SelectedIndex = comboBoxEtat.FindStringExact(etat[enquete.Etat]);
+
             comboBoxAnimaux.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxDelegue.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRace.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -362,21 +373,28 @@ namespace SPA
                 };
                 list_animaux.Add(animal);
             }
-            /*
+
+            bool exists = System.IO.Directory.Exists(Variables.pathUploadFile);
+
+            if (!exists)
+                System.IO.Directory.CreateDirectory(Variables.pathUploadFile);
+
             List<Document> documents = new List<Document>();
             foreach (ListViewItem item in listViewDocuments.Items)
             {
-                string filename = @Path.GetFileNameWithoutExtension(item.SubItems[0].Text);
-                string extension = @Path.GetExtension(item.SubItems[0].Text);
-                string file = @filename + DateTime.Now.ToString("ddMMyyHHmm") + extension;
-                string sourceFile = @item.SubItems[1].Text;
-                string destFile = @System.IO.Path.Combine(Variables.pathUploadFile, file);
-                System.IO.File.Copy(sourceFile, destFile, true);
-                Document doc = new Document { Chemin = file, Date = DateTime.Now };
-                documents.Add(doc);
-                Path.Combine(Variables.pathUploadFile, file);
+                if (Document.ExistDocument(item.SubItems[0].Text) == -1)
+                {
+                    string filename = @Path.GetFileNameWithoutExtension(item.SubItems[0].Text);
+                    string extension = @Path.GetExtension(item.SubItems[0].Text);
+                    string file = @filename + DateTime.Now.ToString("ddMMyyHHmm") + extension;
+                    string sourceFile = @item.SubItems[1].Text;
+                    string destFile = @System.IO.Path.Combine(Variables.pathUploadFile, file);
+                    System.IO.File.Copy(sourceFile, destFile, true);
+                    Document doc = new Document { Chemin = file, Date = DateTime.Now };
+                    documents.Add(doc);
+                    Path.Combine(Variables.pathUploadFile, file);
+                }
             };
-            */
             Enquete enquete2 = new Enquete
             {
                 Id = enquete.Id,
@@ -408,12 +426,52 @@ namespace SPA
                     Nom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[0],
                     Prenom = comboBoxDelegue.SelectedItem.ToString().Split(new char[] { ' ' })[1]
                 },
+                Etat = etat.IndexOf(comboBoxEtat.SelectedItem.ToString()),
                 Motif = richTextBoxMotif.Text,
-                Animaux = list_animaux
+                Animaux = list_animaux,
+                Document = documents
             };
             Enquete.UpdateEnqueteBdd(enquete2);
         }
 
+        private void comboBoxEtat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (enquete.Etat == 1 && comboBoxEtat.SelectedIndex.ToString() == etat[0])
+            {
+                string message = "Vous ne pouvez pas passer de \"Rendue\" à \"En cours\"";
+                string caption = "Erreur";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    comboBoxEtat.Text = etat[0];
+                }
+            }
+        }
 
+        private void buttonouvrirFichier_Click(object sender, EventArgs e)
+        {
+            if (listViewDocuments.SelectedItems.Count > 0)
+            {
+                string test = listViewDocuments.SelectedItems[0].SubItems[1].Text;
+                Process fileopener = new Process();
+                fileopener.StartInfo.FileName = "explorer";
+                fileopener.StartInfo.Arguments = "\"" + listViewDocuments.SelectedItems[0].SubItems[1].Text + "\"";
+                fileopener.Start();
+            }
+        }
+
+        private void listViewDocuments_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewDocuments.SelectedItems.Count > 0)
+            {
+                buttonouvrirFichier.Enabled = true;
+            }
+            else
+            {
+                buttonouvrirFichier.Enabled = false;
+            }
+        }
     }
 }
