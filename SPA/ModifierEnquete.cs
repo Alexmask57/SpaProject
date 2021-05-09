@@ -130,6 +130,14 @@ namespace SPA
                 item.SubItems.Add(Path.Combine(Variables.pathUploadFile, document.Chemin));
                 listViewDocuments.Items.Add(item);
             }
+
+            //Commentaires
+            foreach (Commentaire commentaire in enquete.Commentaire)
+            {
+                ListViewItem item = new ListViewItem(commentaire.Date.ToString("dd/MM/yyyy HH:mm:ss"));
+                item.SubItems.Add(commentaire.Detail);
+                listViewCommentaires.Items.Add(item);
+            }
         }
         private void buttonEnregistrer_Click(object sender, EventArgs e)
         {
@@ -374,6 +382,18 @@ namespace SPA
                 list_animaux.Add(animal);
             }
 
+            List<Commentaire> list_commentaires = new List<Commentaire>();
+            foreach (ListViewItem item in listViewCommentaires.Items)
+            {
+                Commentaire commentaire = new Commentaire
+                {
+                    Enquete = new Enquete { Id = enquete.Id },
+                    Date = DateTime.Parse(item.SubItems[0].Text),
+                    Detail = item.SubItems[1].Text
+                };
+                list_commentaires.Add(commentaire);
+            }
+
             bool exists = System.IO.Directory.Exists(Variables.pathUploadFile);
 
             if (!exists)
@@ -429,7 +449,8 @@ namespace SPA
                 Etat = etat.IndexOf(comboBoxEtat.SelectedItem.ToString()),
                 Motif = richTextBoxMotif.Text,
                 Animaux = list_animaux,
-                Document = documents
+                Document = documents,
+                Commentaire = list_commentaires
             };
             Enquete.UpdateEnqueteBdd(enquete2);
         }
@@ -472,6 +493,39 @@ namespace SPA
             {
                 buttonouvrirFichier.Enabled = false;
             }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listViewCommentaires.SelectedItems.Count > 0)
+            {
+                buttonDeletecommentaire.Enabled = true;
+                buttonModifierCommentaire.Enabled = true;
+                richTextBoxCommentaire.Text = listViewCommentaires.SelectedItems[0].SubItems[1].Text;
+            }
+            else
+            {
+                buttonDeletecommentaire.Enabled = false;
+                buttonModifierCommentaire.Enabled = false;
+            }
+        }
+
+        private void buttonAjoutCommentaire_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = new ListViewItem(DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss"));
+            item.SubItems.Add(richTextBoxCommentaire.Text);
+            listViewCommentaires.Items.Add(item);
+            richTextBoxCommentaire.Text = "";
+        }
+
+        private void buttonDeletecommentaire_Click(object sender, EventArgs e)
+        {
+            listViewCommentaires.Items.Remove(listViewCommentaires.SelectedItems[0]);
+        }
+
+        private void buttonModifierCommentaire_Click(object sender, EventArgs e)
+        {
+            listViewCommentaires.SelectedItems[0].SubItems[1].Text = richTextBoxCommentaire.Text;
         }
     }
 }

@@ -44,5 +44,10 @@ namespace SPA.Models
         {
             return CommentaireDAO.DeleteCommentaire(enquete);
         }
+
+        public static bool DeleteCommentaire(Commentaire commentaire)
+        {
+            return CommentaireDAO.DeleteCommentaire(commentaire);
+        }
     }
 }

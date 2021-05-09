@@ -32,6 +32,14 @@ namespace SPA
             this.panel1 = new System.Windows.Forms.Panel();
             this.labelTitre = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.richTextBoxCommentaire = new System.Windows.Forms.RichTextBox();
+            this.buttonModifierCommentaire = new System.Windows.Forms.Button();
+            this.buttonDeletecommentaire = new System.Windows.Forms.Button();
+            this.buttonAjoutCommentaire = new System.Windows.Forms.Button();
+            this.listViewCommentaires = new System.Windows.Forms.ListView();
+            this.columnDate = new System.Windows.Forms.ColumnHeader();
+            this.columnDetails = new System.Windows.Forms.ColumnHeader();
+            this.buttonouvrirFichier = new System.Windows.Forms.Button();
             this.labeletatenquete = new System.Windows.Forms.Label();
             this.comboBoxEtat = new System.Windows.Forms.ComboBox();
             this.textBoxIdEnquete = new System.Windows.Forms.TextBox();
@@ -100,7 +108,6 @@ namespace SPA
             this.labelDelegue = new System.Windows.Forms.Label();
             this.labelTitulaireEnquete = new System.Windows.Forms.Label();
             this.richTextBoxMotif = new System.Windows.Forms.RichTextBox();
-            this.buttonouvrirFichier = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNombre)).BeginInit();
@@ -126,6 +133,11 @@ namespace SPA
             // panel2
             // 
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.richTextBoxCommentaire);
+            this.panel2.Controls.Add(this.buttonModifierCommentaire);
+            this.panel2.Controls.Add(this.buttonDeletecommentaire);
+            this.panel2.Controls.Add(this.buttonAjoutCommentaire);
+            this.panel2.Controls.Add(this.listViewCommentaires);
             this.panel2.Controls.Add(this.buttonouvrirFichier);
             this.panel2.Controls.Add(this.labeletatenquete);
             this.panel2.Controls.Add(this.comboBoxEtat);
@@ -195,6 +207,84 @@ namespace SPA
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1187, 626);
             this.panel2.TabIndex = 1;
+            // 
+            // richTextBoxCommentaire
+            // 
+            this.richTextBoxCommentaire.Location = new System.Drawing.Point(728, 1061);
+            this.richTextBoxCommentaire.Name = "richTextBoxCommentaire";
+            this.richTextBoxCommentaire.Size = new System.Drawing.Size(326, 91);
+            this.richTextBoxCommentaire.TabIndex = 80;
+            this.richTextBoxCommentaire.Text = "";
+            // 
+            // buttonModifierCommentaire
+            // 
+            this.buttonModifierCommentaire.Enabled = false;
+            this.buttonModifierCommentaire.Location = new System.Drawing.Point(528, 1119);
+            this.buttonModifierCommentaire.Name = "buttonModifierCommentaire";
+            this.buttonModifierCommentaire.Size = new System.Drawing.Size(154, 23);
+            this.buttonModifierCommentaire.TabIndex = 79;
+            this.buttonModifierCommentaire.Text = "Modifier commentaire";
+            this.buttonModifierCommentaire.UseVisualStyleBackColor = true;
+            this.buttonModifierCommentaire.Click += new System.EventHandler(this.buttonModifierCommentaire_Click);
+            // 
+            // buttonDeletecommentaire
+            // 
+            this.buttonDeletecommentaire.Enabled = false;
+            this.buttonDeletecommentaire.Location = new System.Drawing.Point(366, 1119);
+            this.buttonDeletecommentaire.Name = "buttonDeletecommentaire";
+            this.buttonDeletecommentaire.Size = new System.Drawing.Size(155, 23);
+            this.buttonDeletecommentaire.TabIndex = 78;
+            this.buttonDeletecommentaire.Text = "Supprimer commentaire";
+            this.buttonDeletecommentaire.UseVisualStyleBackColor = true;
+            this.buttonDeletecommentaire.Click += new System.EventHandler(this.buttonDeletecommentaire_Click);
+            // 
+            // buttonAjoutCommentaire
+            // 
+            this.buttonAjoutCommentaire.Location = new System.Drawing.Point(226, 1119);
+            this.buttonAjoutCommentaire.Name = "buttonAjoutCommentaire";
+            this.buttonAjoutCommentaire.Size = new System.Drawing.Size(128, 23);
+            this.buttonAjoutCommentaire.TabIndex = 77;
+            this.buttonAjoutCommentaire.Text = "Ajouter commentaire";
+            this.buttonAjoutCommentaire.UseVisualStyleBackColor = true;
+            this.buttonAjoutCommentaire.Click += new System.EventHandler(this.buttonAjoutCommentaire_Click);
+            // 
+            // listViewCommentaires
+            // 
+            this.listViewCommentaires.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnDate,
+            this.columnDetails});
+            this.listViewCommentaires.FullRowSelect = true;
+            this.listViewCommentaires.GridLines = true;
+            this.listViewCommentaires.HideSelection = false;
+            this.listViewCommentaires.Location = new System.Drawing.Point(226, 1171);
+            this.listViewCommentaires.MultiSelect = false;
+            this.listViewCommentaires.Name = "listViewCommentaires";
+            this.listViewCommentaires.Size = new System.Drawing.Size(828, 114);
+            this.listViewCommentaires.TabIndex = 76;
+            this.listViewCommentaires.UseCompatibleStateImageBehavior = false;
+            this.listViewCommentaires.View = System.Windows.Forms.View.Details;
+            this.listViewCommentaires.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            // 
+            // columnDate
+            // 
+            this.columnDate.Text = "Date";
+            this.columnDate.Width = 300;
+            // 
+            // columnDetails
+            // 
+            this.columnDetails.Text = "Details";
+            this.columnDetails.Width = 522;
+            // 
+            // buttonouvrirFichier
+            // 
+            this.buttonouvrirFichier.Enabled = false;
+            this.buttonouvrirFichier.Location = new System.Drawing.Point(496, 876);
+            this.buttonouvrirFichier.Name = "buttonouvrirFichier";
+            this.buttonouvrirFichier.Size = new System.Drawing.Size(163, 21);
+            this.buttonouvrirFichier.TabIndex = 75;
+            this.buttonouvrirFichier.Text = "Ouvrir fichier séléctionné";
+            this.buttonouvrirFichier.UseVisualStyleBackColor = true;
+            this.buttonouvrirFichier.Click += new System.EventHandler(this.buttonouvrirFichier_Click);
             // 
             // labeletatenquete
             // 
@@ -330,7 +420,7 @@ namespace SPA
             // 
             this.labelErrorEnquete.AutoSize = true;
             this.labelErrorEnquete.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorEnquete.Location = new System.Drawing.Point(742, 1059);
+            this.labelErrorEnquete.Location = new System.Drawing.Point(691, 1397);
             this.labelErrorEnquete.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.labelErrorEnquete.Name = "labelErrorEnquete";
             this.labelErrorEnquete.Size = new System.Drawing.Size(121, 15);
@@ -577,7 +667,7 @@ namespace SPA
             // 
             // buttonEnregistrer
             // 
-            this.buttonEnregistrer.Location = new System.Drawing.Point(579, 1049);
+            this.buttonEnregistrer.Location = new System.Drawing.Point(528, 1387);
             this.buttonEnregistrer.Name = "buttonEnregistrer";
             this.buttonEnregistrer.Size = new System.Drawing.Size(145, 35);
             this.buttonEnregistrer.TabIndex = 1;
@@ -828,17 +918,6 @@ namespace SPA
             this.richTextBoxMotif.TabIndex = 38;
             this.richTextBoxMotif.Text = "";
             // 
-            // buttonouvrirFichier
-            // 
-            this.buttonouvrirFichier.Enabled = false;
-            this.buttonouvrirFichier.Location = new System.Drawing.Point(496, 876);
-            this.buttonouvrirFichier.Name = "buttonouvrirFichier";
-            this.buttonouvrirFichier.Size = new System.Drawing.Size(163, 21);
-            this.buttonouvrirFichier.TabIndex = 75;
-            this.buttonouvrirFichier.Text = "Ouvrir fichier séléctionné";
-            this.buttonouvrirFichier.UseVisualStyleBackColor = true;
-            this.buttonouvrirFichier.Click += new System.EventHandler(this.buttonouvrirFichier_Click);
-            // 
             // ModifierEnquete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -932,5 +1011,13 @@ namespace SPA
         private System.Windows.Forms.Label labeletatenquete;
         private System.Windows.Forms.ComboBox comboBoxEtat;
         private System.Windows.Forms.Button buttonouvrirFichier;
+        private System.Windows.Forms.ListView listViewCommentaires;
+        private System.Windows.Forms.Button buttonDeletecommentaire;
+        private System.Windows.Forms.Button buttonAjoutCommentaire;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonModifierCommentaire;
+        private System.Windows.Forms.ColumnHeader columnDate;
+        private System.Windows.Forms.ColumnHeader columnDetails;
+        private System.Windows.Forms.RichTextBox richTextBoxCommentaire;
     }
 }

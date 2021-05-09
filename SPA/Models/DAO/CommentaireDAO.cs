@@ -64,7 +64,7 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"INSERT INTO Commentaires (Id_enquete, Date, Detail) VALUES (@Id, @Date, @Detail);";
+                    string query = @"INSERT INTO Commentaires (Id_enquete, Date, Commentaire) VALUES (@Id, @Date, @Detail);";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -101,7 +101,7 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"UPDATE Commentaires SET Date = @Date, Detail = @Detail WHERE Id_enquete = @Id;";
+                    string query = @"UPDATE Commentaires SET Date = @Date, Commentaire = @Detail WHERE Id_enquete = @Id;";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -143,6 +143,42 @@ namespace SPA.Models.DAO
                     SqlCommand cmd = new SqlCommand(query, conn);
 
                     cmd.Parameters.AddWithValue("@Id", enquete.Id);
+
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        res = true;
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public static bool DeleteCommentaire(Commentaire commentaire)
+        {
+            bool res = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"DELETE FROM Commentaires WHERE Id_enquete = @Id AND Date = @Date";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+
+                    cmd.Parameters.AddWithValue("@Id", commentaire.Enquete.Id);
+                    cmd.Parameters.AddWithValue("@Date", commentaire.Date);
 
                     //open connection
                     conn.Open();

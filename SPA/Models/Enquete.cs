@@ -131,6 +131,28 @@ namespace SPA.Models
             foreach (Visite_enquete visiteAsupprimer in visitesAsupprimer)
                 Models.Visite_enquete.DeleteVisite(visiteAsupprimer);
 
+            //update animaux
+            List<Commentaire> listCommentairesBdd = Models.Commentaire.GetListCommentaire(enquete.Id);
+            List<Commentaire> commentairesASupprimer = Models.Commentaire.GetListCommentaire(enquete.Id);
+            foreach (Commentaire commentaire in enquete.Commentaire)
+            {
+                commentaire.Enquete.Id = enquete.Id;
+                bool exist = false;
+                foreach (Commentaire commentaireBdd in listCommentairesBdd)
+                {
+                    if (commentaireBdd.Enquete.Id == commentaire.Enquete.Id &&
+                        commentaireBdd.Date == commentaire.Date)
+                    {
+                        exist = true;
+                        commentairesASupprimer.Remove(commentairesASupprimer.Find(x => x.Date == commentaireBdd.Date));
+                    }
+                }
+                if (!exist)
+                    Models.Commentaire.CreerCommentaireBdd(commentaire);
+            }
+            foreach (Commentaire commentaireASupprimer in commentairesASupprimer)
+                Models.Commentaire.DeleteCommentaire(commentaireASupprimer);
+
             //update doc
             foreach (Document document in enquete.Document)
             {
