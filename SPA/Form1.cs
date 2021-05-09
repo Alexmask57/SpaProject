@@ -1,5 +1,6 @@
 ﻿using SPA.Models;
 using SPA.Models.DAO;
+using SPA.Models.Email;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,6 @@ namespace SPA
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
         }
 
         private void buttonConnexion_Click(object sender, EventArgs e)

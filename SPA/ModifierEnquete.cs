@@ -9,6 +9,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Diagnostics;
+using SPA.Models.Email;
 
 namespace SPA
 {
@@ -309,8 +310,8 @@ namespace SPA
             else
                 labelErrorTitulaireDelegue.Visible = false;
 
-            if (!lettres_regex.IsMatch(textBoxPrenomPlaignant.Text) ||
-               !lettres_regex.IsMatch(textBoxNomPlaignant.Text))
+            if (!alphanumeriques_regex.IsMatch(textBoxPrenomPlaignant.Text) ||
+               !alphanumeriques_regex.IsMatch(textBoxNomPlaignant.Text))
             {
                 labelErrorNomPrenomPlaignant.Visible = true;
                 enquete_complete = false;
@@ -318,8 +319,8 @@ namespace SPA
             else
                 labelErrorNomPrenomPlaignant.Visible = false;
 
-            if (!lettres_regex.IsMatch(textBoxPrenomInfracteur.Text) ||
-                !lettres_regex.IsMatch(textBoxNomInfracteur.Text))
+            if (!alphanumeriques_regex.IsMatch(textBoxPrenomInfracteur.Text) ||
+                !alphanumeriques_regex.IsMatch(textBoxNomInfracteur.Text))
             {
                 labelErrorNomPrenomInfracteur.Visible = true;
                 enquete_complete = false;
@@ -707,6 +708,13 @@ namespace SPA
                 comboBoxEtat.Enabled = false;
                 buttonEnregistrer.Visible = false;
                 buttonAvisEnquete.Visible = true;
+                if (enquete.OuvertParLeSiege)
+                {
+                    GmailSender gmail = new GmailSender(Credentials.GetCredential());
+                    string body = "Voici l'avis de l'enquêteur : " + réponse;
+                    gmail.SendEmail("alexismaskio@gmail.com", "alexismaskio@gmail.com", "L'enquete : " + enquete.Id + " a été rendue", body);
+
+                }
             }
             else
             {
