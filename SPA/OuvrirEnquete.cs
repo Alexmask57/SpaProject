@@ -271,6 +271,7 @@ namespace SPA
 
         private void EnvoiDonnees()
         {
+            /*
             foreach (ListViewItem item in listViewDocuments.Items)
             {
                 string filename = Path.GetFileNameWithoutExtension(item.SubItems[0].Text);
@@ -280,7 +281,7 @@ namespace SPA
                 string destFile = System.IO.Path.Combine(Variables.pathUploadFile, file);
                 System.IO.File.Copy(sourceFile, destFile, true);
             };
-
+            */
             List<Animaux_enquete> list_animaux = new List<Animaux_enquete>();
             foreach (ListViewItem item in listViewAnimaux.Items)
             {

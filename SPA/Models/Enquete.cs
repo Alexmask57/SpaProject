@@ -105,6 +105,31 @@ namespace SPA.Models
             }
             foreach (Animaux_enquete animalASupprimer in animauxASupprimer)
                 Animaux_enquete.DeleteAnimal(animalASupprimer);
+
+            List<Visite_enquete> listVisiteBdd = Models.Visite_enquete.GetVisiteEnquete(enquete.Id);
+            List<Visite_enquete> visitesAsupprimer = Models.Visite_enquete.GetVisiteEnquete(enquete.Id);
+            foreach (Visite_enquete visite in enquete.Visite_enquete)
+            {
+                visite.Enquete.Id = enquete.Id;
+                bool exist = false;
+                foreach (Visite_enquete visiteBdd in listVisiteBdd)
+                {
+                    if (visiteBdd.Titulaire_enquete.Id == visite.Titulaire_enquete.Id &&
+                        visiteBdd.Delegue_enqueteur.Id == visite.Delegue_enqueteur.Id &&
+                        visiteBdd.Date_visite == visite.Date_visite &&
+                        visiteBdd.Avis_passage == visite.Avis_passage)
+                    {
+                        exist = true;
+                        visitesAsupprimer.Remove(visitesAsupprimer.Find(x => x.Id == visiteBdd.Id));
+                    }
+                }
+                if (!exist)
+                    Models.Visite_enquete.AddVisiteEnqueteBdd(visite);
+            }
+            foreach (Visite_enquete visiteAsupprimer in visitesAsupprimer)
+                Models.Visite_enquete.DeleteVisite(visiteAsupprimer);
+
+
             /*
             List<Document> listDocumentBdd =  tAnimaux_EnquetesBdd(enquete.Id);
             List<Document> animauxASupprimer = listAnimauxBdd;
@@ -151,7 +176,7 @@ namespace SPA.Models
 
         private void GenerateId()
         {
-            string departement = this.Titulaire_enquete.Refuge.Departement.ToString("00");
+            string departement = this.Titulaire_enquete.GetDepartement();// this.Titulaire_enquete.Refuge.Departement.ToString("00");
             string annee = DateTime.Now.ToString("yy");
             string mois = DateTime.Now.ToString("MM");
             this.Id = departement + "/" + annee + "/" + mois + "/" + EnqueteDAO.GenerateId(departement, mois, annee);
