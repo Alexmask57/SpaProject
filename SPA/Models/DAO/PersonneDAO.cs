@@ -296,6 +296,59 @@ namespace SPA.Models
             }
         }
 
+        public static List<Personne> GetAllSalarie()
+        {
+            List<Personne> list = new List<Personne>();
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"SELECT * FROM Personne WHERE Salarie = 1";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        while (dr.Read())
+                        {
+                            Personne personne = new Personne();
+                            //display retrieved record (first column only/string value)
+                            personne.Id = dr.GetInt32(0);
+                            personne.Nom = dr.GetString(1);
+                            personne.Prenom = dr.GetString(2);
+                            personne.Adresse = dr.GetString(3);
+                            personne.Code_postal = dr.GetInt32(4);
+                            personne.Ville = dr.GetString(5);
+                            personne.Email = dr.GetString(6);
+                            personne.Salarie = IntToBool(dr.GetInt32(7));
+                            personne.Benevole = IntToBool(dr.GetInt32(8));
+                            if (personne.Benevole || personne.Salarie)
+                                personne.Refuge = Refuge.GetRefugeById(dr.GetInt32(9));
+                            personne.Admin = IntToBool(dr.GetInt32(10));
+                            list.Add(personne);
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("No data found.");
+                    }
+                    dr.Close();
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         /// <summary>
         /// ajoute une personne en base de données et retourne l'id généré
         /// </summary>

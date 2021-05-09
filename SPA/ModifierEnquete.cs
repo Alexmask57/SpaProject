@@ -93,12 +93,17 @@ namespace SPA
             foreach (Personne personne in Personne.GetSalarieBenvole())
             {
                 comboBoxDelegue.Items.Add(personne.Nom + " " + personne.Prenom);
+
+                if (enquete.Delegue_enqueteur.Nom == personne.Nom && enquete.Delegue_enqueteur.Prenom == personne.Prenom)
+                    comboBoxDelegue.SelectedIndex = comboBoxDelegue.FindStringExact(personne.Nom + " " + personne.Prenom);
+            }
+
+            foreach (Personne personne in Personne.GetSalarie())
+            {
                 comboBoxTitulaire.Items.Add(personne.Nom + " " + personne.Prenom);
 
                 if (enquete.Titulaire_enquete.Nom == personne.Nom && enquete.Titulaire_enquete.Prenom == personne.Prenom)
                     comboBoxTitulaire.SelectedIndex = comboBoxTitulaire.FindStringExact(personne.Nom + " " + personne.Prenom);
-                if (enquete.Delegue_enqueteur.Nom == personne.Nom && enquete.Delegue_enqueteur.Prenom == personne.Prenom)
-                    comboBoxDelegue.SelectedIndex = comboBoxDelegue.FindStringExact(personne.Nom + " " + personne.Prenom);
             }
 
             foreach (Race_animal animal in Race_animal.GetRace_Animals())

@@ -32,6 +32,10 @@ namespace SPA
             foreach (Personne personne in Personne.GetSalarieBenvole())
             {
                 comboBoxDelegue.Items.Add(personne.Nom + " " + personne.Prenom);
+            }
+
+            foreach (Personne personne in Personne.GetSalarie())
+            {
                 comboBoxTitulaire.Items.Add(personne.Nom + " " + personne.Prenom);
             }
 

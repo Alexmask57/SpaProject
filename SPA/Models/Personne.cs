@@ -37,6 +37,11 @@ namespace SPA.Models
             return PersonneDAO.GetAllSalarieBenevole();
         }
 
+        public static List<Personne> GetSalarie()
+        {
+            return PersonneDAO.GetAllSalarie();
+        }
+
         public static int AddPersonneBdd(Personne personne)
         {
             return PersonneDAO.AddPersonne(personne);
