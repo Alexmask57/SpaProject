@@ -28,7 +28,7 @@ namespace SPA
         }
         private void ModifierEnquete_Load(object sender, EventArgs e)
         {
-            if (utilisateur.Id == enquete.Delegue_enqueteur.Id || utilisateur.Id == enquete.Titulaire_enquete.Id || utilisateur.Admin)
+            if (enquete.Etat != 1 && enquete.Etat != 2 && (utilisateur.Id == enquete.Delegue_enqueteur.Id || utilisateur.Id == enquete.Titulaire_enquete.Id || utilisateur.Admin))
             {
                 buttonEnregistrer.Enabled = true;
             }
@@ -66,6 +66,16 @@ namespace SPA
                 richTextBoxMotif.Enabled = false;
                 
                 buttonEnregistrer.Enabled = false;
+            }
+
+            if (enquete.Etat == 1 && (utilisateur.Id == enquete.Titulaire_enquete.Id || utilisateur.Admin))
+            {
+                comboBoxEtat.Enabled = true;
+            }
+            else if (enquete.Etat == 2)
+            {
+                buttonEnregistrer.Visible = false;
+                buttonAvisEnquete.Visible = true;
             }
 
             comboBoxEtat.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -528,6 +538,23 @@ namespace SPA
                 }
                 comboBoxEtat.Text = etat[1];
             }
+            else if (enquete.Etat == 1 && comboBoxEtat.SelectedIndex == 2 && (utilisateur.Id == enquete.Titulaire_enquete.Id || utilisateur.Admin))
+            {
+                string message = "En tant que titulaire de l'enquête, si vous souhaitez finaliser l'enquête, merci de donner votre avis";
+                string caption = "Avis de fin d'enquête";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    Avis pageAVis = new Avis(utilisateur, enquete, this, false);
+                    pageAVis.Show();
+                }
+                else
+                {
+                    comboBoxEtat.Text = etat[1];
+                }
+            }
         }
 
         private void buttonouvrirFichier_Click(object sender, EventArgs e)
@@ -663,6 +690,29 @@ namespace SPA
             {
                 buttonSupprimeVisite.Enabled = false;
             }
+        }
+
+        public void GetAvis(bool cancel, string réponse)
+        {
+            if (cancel)
+            {
+                enquete.Avis = réponse;
+                enquete.Etat = 2;
+                Enquete.UpdateEnqueteBdd(enquete);
+                comboBoxEtat.Enabled = false;
+                buttonEnregistrer.Visible = false;
+                buttonAvisEnquete.Visible = true;
+            }
+            else
+            {
+                comboBoxEtat.Text = etat[1];
+            }
+        }
+
+        private void buttonAvisEnquete_Click(object sender, EventArgs e)
+        {
+            Avis pageAvis = new Avis(utilisateur, enquete, this, true);
+            pageAvis.Show();
         }
     }
 }

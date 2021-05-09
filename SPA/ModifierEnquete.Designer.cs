@@ -127,6 +127,7 @@ namespace SPA
             this.labelDelegue = new System.Windows.Forms.Label();
             this.labelTitulaireEnquete = new System.Windows.Forms.Label();
             this.richTextBoxMotif = new System.Windows.Forms.RichTextBox();
+            this.buttonAvisEnquete = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNombre)).BeginInit();
@@ -152,6 +153,7 @@ namespace SPA
             // panel2
             // 
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.buttonAvisEnquete);
             this.panel2.Controls.Add(this.buttonSupprimeVisite);
             this.panel2.Controls.Add(this.checkBoxAvisDePassage);
             this.panel2.Controls.Add(this.dateTimePickerVisite);
@@ -621,7 +623,7 @@ namespace SPA
             // 
             this.labelErrorEnquete.AutoSize = true;
             this.labelErrorEnquete.ForeColor = System.Drawing.Color.Red;
-            this.labelErrorEnquete.Location = new System.Drawing.Point(687, 1789);
+            this.labelErrorEnquete.Location = new System.Drawing.Point(679, 1861);
             this.labelErrorEnquete.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.labelErrorEnquete.Name = "labelErrorEnquete";
             this.labelErrorEnquete.Size = new System.Drawing.Size(121, 15);
@@ -870,7 +872,7 @@ namespace SPA
             // 
             this.buttonEnregistrer.BackColor = System.Drawing.Color.Green;
             this.buttonEnregistrer.ForeColor = System.Drawing.SystemColors.Control;
-            this.buttonEnregistrer.Location = new System.Drawing.Point(524, 1779);
+            this.buttonEnregistrer.Location = new System.Drawing.Point(516, 1851);
             this.buttonEnregistrer.Name = "buttonEnregistrer";
             this.buttonEnregistrer.Size = new System.Drawing.Size(145, 35);
             this.buttonEnregistrer.TabIndex = 1;
@@ -1121,6 +1123,17 @@ namespace SPA
             this.richTextBoxMotif.TabIndex = 38;
             this.richTextBoxMotif.Text = "";
             // 
+            // buttonAvisEnquete
+            // 
+            this.buttonAvisEnquete.Location = new System.Drawing.Point(522, 1791);
+            this.buttonAvisEnquete.Name = "buttonAvisEnquete";
+            this.buttonAvisEnquete.Size = new System.Drawing.Size(139, 35);
+            this.buttonAvisEnquete.TabIndex = 94;
+            this.buttonAvisEnquete.Text = "Voir l\'avis sur l\'enquête";
+            this.buttonAvisEnquete.UseVisualStyleBackColor = true;
+            this.buttonAvisEnquete.Visible = false;
+            this.buttonAvisEnquete.Click += new System.EventHandler(this.buttonAvisEnquete_Click);
+            // 
             // ModifierEnquete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1242,5 +1255,6 @@ namespace SPA
         private System.Windows.Forms.Button buttonSupprimeVisite;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.Button buttonAvisEnquete;
     }
 }

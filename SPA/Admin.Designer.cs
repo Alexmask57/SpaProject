@@ -57,6 +57,7 @@ namespace SPA
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.labelErrorEmail = new System.Windows.Forms.Label();
+            this.checkBoxAdmin = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // buttonAjouter
@@ -329,11 +330,22 @@ namespace SPA
             this.labelErrorEmail.Text = "* Adresse manquant ou invalide";
             this.labelErrorEmail.Visible = false;
             // 
+            // checkBoxAdmin
+            // 
+            this.checkBoxAdmin.AutoSize = true;
+            this.checkBoxAdmin.Location = new System.Drawing.Point(683, 276);
+            this.checkBoxAdmin.Name = "checkBoxAdmin";
+            this.checkBoxAdmin.Size = new System.Drawing.Size(62, 19);
+            this.checkBoxAdmin.TabIndex = 64;
+            this.checkBoxAdmin.Text = "Admin";
+            this.checkBoxAdmin.UseVisualStyleBackColor = true;
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1238, 523);
+            this.Controls.Add(this.checkBoxAdmin);
             this.Controls.Add(this.labelErrorEmail);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxEmail);
@@ -402,5 +414,6 @@ namespace SPA
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label labelErrorEmail;
+        private System.Windows.Forms.CheckBox checkBoxAdmin;
     }
 }

@@ -84,7 +84,8 @@ namespace SPA
                 Ville = textBoxVille.Text,
                 Email = textBoxEmail.Text,
                 Salarie = checkBoxSal.Checked,
-                Benevole = checkBoxBenevole.Checked
+                Benevole = checkBoxBenevole.Checked,
+                Admin = checkBoxAdmin.Checked
             };
             int id  = Personne.AddPersonneBdd(personne);
             if (personne.Salarie)
