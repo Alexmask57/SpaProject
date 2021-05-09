@@ -50,6 +50,7 @@ namespace SPA.Models
             this.columnHeaderNbFichiers = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderNbAppels = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderAvis = new System.Windows.Forms.ColumnHeader();
+            this.buttonAdmin = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panelAccueil.SuspendLayout();
             this.SuspendLayout();
@@ -57,6 +58,7 @@ namespace SPA.Models
             // panel1
             // 
             this.panel1.AutoSize = true;
+            this.panel1.Controls.Add(this.buttonAdmin);
             this.panel1.Controls.Add(this.textBoxRecherche);
             this.panel1.Controls.Add(this.labelRecherche);
             this.panel1.Controls.Add(this.labelTitre);
@@ -230,6 +232,17 @@ namespace SPA.Models
             this.columnHeaderAvis.Text = "Avis";
             this.columnHeaderAvis.Width = 100;
             // 
+            // buttonAdmin
+            // 
+            this.buttonAdmin.Location = new System.Drawing.Point(467, 45);
+            this.buttonAdmin.Name = "buttonAdmin";
+            this.buttonAdmin.Size = new System.Drawing.Size(102, 48);
+            this.buttonAdmin.TabIndex = 6;
+            this.buttonAdmin.Text = "Admin";
+            this.buttonAdmin.UseVisualStyleBackColor = true;
+            this.buttonAdmin.Visible = false;
+            this.buttonAdmin.Click += new System.EventHandler(this.buttonAdmin_Click);
+            // 
             // Accueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -271,5 +284,6 @@ namespace SPA.Models
         private System.Windows.Forms.ColumnHeader columnHeaderNbCommentaires;
         private System.Windows.Forms.ColumnHeader columnHeaderNbFichiers;
         private System.Windows.Forms.ColumnHeader columnHeaderNbAppels;
+        private System.Windows.Forms.Button buttonAdmin;
     }
 }

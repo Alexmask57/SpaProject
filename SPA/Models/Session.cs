@@ -16,5 +16,15 @@ namespace SPA.Models
             return SessionDAO.ExistSession(login, password);
         }
 
+        public static int ExistSession(string login)
+        {
+            return SessionDAO.ExistSession(login);
+        }
+
+        public static bool AddSession(Session session)
+        {
+            return SessionDAO.AddSession(session);
+        }
+
     }
 }

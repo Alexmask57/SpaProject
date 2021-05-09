@@ -92,6 +92,40 @@ namespace SPA.Models.DAO
             }
         }
 
+        public static int ExistSession(string login)
+        {
+            int res = -1;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
+                {
+                    //retrieve the SQL Server instance version
+                    string query = @"SELECT Id FROM Session WHERE Login = @Login";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@Login", login);
+                    //open connection
+                    conn.Open();
+
+                    //execute the SQLCommand
+                    SqlDataReader dr = cmd.ExecuteReader();
+
+                    //check if there are records
+                    if (dr.HasRows)
+                    {
+                        if (dr.Read())
+                            res = dr.GetInt32(0);
+                    }
+                    dr.Close();
+                }
+                return res;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public static bool AddSession(Session session)
         {
             bool res = false;
@@ -100,7 +134,7 @@ namespace SPA.Models.DAO
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"INSERT INTO Personne (Id, Login, Password) VALUES (@Id, @Login, @Password);";
+                    string query = @"INSERT INTO Session (Id, Login, Password) VALUES (@Id, @Login, @Password);";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 

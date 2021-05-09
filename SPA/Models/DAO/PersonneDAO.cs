@@ -38,6 +38,10 @@ namespace SPA.Models
                             personne.Code_postal = dr.GetInt32(4);
                             personne.Ville = dr.GetString(5);
                             personne.Email = dr.GetString(6);
+                            personne.Salarie = IntToBool(dr.GetInt32(7));
+                            personne.Benevole = IntToBool(dr.GetInt32(8));
+                            personne.Refuge = Refuge.GetRefugeById(dr.GetInt32(9));
+                            personne.Admin = IntToBool(dr.GetInt32(10));
                         }
                     }
                     else
@@ -89,6 +93,7 @@ namespace SPA.Models
                             personne.Salarie = IntToBool(dr.GetInt32(7));
                             personne.Benevole = IntToBool(dr.GetInt32(8));
                             personne.Refuge = Refuge.GetRefugeById(dr.GetInt32(9));
+                            personne.Admin = IntToBool(dr.GetInt32(10));
                         }
                     }
                     else
@@ -113,7 +118,7 @@ namespace SPA.Models
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"UPDATE Personne SET Nom = @Nom, Prenom = @Prenom, Adresse = @Adresse, Code_postal = @Code_postal, Ville = @Ville, Email = @Email, Salarie = @Salarie, Benevole = @Benevole, Id_refuge = @IdRefuge WHERE Id = @Id;";
+                    string query = @"UPDATE Personne SET Nom = @Nom, Prenom = @Prenom, Adresse = @Adresse, Code_postal = @Code_postal, Ville = @Ville, Email = @Email, Salarie = @Salarie, Benevole = @Benevole, Id_refuge = @IdRefuge, Admin = @Admin WHERE Id = @Id;";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -127,6 +132,7 @@ namespace SPA.Models
                     cmd.Parameters.AddWithValue("@Salarie", BoolToInt(personne.Salarie));
                     cmd.Parameters.AddWithValue("@Benevole", BoolToInt(personne.Benevole));
                     cmd.Parameters.AddWithValue("@IdRefuge", personne.Refuge.Id);
+                    cmd.Parameters.AddWithValue("@Admin", BoolToInt(personne.Admin));
 
                     //open connection
                     conn.Open();
@@ -219,6 +225,7 @@ namespace SPA.Models
                             personne.Salarie = IntToBool(dr.GetInt32(7));
                             personne.Benevole = IntToBool(dr.GetInt32(8));
                             personne.Refuge = Refuge.GetRefugeById(dr.GetInt32(9));
+                            personne.Admin = IntToBool(dr.GetInt32(10));
                             list.Add(personne);
                         }
                     }
@@ -271,6 +278,7 @@ namespace SPA.Models
                             personne.Benevole = IntToBool(dr.GetInt32(8));
                             if (personne.Benevole || personne.Salarie)
                                 personne.Refuge = Refuge.GetRefugeById(dr.GetInt32(9));
+                            personne.Admin = IntToBool(dr.GetInt32(10));
                             list.Add(personne);
                         }
                     }
@@ -301,7 +309,7 @@ namespace SPA.Models
                 using (SqlConnection conn = new SqlConnection(Variables.connectionSql))
                 {
                     //retrieve the SQL Server instance version
-                    string query = @"INSERT INTO Personne (Nom, Prenom, Adresse, Code_postal, Ville, Email, Salarie, Benevole, Id_refuge) output INSERTED.Id VALUES (@Nom, @Prenom, @Adresse, @CP, @Ville, @Email, @Salarie, @Benevole, @IdRefuge);";
+                    string query = @"INSERT INTO Personne (Nom, Prenom, Adresse, Code_postal, Ville, Email, Salarie, Benevole, Id_refuge, Admin) output INSERTED.Id VALUES (@Nom, @Prenom, @Adresse, @CP, @Ville, @Email, @Salarie, @Benevole, @IdRefuge, @Admin);";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
 
@@ -314,6 +322,8 @@ namespace SPA.Models
                     cmd.Parameters.AddWithValue("@Salarie", BoolToInt(personne.Salarie));
                     cmd.Parameters.AddWithValue("@Benevole", BoolToInt(personne.Benevole));
                     cmd.Parameters.AddWithValue("@IdRefuge", personne.Refuge.Id);
+                    cmd.Parameters.AddWithValue("@Admin", BoolToInt(personne.Admin));
+
 
                     //open connection
                     conn.Open();

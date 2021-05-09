@@ -15,7 +15,8 @@ namespace SPA.Models
         public string Email { get; set; }
         public bool Salarie { get; set; } = false;
         public bool Benevole { get; set; } = false;
-        public Refuge Refuge { get; set; } = new Refuge();
+        public Refuge Refuge { get; set; } = Models.Refuge.GetRefugeById(1);
+        public bool Admin { get; set; } = false;
 
         public static Personne GetPersonneById(int id)
         {

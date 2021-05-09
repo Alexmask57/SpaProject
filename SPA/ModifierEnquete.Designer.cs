@@ -95,6 +95,7 @@ namespace SPA
             this.labelDelegue = new System.Windows.Forms.Label();
             this.labelTitulaireEnquete = new System.Windows.Forms.Label();
             this.richTextBoxMotif = new System.Windows.Forms.RichTextBox();
+            this.checkBoxOuvertParLeSiege = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownNombre)).BeginInit();
@@ -120,6 +121,7 @@ namespace SPA
             // panel2
             // 
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.checkBoxOuvertParLeSiege);
             this.panel2.Controls.Add(this.labelErrorTitulaireDelegue);
             this.panel2.Controls.Add(this.labelErrorAnimaux);
             this.panel2.Controls.Add(this.labelErrorEmailInfracteur);
@@ -768,6 +770,17 @@ namespace SPA
             this.richTextBoxMotif.TabIndex = 38;
             this.richTextBoxMotif.Text = "";
             // 
+            // checkBoxOuvertParLeSiege
+            // 
+            this.checkBoxOuvertParLeSiege.AutoSize = true;
+            this.checkBoxOuvertParLeSiege.Enabled = false;
+            this.checkBoxOuvertParLeSiege.Location = new System.Drawing.Point(792, 41);
+            this.checkBoxOuvertParLeSiege.Name = "checkBoxOuvertParLeSiege";
+            this.checkBoxOuvertParLeSiege.Size = new System.Drawing.Size(127, 19);
+            this.checkBoxOuvertParLeSiege.TabIndex = 70;
+            this.checkBoxOuvertParLeSiege.Text = "Ouvert par le siege ";
+            this.checkBoxOuvertParLeSiege.UseVisualStyleBackColor = true;
+            // 
             // ModifierEnquete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -855,5 +868,6 @@ namespace SPA
         private System.Windows.Forms.Label labelErrorEmailInfracteur;
         private System.Windows.Forms.Label labelErrorAnimaux;
         private System.Windows.Forms.Label labelErrorTitulaireDelegue;
+        private System.Windows.Forms.CheckBox checkBoxOuvertParLeSiege;
     }
 }

@@ -25,6 +25,39 @@ namespace SPA
         }
         private void ModifierEnquete_Load(object sender, EventArgs e)
         {
+            if (utilisateur == enquete.Delegue_enqueteur || utilisateur == enquete.Titulaire_enquete || utilisateur.Admin)
+            {
+                buttonEnregistrer.Enabled = true;
+            }
+            else
+            {
+                comboBoxAnimaux.Enabled = false;
+                comboBoxDelegue.Enabled = false;
+                comboBoxRace.Enabled = false;
+                comboBoxAnimaux.Enabled = false;
+                comboBoxTitulaire.Enabled = false;
+                textBoxAdresseInfracteur.Enabled = false;
+                textBoxAdressePlaignant.Enabled = false;
+                textBoxCodePostalInfracteur.Enabled = false;
+                textBoxCodePostalPlaignant.Enabled = false;
+                textBoxEmailInfracteur.Enabled = false;
+                textBoxEmailPlaignant.Enabled = false;
+                textBoxNomInfracteur.Enabled = false;
+                textBoxNomPlaignant.Enabled = false;
+                textBoxPrenomInfracteur.Enabled = false;
+                textBoxPrenomPlaignant.Enabled = false;
+                textBoxVilleInfracteur.Enabled = false;
+                textBoxVillePlaignant.Enabled = false;
+
+                buttonAjouterFichier.Enabled = false;
+                buttonAjouter.Enabled = false;
+                buttonSupprimer.Enabled = false;
+                buttonSupprimerFichier.Enabled = false;
+
+                richTextBoxMotif.Enabled = false;
+                
+                buttonEnregistrer.Enabled = false;
+            }
             comboBoxAnimaux.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxDelegue.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRace.DropDownStyle = ComboBoxStyle.DropDownList;

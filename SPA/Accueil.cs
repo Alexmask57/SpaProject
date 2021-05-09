@@ -21,6 +21,10 @@ namespace SPA.Models
 
         private void Accueil_Load(object sender, EventArgs e)
         {
+            if (utilisateur.Admin)
+            {
+                buttonAdmin.Visible = true;
+            }
             labelTitre.Text = "Bienvenue " + utilisateur.Prenom + " " + utilisateur.Nom;
             RefreshPage();
         }
@@ -101,6 +105,12 @@ namespace SPA.Models
                 }
                 textBoxRecherche.Text = "";
             }
+        }
+
+        private void buttonAdmin_Click(object sender, EventArgs e)
+        {
+            Admin admin = new Admin(this, utilisateur);
+            admin.Show();
         }
     }
 }
